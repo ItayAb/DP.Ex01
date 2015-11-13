@@ -16,10 +16,12 @@ namespace FacebookApplication
         {
             m_LikeDataAnalysis = new Dictionary<User, int>();
             m_LoggedUser = i_LoggedUser;
+            
         }
 
-        private void calculateLikeToList()
-        {    
+        public void CalculateLikeToList()
+        {
+            Console.WriteLine("There are {0} Posts", m_LoggedUser.Posts.Count);
             // iterating all the posts 
             foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
             {
@@ -39,12 +41,14 @@ namespace FacebookApplication
                     }
                 }
             }
+
+            Console.WriteLine(m_LikeDataAnalysis.Count);
         }
 
         public List<User> GetDescendingTopLikeUserList()
         {
             List<User> topLikeUsers = new List<User>();
-
+            // iterate all the users by descending according to their key.value
             foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value ))
             {
                 topLikeUsers.Add(currentPairInCalculatedData.Key);

@@ -80,6 +80,7 @@
             this.button_LikeAnaylzer.TabIndex = 3;
             this.button_LikeAnaylzer.Text = "Like Analyzer";
             this.button_LikeAnaylzer.UseVisualStyleBackColor = true;
+            this.button_LikeAnaylzer.Click += new System.EventHandler(this.button_LikeAnaylzer_Click);
             // 
             // textBox1
             // 
@@ -132,7 +133,6 @@
             this.label_FullName.Name = "label_FullName";
             this.label_FullName.Size = new System.Drawing.Size(0, 15);
             this.label_FullName.TabIndex = 10;
-            this.label_FullName.AutoSize = true;
             // 
             // FormMain
             // 

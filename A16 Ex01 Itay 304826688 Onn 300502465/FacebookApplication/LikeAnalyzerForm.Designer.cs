@@ -32,6 +32,7 @@
             this.PictureBox_SelectedFriend = new System.Windows.Forms.PictureBox();
             this.listBox_RecentPost = new System.Windows.Forms.ListBox();
             this.button_LikeBack = new System.Windows.Forms.Button();
+            this.button_RunAnaylsis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_SelectedFriend)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +69,22 @@
             this.button_LikeBack.Text = "Like Back";
             this.button_LikeBack.UseVisualStyleBackColor = true;
             // 
+            // button_RunAnaylsis
+            // 
+            this.button_RunAnaylsis.Location = new System.Drawing.Point(175, 78);
+            this.button_RunAnaylsis.Name = "button_RunAnaylsis";
+            this.button_RunAnaylsis.Size = new System.Drawing.Size(173, 23);
+            this.button_RunAnaylsis.TabIndex = 4;
+            this.button_RunAnaylsis.Text = "Run Analysis";
+            this.button_RunAnaylsis.UseVisualStyleBackColor = true;
+            this.button_RunAnaylsis.Click += new System.EventHandler(this.button_RunAnaylsis_Click);
+            // 
             // LikeAnalyzerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 500);
+            this.Controls.Add(this.button_RunAnaylsis);
             this.Controls.Add(this.button_LikeBack);
             this.Controls.Add(this.listBox_RecentPost);
             this.Controls.Add(this.PictureBox_SelectedFriend);
@@ -90,5 +102,6 @@
         private System.Windows.Forms.PictureBox PictureBox_SelectedFriend;
         private System.Windows.Forms.ListBox listBox_RecentPost;
         private System.Windows.Forms.Button button_LikeBack;
+        private System.Windows.Forms.Button button_RunAnaylsis;
     }
 }
