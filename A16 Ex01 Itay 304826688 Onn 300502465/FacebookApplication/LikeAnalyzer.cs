@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.IO;
 
 namespace FacebookApplication
 {
@@ -18,20 +19,21 @@ namespace FacebookApplication
             m_LoggedUser = i_LoggedUser;
         }
 
-        private void calculateLikeToList()
+        public void calculateLikeToList(int i_NumOfPosts)
         {    
             // iterating all the posts 
-            foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
+            //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
+            for (int i = 0; i < i_NumOfPosts; i++ )
             {
                 // iterating all user who liked the post
-                foreach (User userWhoLikedThePost in postCurrentlyCalculating.LikedBy)
+                foreach (User userWhoLikedThePost in m_LoggedUser.Posts[i].LikedBy)
                 {
                     // if the user already appeared in previous calculations
                     if (m_LikeDataAnalysis.ContainsKey(userWhoLikedThePost))
                     {
                         int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
                         likeCountForCurrentCalculatedUser++;
-                        m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;
+                        m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;                    
                     }
                     else
                     {
@@ -51,6 +53,18 @@ namespace FacebookApplication
             }
 
             return topLikeUsers;
+        }
+
+        public int GetAmountOfLikesByUser(User i_UserToCheck)                
+        {
+            int amountOfLikes = 0;
+
+            if (m_LikeDataAnalysis.ContainsKey(i_UserToCheck))
+            {
+                amountOfLikes = m_LikeDataAnalysis[i_UserToCheck];
+            }
+
+            return amountOfLikes;
         }
               
     }
