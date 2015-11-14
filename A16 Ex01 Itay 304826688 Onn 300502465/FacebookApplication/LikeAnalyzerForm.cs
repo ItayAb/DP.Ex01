@@ -25,7 +25,7 @@ namespace FacebookApplication
 
         private void button_RunAnalysis_Click(object sender, EventArgs e)
         {
-            
+
             int numOfPosts;
             m_LikeAnalyzer = new LikeAnalyzer(m_LoggedUser);
             if (int.TryParse(textBox_AmountPostsToParse.Text, out numOfPosts))
@@ -43,30 +43,57 @@ namespace FacebookApplication
 
         private void updateUI()
         {
-            listBox_DescendingLikeFriends.Items.Clear();
+            listBoxDescendingLikeFriends.Items.Clear();
             List<User> likers = m_LikeAnalyzer.GetDescendingTopLikeUserList();
-            listBox_DescendingLikeFriends.DisplayMember = "Name";
+            listBoxDescendingLikeFriends.DisplayMember = "Name";
+            listBoxRecentPost.DisplayMember = "Message";
             foreach (User likeUser in likers)
             {
-                listBox_DescendingLikeFriends.Items.Add(likeUser);
-               
+                listBoxDescendingLikeFriends.Items.Add(likeUser);
+
             }
         }
 
-        private void listBox_DescendingLikeFriends_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxDescendingLikeFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-            User selectedUser = listBox_DescendingLikeFriends.SelectedItem as User;
+            User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
             if (selectedUser != null)
             {
                 PictureBox_SelectedFriend.LoadAsync(selectedUser.PictureNormalURL);
                 string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
                 textBox_AmountOfLikeForUser.Text = amountOfLikesStr;
-                foreach (Post userLikerPosts in selectedUser.Posts)
+
+                for (int i = 0; i < selectedUser.Posts.Count; i++)
                 {
-                    listBox_RecentPost.Items.Add(userLikerPosts.Message);
+                    listBoxRecentPost.Items.Add(selectedUser.Posts[i]);
                 }
             }
-            
+
         }
+
+        private void buttonLikeBack_Click(object sender, EventArgs e)
+        {
+            likeBackUserChosenPost();
+        }
+
+        private void likeBackUserChosenPost()
+        {
+            if (listBoxRecentPost.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Please select a post to like back");
+            }
+            else
+            {
+                foreach (object postToLike in listBoxRecentPost.SelectedItems)
+                {
+                    Post chosenPost = postToLike as Post;
+                    if (chosenPost != null)
+                    {
+                        chosenPost.Like();
+                    }
+                }
+            }
+        }
+
     }
 }

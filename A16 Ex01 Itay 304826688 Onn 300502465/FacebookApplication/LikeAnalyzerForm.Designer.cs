@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox_DescendingLikeFriends = new System.Windows.Forms.ListBox();
+            this.listBoxDescendingLikeFriends = new System.Windows.Forms.ListBox();
             this.PictureBox_SelectedFriend = new System.Windows.Forms.PictureBox();
-            this.listBox_RecentPost = new System.Windows.Forms.ListBox();
-            this.button_LikeBack = new System.Windows.Forms.Button();
+            this.listBoxRecentPost = new System.Windows.Forms.ListBox();
+            this.buttonLikeBack = new System.Windows.Forms.Button();
             this.button_RunAnalysis = new System.Windows.Forms.Button();
             this.textBox_AmountPostsToParse = new System.Windows.Forms.TextBox();
             this.textBox_AmountOfLikeForUser = new System.Windows.Forms.TextBox();
@@ -42,16 +42,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_SelectedFriend)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox_DescendingLikeFriends
+            // listBoxDescendingLikeFriends
             // 
-            this.listBox_DescendingLikeFriends.FormattingEnabled = true;
-            this.listBox_DescendingLikeFriends.ItemHeight = 16;
-            this.listBox_DescendingLikeFriends.Location = new System.Drawing.Point(16, 246);
-            this.listBox_DescendingLikeFriends.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox_DescendingLikeFriends.Name = "listBox_DescendingLikeFriends";
-            this.listBox_DescendingLikeFriends.Size = new System.Drawing.Size(159, 260);
-            this.listBox_DescendingLikeFriends.TabIndex = 0;
-            this.listBox_DescendingLikeFriends.SelectedIndexChanged += new System.EventHandler(this.listBox_DescendingLikeFriends_SelectedIndexChanged);
+            this.listBoxDescendingLikeFriends.FormattingEnabled = true;
+            this.listBoxDescendingLikeFriends.ItemHeight = 16;
+            this.listBoxDescendingLikeFriends.Location = new System.Drawing.Point(16, 246);
+            this.listBoxDescendingLikeFriends.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxDescendingLikeFriends.Name = "listBoxDescendingLikeFriends";
+            this.listBoxDescendingLikeFriends.Size = new System.Drawing.Size(159, 260);
+            this.listBoxDescendingLikeFriends.TabIndex = 0;
+            this.listBoxDescendingLikeFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxDescendingLikeFriends_SelectedIndexChanged);
             // 
             // PictureBox_SelectedFriend
             // 
@@ -62,25 +62,26 @@
             this.PictureBox_SelectedFriend.TabIndex = 1;
             this.PictureBox_SelectedFriend.TabStop = false;
             // 
-            // listBox_RecentPost
+            // listBoxRecentPost
             // 
-            this.listBox_RecentPost.FormattingEnabled = true;
-            this.listBox_RecentPost.ItemHeight = 16;
-            this.listBox_RecentPost.Location = new System.Drawing.Point(233, 390);
-            this.listBox_RecentPost.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox_RecentPost.Name = "listBox_RecentPost";
-            this.listBox_RecentPost.Size = new System.Drawing.Size(265, 116);
-            this.listBox_RecentPost.TabIndex = 2;
+            this.listBoxRecentPost.FormattingEnabled = true;
+            this.listBoxRecentPost.ItemHeight = 16;
+            this.listBoxRecentPost.Location = new System.Drawing.Point(233, 390);
+            this.listBoxRecentPost.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxRecentPost.Name = "listBoxRecentPost";
+            this.listBoxRecentPost.Size = new System.Drawing.Size(265, 116);
+            this.listBoxRecentPost.TabIndex = 2;
             // 
-            // button_LikeBack
+            // buttonLikeBack
             // 
-            this.button_LikeBack.Location = new System.Drawing.Point(400, 324);
-            this.button_LikeBack.Margin = new System.Windows.Forms.Padding(4);
-            this.button_LikeBack.Name = "button_LikeBack";
-            this.button_LikeBack.Size = new System.Drawing.Size(100, 28);
-            this.button_LikeBack.TabIndex = 3;
-            this.button_LikeBack.Text = "Like Back";
-            this.button_LikeBack.UseVisualStyleBackColor = true;
+            this.buttonLikeBack.Location = new System.Drawing.Point(398, 324);
+            this.buttonLikeBack.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLikeBack.Name = "buttonLikeBack";
+            this.buttonLikeBack.Size = new System.Drawing.Size(100, 28);
+            this.buttonLikeBack.TabIndex = 3;
+            this.buttonLikeBack.Text = "Like Back";
+            this.buttonLikeBack.UseVisualStyleBackColor = true;
+            this.buttonLikeBack.Click += new System.EventHandler(this.buttonLikeBack_Click);
             // 
             // button_RunAnalysis
             // 
@@ -153,10 +154,10 @@
             this.Controls.Add(this.textBox_AmountOfLikeForUser);
             this.Controls.Add(this.textBox_AmountPostsToParse);
             this.Controls.Add(this.button_RunAnalysis);
-            this.Controls.Add(this.button_LikeBack);
-            this.Controls.Add(this.listBox_RecentPost);
+            this.Controls.Add(this.buttonLikeBack);
+            this.Controls.Add(this.listBoxRecentPost);
             this.Controls.Add(this.PictureBox_SelectedFriend);
-            this.Controls.Add(this.listBox_DescendingLikeFriends);
+            this.Controls.Add(this.listBoxDescendingLikeFriends);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LikeAnalyzerForm";
             this.Text = "Like Analyzer ";
@@ -168,10 +169,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox_DescendingLikeFriends;
+        private System.Windows.Forms.ListBox listBoxDescendingLikeFriends;
         private System.Windows.Forms.PictureBox PictureBox_SelectedFriend;
-        private System.Windows.Forms.ListBox listBox_RecentPost;
-        private System.Windows.Forms.Button button_LikeBack;
+        private System.Windows.Forms.ListBox listBoxRecentPost;
+        private System.Windows.Forms.Button buttonLikeBack;
         private System.Windows.Forms.Button button_RunAnalysis;
         private System.Windows.Forms.TextBox textBox_AmountPostsToParse;
         private System.Windows.Forms.TextBox textBox_AmountOfLikeForUser;

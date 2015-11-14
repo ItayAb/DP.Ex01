@@ -8,6 +8,7 @@ namespace FacebookApplication
     class ApplicationConfigurationData
     {
         private string m_AccessToken;
+        private bool m_RememberMe = false;
 
         public ApplicationConfigurationData()
         {
@@ -17,6 +18,12 @@ namespace FacebookApplication
         {
             get { return m_AccessToken; }
             set { m_AccessToken = value; }
+        }
+
+        public bool RememberMe
+        {
+            get { return m_RememberMe; }
+            set { m_RememberMe = value; }
         }
     }
 }

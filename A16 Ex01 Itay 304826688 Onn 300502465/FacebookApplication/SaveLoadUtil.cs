@@ -17,6 +17,7 @@ namespace FacebookApplication
             {
                 StreamWriter dataWriter = new StreamWriter(i_pathToSave);
                 dataWriter.WriteLine(i_AppData.AccessToken);
+                dataWriter.WriteLine(i_AppData.RememberMe);
                 dataWriter.Flush();
                 dataWriter.Close();
                 resultOfSaveOperation = true;
@@ -38,11 +39,17 @@ namespace FacebookApplication
                 try
                 {
                     StreamReader dataReader = new StreamReader(i_PathToLoad);
-                    string data = dataReader.ReadToEnd();
-                    if (!string.IsNullOrEmpty(data))
+                    string AppDataAccessToken = dataReader.ReadLine();
+                    string AppDataRememberMe = dataReader.ReadLine();
+                    if (!string.IsNullOrEmpty(AppDataAccessToken))
                     {
-                        i_AppData.AccessToken = data;
-                        resultOfLoad = true;                        
+                        i_AppData.AccessToken = AppDataAccessToken;
+
+                        if (!string.IsNullOrEmpty(AppDataRememberMe))
+                        {
+                            i_AppData.RememberMe = AppDataRememberMe.ToLower().Equals("true") ? true : false;
+                            resultOfLoad = true;                        
+                        }
                     }
 
                     dataReader.Close();
