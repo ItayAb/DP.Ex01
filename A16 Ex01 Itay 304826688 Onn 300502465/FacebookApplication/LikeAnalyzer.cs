@@ -21,6 +21,9 @@ namespace FacebookApplication
 
         public void calculateLikeToList(int i_NumOfPosts)
         {    
+            //Reset the Dictionary
+            m_LikeDataAnalysis.Clear();
+
             // iterating all the posts 
             //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
             for (int i = 0; i < i_NumOfPosts; i++ )
@@ -29,7 +32,7 @@ namespace FacebookApplication
                 foreach (User userWhoLikedThePost in m_LoggedUser.Posts[i].LikedBy)
                 {
                     // if the user already appeared in previous calculations
-                    if (m_LikeDataAnalysis.ContainsKey(userWhoLikedThePost))
+                    if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
                         int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
                         likeCountForCurrentCalculatedUser++;
@@ -41,6 +44,22 @@ namespace FacebookApplication
                     }
                 }
             }
+        }
+
+        private bool checkIfUserExistsInDictionary(User i_UserToCheck)
+        {
+            bool doesExist = false;
+
+            foreach (User userInDictionary in m_LikeDataAnalysis.Keys)
+            {
+                if (userInDictionary.Name.Equals(i_UserToCheck.Name))
+                {
+                    doesExist = true;
+                    break;
+                }
+            }
+
+            return doesExist;
         }
 
         public List<User> GetDescendingTopLikeUserList()

@@ -51,7 +51,7 @@ namespace FacebookApplication
             {
                 PictureBox_SelectedFriend.LoadAsync(selectedUser.PictureNormalURL);
                 string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
-                label_AmountOfLikes.Text = amountOfLikesStr;
+                textBox_AmountOfLikeForUser.Text = amountOfLikesStr;
             }
             
         }
