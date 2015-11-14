@@ -19,6 +19,7 @@ namespace FacebookApplication
         private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
         private const string k_AppId = "843647649088563";
         private User m_LoggedInUser;
+        private LikeAnalyzerForm m_likeAnalyzerForm;
 
         private ApplicationConfigurationData m_AppConfig;
 
@@ -33,7 +34,7 @@ namespace FacebookApplication
             {
                 if (m_AppConfig.RememberMe)
                 {
-                    autoLogin();                    
+                    autoLogin();
                 }
             }
         }
@@ -114,17 +115,8 @@ namespace FacebookApplication
                 {
                     MessageBox.Show(result.ErrorMessage);
                 }
-
             }
-
-
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            //checkBox_RememberMe.Checked = m_AppConfig.RememberMe;
-            base.OnShown(e);
-        }
+        } 
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -136,16 +128,16 @@ namespace FacebookApplication
             // setting the images profile & cover 
             if (!string.IsNullOrEmpty(m_LoggedInUser.PictureNormalURL))
             {
-                picture_ProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);
+                pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);
             }
 
             if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
             {
-                picture_CoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
+                pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
             // writing the posts to the 'news feed' (needs work)
-            for (int i = 0; i < m_LoggedInUser.Posts.Count && i < 10; i++)
+            for (int i = 0; i < m_LoggedInUser.Posts.Count; i++)
             {
                 if (m_LoggedInUser.Posts[i].Message != null)
                 {
@@ -165,8 +157,8 @@ namespace FacebookApplication
 
         private void buttonLikeAnalyzer_Click(object sender, EventArgs e)
         {
-            LikeAnalyzerForm likeForm = new LikeAnalyzerForm(m_LoggedInUser);
-            likeForm.Show();
+            m_likeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
+            m_likeAnalyzerForm.ShowDialog();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -180,7 +172,7 @@ namespace FacebookApplication
         {
             if (checkBoxRemeberMe.Checked)
             {
-                m_AppConfig.RememberMe = true;  
+                m_AppConfig.RememberMe = true;
             }
             else
             {
