@@ -32,10 +32,13 @@
             this.PictureBox_SelectedFriend = new System.Windows.Forms.PictureBox();
             this.listBox_RecentPost = new System.Windows.Forms.ListBox();
             this.button_LikeBack = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_RunAnalysis = new System.Windows.Forms.Button();
             this.textBox_AmountPostsToParse = new System.Windows.Forms.TextBox();
             this.textBox_AmountOfLikeForUser = new System.Windows.Forms.TextBox();
             this.label_AmountOfLikes = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_AmountOfPosts = new System.Windows.Forms.TextBox();
+            this.label_ChooseAmountOfPosts = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_SelectedFriend)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,21 +82,21 @@
             this.button_LikeBack.Text = "Like Back";
             this.button_LikeBack.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button_RunAnalysis
             // 
-            this.button1.Location = new System.Drawing.Point(251, 118);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "RunAnalysis";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_RunAnalysis.Location = new System.Drawing.Point(251, 118);
+            this.button_RunAnalysis.Name = "button_RunAnalysis";
+            this.button_RunAnalysis.Size = new System.Drawing.Size(154, 23);
+            this.button_RunAnalysis.TabIndex = 4;
+            this.button_RunAnalysis.Text = "RunAnalysis";
+            this.button_RunAnalysis.UseVisualStyleBackColor = true;
+            this.button_RunAnalysis.Click += new System.EventHandler(this.button_RunAnalysis_Click);
             // 
             // textBox_AmountPostsToParse
             // 
             this.textBox_AmountPostsToParse.Location = new System.Drawing.Point(421, 118);
             this.textBox_AmountPostsToParse.Name = "textBox_AmountPostsToParse";
-            this.textBox_AmountPostsToParse.Size = new System.Drawing.Size(100, 22);
+            this.textBox_AmountPostsToParse.Size = new System.Drawing.Size(220, 22);
             this.textBox_AmountPostsToParse.TabIndex = 5;
             // 
             // textBox_AmountOfLikeForUser
@@ -112,15 +115,44 @@
             this.label_AmountOfLikes.TabIndex = 7;
             this.label_AmountOfLikes.Text = "Amount Of Likes";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(248, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Overall number of Posts";
+            // 
+            // textBox_AmountOfPosts
+            // 
+            this.textBox_AmountOfPosts.Location = new System.Drawing.Point(421, 34);
+            this.textBox_AmountOfPosts.Name = "textBox_AmountOfPosts";
+            this.textBox_AmountOfPosts.ReadOnly = true;
+            this.textBox_AmountOfPosts.Size = new System.Drawing.Size(100, 22);
+            this.textBox_AmountOfPosts.TabIndex = 9;
+            // 
+            // label_ChooseAmountOfPosts
+            // 
+            this.label_ChooseAmountOfPosts.AutoSize = true;
+            this.label_ChooseAmountOfPosts.Location = new System.Drawing.Point(423, 98);
+            this.label_ChooseAmountOfPosts.Name = "label_ChooseAmountOfPosts";
+            this.label_ChooseAmountOfPosts.Size = new System.Drawing.Size(218, 17);
+            this.label_ChooseAmountOfPosts.TabIndex = 10;
+            this.label_ChooseAmountOfPosts.Text = "Choose how many posts to check";
+            // 
             // LikeAnalyzerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 615);
+            this.Controls.Add(this.label_ChooseAmountOfPosts);
+            this.Controls.Add(this.textBox_AmountOfPosts);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label_AmountOfLikes);
             this.Controls.Add(this.textBox_AmountOfLikeForUser);
             this.Controls.Add(this.textBox_AmountPostsToParse);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_RunAnalysis);
             this.Controls.Add(this.button_LikeBack);
             this.Controls.Add(this.listBox_RecentPost);
             this.Controls.Add(this.PictureBox_SelectedFriend);
@@ -140,9 +172,12 @@
         private System.Windows.Forms.PictureBox PictureBox_SelectedFriend;
         private System.Windows.Forms.ListBox listBox_RecentPost;
         private System.Windows.Forms.Button button_LikeBack;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_RunAnalysis;
         private System.Windows.Forms.TextBox textBox_AmountPostsToParse;
         private System.Windows.Forms.TextBox textBox_AmountOfLikeForUser;
         private System.Windows.Forms.Label label_AmountOfLikes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_AmountOfPosts;
+        private System.Windows.Forms.Label label_ChooseAmountOfPosts;
     }
 }

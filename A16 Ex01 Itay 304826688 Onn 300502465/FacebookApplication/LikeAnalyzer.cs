@@ -34,9 +34,10 @@ namespace FacebookApplication
                     // if the user already appeared in previous calculations
                     if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
-                        int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
-                        likeCountForCurrentCalculatedUser++;
-                        m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;                    
+                        updateRecordInDictionary(userWhoLikedThePost);
+                        //int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
+                        //likeCountForCurrentCalculatedUser++;
+                        //m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;                    
                     }
                     else
                     {
@@ -60,6 +61,20 @@ namespace FacebookApplication
             }
 
             return doesExist;
+        }
+
+        private void updateRecordInDictionary(User i_UserToUpdate)
+        {
+            foreach (User userInDictionary in m_LikeDataAnalysis.Keys)
+            {
+                if (userInDictionary.Name.Equals(i_UserToUpdate.Name))
+                {
+                    int currentUserAmountOfLikesInDictionary = m_LikeDataAnalysis[userInDictionary];
+                    currentUserAmountOfLikesInDictionary++;
+                    m_LikeDataAnalysis[userInDictionary] = currentUserAmountOfLikesInDictionary;
+                    break;
+                }
+            }
         }
 
         public List<User> GetDescendingTopLikeUserList()
