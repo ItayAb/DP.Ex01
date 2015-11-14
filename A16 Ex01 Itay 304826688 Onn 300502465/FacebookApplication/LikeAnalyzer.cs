@@ -16,7 +16,7 @@ namespace FacebookApplication
         public LikeAnalyzer(User i_LoggedUser)
         {
             m_LikeDataAnalysis = new Dictionary<User, int>();
-            m_LoggedUser = i_LoggedUser;
+            m_LoggedUser = i_LoggedUser;            
         }
 
         public void calculateLikeToList(int i_NumOfPosts)
