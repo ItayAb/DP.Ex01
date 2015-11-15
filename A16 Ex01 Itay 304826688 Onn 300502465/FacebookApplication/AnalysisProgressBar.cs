@@ -29,27 +29,20 @@ namespace FacebookApplication
 
         private void initProgress()
         {
-            progressBarForLikeAnalysis.Value = 0;
-            labelProgress.Text = "0";
+            progressBarForLikeAnalysis.Value = 0;            
             progressBarForLikeAnalysis.Minimum = 0;
             progressBarForLikeAnalysis.Maximum = m_NumOfPosts;
-            progressBarForLikeAnalysis.Step = 1;
-
-            //m_IncrementSize = progressBarForLikeAnalysis.Width / m_NumOfPosts;
+            progressBarForLikeAnalysis.Step = 1;            
         }
 
         public void incrementProgressBar()
-        {
-            //progressBarForLikeAnalysis.Increment(+(100/m_NumOfPosts));           
+        {                     
             progressBarForLikeAnalysis.PerformStep();
-            labelProgress.Text = progressBarForLikeAnalysis.Value.ToString();
-
+            // TODO: think of a better way to increment, delegate?                        
             if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
             {
                 this.Close();    
             }
-        }
-
-        
+        }        
     }
 }

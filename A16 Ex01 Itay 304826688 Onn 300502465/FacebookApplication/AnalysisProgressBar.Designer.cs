@@ -29,41 +29,29 @@
         private void InitializeComponent()
         {
             this.progressBarForLikeAnalysis = new System.Windows.Forms.ProgressBar();
-            this.labelProgress = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBarForLikeAnalysis
             // 
-            this.progressBarForLikeAnalysis.Location = new System.Drawing.Point(25, 65);
+            this.progressBarForLikeAnalysis.Location = new System.Drawing.Point(26, 35);
             this.progressBarForLikeAnalysis.Name = "progressBarForLikeAnalysis";
             this.progressBarForLikeAnalysis.Size = new System.Drawing.Size(370, 23);
             this.progressBarForLikeAnalysis.TabIndex = 0;
-            // 
-            // labelProgress
-            // 
-            this.labelProgress.AutoSize = true;
-            this.labelProgress.Location = new System.Drawing.Point(200, 27);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(0, 17);
-            this.labelProgress.TabIndex = 1;
             // 
             // AnalysisProgressBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 136);
-            this.Controls.Add(this.labelProgress);
+            this.ClientSize = new System.Drawing.Size(424, 91);
             this.Controls.Add(this.progressBarForLikeAnalysis);
             this.Name = "AnalysisProgressBar";
-            this.Text = "Analysis Progress Bar";
+            this.Text = "Analysis Progress";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ProgressBar progressBarForLikeAnalysis;
-        private System.Windows.Forms.Label labelProgress;
     }
 }

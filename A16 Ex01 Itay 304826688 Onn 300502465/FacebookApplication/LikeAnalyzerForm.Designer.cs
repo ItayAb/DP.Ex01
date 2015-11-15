@@ -37,7 +37,7 @@
             this.textBoxAmountOfLikeForUser = new System.Windows.Forms.TextBox();
             this.labelAmountOfLikesHeader = new System.Windows.Forms.Label();
             this.textBoxAmountOfPosts = new System.Windows.Forms.TextBox();
-            this.label_ChooseAmountOfPosts = new System.Windows.Forms.Label();
+            this.labelChooseAmountOfPosts = new System.Windows.Forms.Label();
             this.pictureBoxCoverPhoto = new System.Windows.Forms.PictureBox();
             this.labelNameOfUser = new System.Windows.Forms.Label();
             this.labelOverallPostHeader = new System.Windows.Forms.Label();
@@ -127,14 +127,14 @@
             this.textBoxAmountOfPosts.Size = new System.Drawing.Size(100, 22);
             this.textBoxAmountOfPosts.TabIndex = 9;
             // 
-            // label_ChooseAmountOfPosts
+            // labelChooseAmountOfPosts
             // 
-            this.label_ChooseAmountOfPosts.AutoSize = true;
-            this.label_ChooseAmountOfPosts.Location = new System.Drawing.Point(235, 364);
-            this.label_ChooseAmountOfPosts.Name = "label_ChooseAmountOfPosts";
-            this.label_ChooseAmountOfPosts.Size = new System.Drawing.Size(218, 17);
-            this.label_ChooseAmountOfPosts.TabIndex = 10;
-            this.label_ChooseAmountOfPosts.Text = "Choose how many posts to check";
+            this.labelChooseAmountOfPosts.AutoSize = true;
+            this.labelChooseAmountOfPosts.Location = new System.Drawing.Point(235, 364);
+            this.labelChooseAmountOfPosts.Name = "labelChooseAmountOfPosts";
+            this.labelChooseAmountOfPosts.Size = new System.Drawing.Size(218, 17);
+            this.labelChooseAmountOfPosts.TabIndex = 10;
+            this.labelChooseAmountOfPosts.Text = "Choose how many posts to check";
             // 
             // pictureBoxCoverPhoto
             // 
@@ -170,7 +170,7 @@
             this.ClientSize = new System.Drawing.Size(657, 716);
             this.Controls.Add(this.labelNameOfUser);
             this.Controls.Add(this.pictureBoxCoverPhoto);
-            this.Controls.Add(this.label_ChooseAmountOfPosts);
+            this.Controls.Add(this.labelChooseAmountOfPosts);
             this.Controls.Add(this.textBoxAmountOfPosts);
             this.Controls.Add(this.labelOverallPostHeader);
             this.Controls.Add(this.labelAmountOfLikesHeader);
@@ -202,7 +202,7 @@
         private System.Windows.Forms.TextBox textBoxAmountOfLikeForUser;
         private System.Windows.Forms.Label labelAmountOfLikesHeader;
         private System.Windows.Forms.TextBox textBoxAmountOfPosts;
-        private System.Windows.Forms.Label label_ChooseAmountOfPosts;
+        private System.Windows.Forms.Label labelChooseAmountOfPosts;
         private System.Windows.Forms.PictureBox pictureBoxCoverPhoto;
         private System.Windows.Forms.Label labelNameOfUser;
         private System.Windows.Forms.Label labelOverallPostHeader;

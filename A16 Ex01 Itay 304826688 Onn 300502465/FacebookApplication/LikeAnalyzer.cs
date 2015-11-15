@@ -26,8 +26,7 @@ namespace FacebookApplication
             //Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
-            // iterating all the posts 
-            //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
+            // iterating all the posts             
             for (int i = 0; i < i_NumOfPosts; i++)
             {
                 // iterating all user who liked the post
@@ -37,6 +36,7 @@ namespace FacebookApplication
                     if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
                         updateRecordInDictionary(userWhoLikedThePost);
+                        //TODO : find a safer way to compare users and handle the dictionary
                         //int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
                         //likeCountForCurrentCalculatedUser++;
                         //m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;                    

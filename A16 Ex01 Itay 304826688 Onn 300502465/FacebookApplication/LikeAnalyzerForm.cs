@@ -54,7 +54,9 @@ namespace FacebookApplication
         private void resetUiForAnalysis()
         {
             listBoxRecentPost.Items.Clear();
-            listBoxDescendingLikeFriends.Items.Clear();
+            listBoxDescendingLikeFriends.Items.Clear();            
+            // TODO:set the picture box for selectedUser to default Picture
+            textBoxAmountOfLikeForUser.Text = "";
         }
 
         private void runLikeAnalysis()
