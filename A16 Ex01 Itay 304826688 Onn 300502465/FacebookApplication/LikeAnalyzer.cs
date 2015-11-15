@@ -12,21 +12,23 @@ namespace FacebookApplication
     {
         Dictionary<User, int> m_LikeDataAnalysis;
         User m_LoggedUser;
+        AnalysisProgressBar m_progressBarForm;
 
         public LikeAnalyzer(User i_LoggedUser)
         {
             m_LikeDataAnalysis = new Dictionary<User, int>();
-            m_LoggedUser = i_LoggedUser;            
+            m_LoggedUser = i_LoggedUser;
         }
 
         public void calculateLikeToList(int i_NumOfPosts)
-        {    
+        {
+            initProgressBar(i_NumOfPosts);
             //Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
             // iterating all the posts 
             //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
-            for (int i = 0; i < i_NumOfPosts; i++ )
+            for (int i = 0; i < i_NumOfPosts; i++)
             {
                 // iterating all user who liked the post
                 foreach (User userWhoLikedThePost in m_LoggedUser.Posts[i].LikedBy)
@@ -44,6 +46,21 @@ namespace FacebookApplication
                         m_LikeDataAnalysis.Add(userWhoLikedThePost, 1);
                     }
                 }
+
+                m_progressBarForm.incrementProgressBar();
+            }
+        }
+
+        private void initProgressBar(int i_NumOfPosts)
+        {
+            if (m_progressBarForm != null)
+            {
+                m_progressBarForm.resetProgress(i_NumOfPosts);
+            }
+            else
+            {
+                m_progressBarForm = new AnalysisProgressBar(i_NumOfPosts);
+                m_progressBarForm.Show();
             }
         }
 
@@ -81,7 +98,7 @@ namespace FacebookApplication
         {
             List<User> topLikeUsers = new List<User>();
 
-            foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value ))
+            foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value))
             {
                 topLikeUsers.Add(currentPairInCalculatedData.Key);
             }
@@ -89,7 +106,7 @@ namespace FacebookApplication
             return topLikeUsers;
         }
 
-        public int GetAmountOfLikesByUser(User i_UserToCheck)                
+        public int GetAmountOfLikesByUser(User i_UserToCheck)
         {
             int amountOfLikes = 0;
 
@@ -100,6 +117,6 @@ namespace FacebookApplication
 
             return amountOfLikes;
         }
-              
+
     }
 }

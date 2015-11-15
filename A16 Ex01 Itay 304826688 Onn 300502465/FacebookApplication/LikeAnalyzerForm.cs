@@ -41,8 +41,7 @@ namespace FacebookApplication
 
         public void initUiLikeAnaylzer()
         {
-            pictureBoxCoverPhoto.LoadAsync(m_LoggedUser.Cover.SourceURL);
-            label1.Text = "Delete";
+            pictureBoxCoverPhoto.LoadAsync(m_LoggedUser.Cover.SourceURL);            
             labelNameOfUser.Text = m_LoggedUser.Name;
             textBoxAmountOfPosts.Text = m_LoggedUser.Posts.Count.ToString();
         }
@@ -59,7 +58,7 @@ namespace FacebookApplication
         }
 
         private void runLikeAnalysis()
-        {
+        {                        
             resetUiForAnalysis();
             if (m_LoggedUser != null)
             {
