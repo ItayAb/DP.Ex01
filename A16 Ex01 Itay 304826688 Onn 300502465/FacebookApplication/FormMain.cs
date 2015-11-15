@@ -14,6 +14,7 @@ using System.Xml.Serialization;
 
 namespace FacebookApplication
 {
+    // add more functionality : like, comment, post, (search google)?
     public partial class FormMain : Form
     {
         private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
@@ -136,6 +137,7 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
+            // TODO: need to present the posts in a better way
             // writing the posts to the 'news feed' (needs work)
             for (int i = 0; i < m_LoggedInUser.Posts.Count; i++)
             {

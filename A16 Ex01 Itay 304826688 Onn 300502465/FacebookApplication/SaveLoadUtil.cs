@@ -6,6 +6,8 @@ using System.IO;
 
 namespace FacebookApplication
 {
+
+    // TODO : should use reflection or serializer?
     class SaveLoadUtil
     {
 
