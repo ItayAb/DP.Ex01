@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FacebookApplication
 {
-    class ApplicationConfigurationData
+    public class ApplicationConfigurationData
     {
         private string m_AccessToken;
         private bool m_RememberMe = false;
@@ -14,6 +14,7 @@ namespace FacebookApplication
         {
         }
 
+        // TODO : change to .NET 3 feature? AccessToken(get; set;)
         public string AccessToken
         {
             get { return m_AccessToken; }

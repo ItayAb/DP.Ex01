@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-
+using System.Xml.Serialization;
 namespace FacebookApplication
 {
-
-    // TODO : should use reflection or serializer?
+    
     class SaveLoadUtil
     {
 
         public static bool SaveAppData(string i_pathToSave, ApplicationConfigurationData i_AppData)
         {
             bool resultOfSaveOperation = false;
-
             try
             {
+                XmlSerializer XmlAppConfigSerializer = new XmlSerializer(typeof(ApplicationConfigurationData));            
                 StreamWriter dataWriter = new StreamWriter(i_pathToSave);
-                dataWriter.WriteLine(i_AppData.AccessToken);
-                dataWriter.WriteLine(i_AppData.RememberMe);
-                dataWriter.Flush();
+                XmlAppConfigSerializer.Serialize(dataWriter, i_AppData);
                 dataWriter.Close();
                 resultOfSaveOperation = true;
             }
@@ -32,7 +29,7 @@ namespace FacebookApplication
             return resultOfSaveOperation;
         }
 
-        public static bool LoadAppData(string i_PathToLoad, ApplicationConfigurationData i_AppData)
+        public static bool LoadAppData(string i_PathToLoad, ref ApplicationConfigurationData i_AppData)
         {
             bool resultOfLoad = false;
 
@@ -40,18 +37,12 @@ namespace FacebookApplication
             {
                 try
                 {
+                    XmlSerializer XmlAppConfigDeserializer = new XmlSerializer(typeof(ApplicationConfigurationData));            
                     StreamReader dataReader = new StreamReader(i_PathToLoad);
-                    string AppDataAccessToken = dataReader.ReadLine();
-                    string AppDataRememberMe = dataReader.ReadLine();
-                    if (!string.IsNullOrEmpty(AppDataAccessToken))
+                    i_AppData = (ApplicationConfigurationData)XmlAppConfigDeserializer.Deserialize(dataReader);
+                    if (i_AppData != null)
                     {
-                        i_AppData.AccessToken = AppDataAccessToken;
-
-                        if (!string.IsNullOrEmpty(AppDataRememberMe))
-                        {
-                            i_AppData.RememberMe = AppDataRememberMe.ToLower().Equals("true") ? true : false;
-                            resultOfLoad = true;                        
-                        }
+                        resultOfLoad = true;
                     }
 
                     dataReader.Close();

@@ -7,9 +7,9 @@ using FacebookWrapper;
 using System.IO;
 
 namespace FacebookApplication
-{
+{    
     class LikeAnalyzer
-    {
+    {        
         Dictionary<User, int> m_LikeDataAnalysis;
         User m_LoggedUser;
         AnalysisProgressBar m_progressBarForm;
@@ -117,6 +117,5 @@ namespace FacebookApplication
 
             return amountOfLikes;
         }
-
     }
 }

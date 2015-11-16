@@ -31,7 +31,7 @@ namespace FacebookApplication
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 1000;
 
-            if (SaveLoadUtil.LoadAppData(m_PathOfAppDataFile, m_AppConfig))
+            if (SaveLoadUtil.LoadAppData(m_PathOfAppDataFile, ref m_AppConfig))
             {
                 if (m_AppConfig.RememberMe)
                 {
@@ -117,7 +117,7 @@ namespace FacebookApplication
                     MessageBox.Show(result.ErrorMessage);
                 }
             }
-        } 
+        }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -166,7 +166,11 @@ namespace FacebookApplication
         protected override void OnClosing(CancelEventArgs e)
         {
             //  m_RememberMe = checkBox_RememberMe.Checked ? true : false;
-            SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
+            if (checkBoxRemeberMe.Checked)
+            {
+                SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
+            }
+
             base.OnClosing(e);
         }
 
