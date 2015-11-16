@@ -48,39 +48,33 @@
             // listBoxDescendingLikeFriends
             // 
             this.listBoxDescendingLikeFriends.FormattingEnabled = true;
-            this.listBoxDescendingLikeFriends.ItemHeight = 16;
-            this.listBoxDescendingLikeFriends.Location = new System.Drawing.Point(18, 443);
-            this.listBoxDescendingLikeFriends.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxDescendingLikeFriends.Location = new System.Drawing.Point(14, 360);
             this.listBoxDescendingLikeFriends.Name = "listBoxDescendingLikeFriends";
-            this.listBoxDescendingLikeFriends.Size = new System.Drawing.Size(159, 260);
+            this.listBoxDescendingLikeFriends.Size = new System.Drawing.Size(120, 212);
             this.listBoxDescendingLikeFriends.TabIndex = 0;
             this.listBoxDescendingLikeFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxDescendingLikeFriends_SelectedIndexChanged);
             // 
             // PictureBoxSelectedFriend
             // 
-            this.PictureBoxSelectedFriend.Location = new System.Drawing.Point(238, 443);
-            this.PictureBoxSelectedFriend.Margin = new System.Windows.Forms.Padding(4);
+            this.PictureBoxSelectedFriend.Location = new System.Drawing.Point(178, 360);
             this.PictureBoxSelectedFriend.Name = "PictureBoxSelectedFriend";
-            this.PictureBoxSelectedFriend.Size = new System.Drawing.Size(133, 106);
+            this.PictureBoxSelectedFriend.Size = new System.Drawing.Size(100, 86);
             this.PictureBoxSelectedFriend.TabIndex = 1;
             this.PictureBoxSelectedFriend.TabStop = false;
             // 
             // listBoxRecentPost
             // 
             this.listBoxRecentPost.FormattingEnabled = true;
-            this.listBoxRecentPost.ItemHeight = 16;
-            this.listBoxRecentPost.Location = new System.Drawing.Point(233, 587);
-            this.listBoxRecentPost.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxRecentPost.Location = new System.Drawing.Point(175, 477);
             this.listBoxRecentPost.Name = "listBoxRecentPost";
-            this.listBoxRecentPost.Size = new System.Drawing.Size(265, 116);
+            this.listBoxRecentPost.Size = new System.Drawing.Size(200, 95);
             this.listBoxRecentPost.TabIndex = 2;
             // 
             // buttonLikeBack
             // 
-            this.buttonLikeBack.Location = new System.Drawing.Point(398, 521);
-            this.buttonLikeBack.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLikeBack.Location = new System.Drawing.Point(298, 423);
             this.buttonLikeBack.Name = "buttonLikeBack";
-            this.buttonLikeBack.Size = new System.Drawing.Size(100, 28);
+            this.buttonLikeBack.Size = new System.Drawing.Size(75, 23);
             this.buttonLikeBack.TabIndex = 3;
             this.buttonLikeBack.Text = "Like Back";
             this.buttonLikeBack.UseVisualStyleBackColor = true;
@@ -88,9 +82,10 @@
             // 
             // buttonRunAnalysis
             // 
-            this.buttonRunAnalysis.Location = new System.Drawing.Point(18, 394);
+            this.buttonRunAnalysis.Location = new System.Drawing.Point(14, 320);
+            this.buttonRunAnalysis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonRunAnalysis.Name = "buttonRunAnalysis";
-            this.buttonRunAnalysis.Size = new System.Drawing.Size(154, 23);
+            this.buttonRunAnalysis.Size = new System.Drawing.Size(116, 19);
             this.buttonRunAnalysis.TabIndex = 4;
             this.buttonRunAnalysis.Text = "RunAnalysis";
             this.buttonRunAnalysis.UseVisualStyleBackColor = true;
@@ -98,41 +93,46 @@
             // 
             // textBoxAmountPostsToParse
             // 
-            this.textBoxAmountPostsToParse.Location = new System.Drawing.Point(233, 394);
+            this.textBoxAmountPostsToParse.Location = new System.Drawing.Point(175, 320);
+            this.textBoxAmountPostsToParse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAmountPostsToParse.Name = "textBoxAmountPostsToParse";
-            this.textBoxAmountPostsToParse.Size = new System.Drawing.Size(220, 22);
+            this.textBoxAmountPostsToParse.Size = new System.Drawing.Size(166, 20);
             this.textBoxAmountPostsToParse.TabIndex = 5;
             // 
             // textBoxAmountOfLikeForUser
             // 
-            this.textBoxAmountOfLikeForUser.Location = new System.Drawing.Point(398, 474);
+            this.textBoxAmountOfLikeForUser.Location = new System.Drawing.Point(298, 385);
+            this.textBoxAmountOfLikeForUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAmountOfLikeForUser.Name = "textBoxAmountOfLikeForUser";
-            this.textBoxAmountOfLikeForUser.Size = new System.Drawing.Size(100, 22);
+            this.textBoxAmountOfLikeForUser.Size = new System.Drawing.Size(76, 20);
             this.textBoxAmountOfLikeForUser.TabIndex = 6;
             // 
             // labelAmountOfLikesHeader
             // 
             this.labelAmountOfLikesHeader.AutoSize = true;
-            this.labelAmountOfLikesHeader.Location = new System.Drawing.Point(395, 443);
+            this.labelAmountOfLikesHeader.Location = new System.Drawing.Point(296, 360);
+            this.labelAmountOfLikesHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAmountOfLikesHeader.Name = "labelAmountOfLikesHeader";
-            this.labelAmountOfLikesHeader.Size = new System.Drawing.Size(112, 17);
+            this.labelAmountOfLikesHeader.Size = new System.Drawing.Size(85, 13);
             this.labelAmountOfLikesHeader.TabIndex = 7;
             this.labelAmountOfLikesHeader.Text = "Amount Of Likes";
             // 
             // textBoxAmountOfPosts
             // 
-            this.textBoxAmountOfPosts.Location = new System.Drawing.Point(290, 260);
+            this.textBoxAmountOfPosts.Location = new System.Drawing.Point(218, 211);
+            this.textBoxAmountOfPosts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAmountOfPosts.Name = "textBoxAmountOfPosts";
             this.textBoxAmountOfPosts.ReadOnly = true;
-            this.textBoxAmountOfPosts.Size = new System.Drawing.Size(100, 22);
+            this.textBoxAmountOfPosts.Size = new System.Drawing.Size(76, 20);
             this.textBoxAmountOfPosts.TabIndex = 9;
             // 
             // labelChooseAmountOfPosts
             // 
             this.labelChooseAmountOfPosts.AutoSize = true;
-            this.labelChooseAmountOfPosts.Location = new System.Drawing.Point(235, 364);
+            this.labelChooseAmountOfPosts.Location = new System.Drawing.Point(176, 296);
+            this.labelChooseAmountOfPosts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelChooseAmountOfPosts.Name = "labelChooseAmountOfPosts";
-            this.labelChooseAmountOfPosts.Size = new System.Drawing.Size(218, 17);
+            this.labelChooseAmountOfPosts.Size = new System.Drawing.Size(167, 13);
             this.labelChooseAmountOfPosts.TabIndex = 10;
             this.labelChooseAmountOfPosts.Text = "Choose how many posts to check";
             // 
@@ -140,8 +140,9 @@
             // 
             this.pictureBoxCoverPhoto.Image = global::FacebookApplication.Properties.Resources.CoverDefault;
             this.pictureBoxCoverPhoto.Location = new System.Drawing.Point(-2, 0);
+            this.pictureBoxCoverPhoto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxCoverPhoto.Name = "pictureBoxCoverPhoto";
-            this.pictureBoxCoverPhoto.Size = new System.Drawing.Size(654, 246);
+            this.pictureBoxCoverPhoto.Size = new System.Drawing.Size(490, 200);
             this.pictureBoxCoverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCoverPhoto.TabIndex = 11;
             this.pictureBoxCoverPhoto.TabStop = false;
@@ -149,25 +150,27 @@
             // labelNameOfUser
             // 
             this.labelNameOfUser.AutoSize = true;
-            this.labelNameOfUser.Location = new System.Drawing.Point(136, 41);
+            this.labelNameOfUser.Location = new System.Drawing.Point(102, 33);
+            this.labelNameOfUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNameOfUser.Name = "labelNameOfUser";
-            this.labelNameOfUser.Size = new System.Drawing.Size(0, 17);
+            this.labelNameOfUser.Size = new System.Drawing.Size(0, 13);
             this.labelNameOfUser.TabIndex = 12;
             // 
             // labelOverallPostHeader
             // 
             this.labelOverallPostHeader.AutoSize = true;
-            this.labelOverallPostHeader.Location = new System.Drawing.Point(124, 265);
+            this.labelOverallPostHeader.Location = new System.Drawing.Point(93, 215);
+            this.labelOverallPostHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelOverallPostHeader.Name = "labelOverallPostHeader";
-            this.labelOverallPostHeader.Size = new System.Drawing.Size(160, 17);
+            this.labelOverallPostHeader.Size = new System.Drawing.Size(119, 13);
             this.labelOverallPostHeader.TabIndex = 8;
             this.labelOverallPostHeader.Text = "Overall number of Posts";
             // 
             // LikeAnalyzerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 716);
+            this.ClientSize = new System.Drawing.Size(493, 582);
             this.Controls.Add(this.labelNameOfUser);
             this.Controls.Add(this.pictureBoxCoverPhoto);
             this.Controls.Add(this.labelChooseAmountOfPosts);
@@ -181,9 +184,9 @@
             this.Controls.Add(this.listBoxRecentPost);
             this.Controls.Add(this.PictureBoxSelectedFriend);
             this.Controls.Add(this.listBoxDescendingLikeFriends);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LikeAnalyzerForm";
             this.Text = "Like Analyzer ";
+            this.Load += new System.EventHandler(this.LikeAnalyzerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).EndInit();
             this.ResumeLayout(false);

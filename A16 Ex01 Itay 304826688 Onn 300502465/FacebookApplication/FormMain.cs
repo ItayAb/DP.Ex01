@@ -21,6 +21,7 @@ namespace FacebookApplication
         private const string k_AppId = "843647649088563";
         private User m_LoggedInUser;
         private LikeAnalyzerForm m_likeAnalyzerForm;
+        private MusicForm m_musicForm;
 
         private ApplicationConfigurationData m_AppConfig;
 
@@ -132,6 +133,7 @@ namespace FacebookApplication
                 pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);
             }
 
+            // TODO: not working without cover photo 
             if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
             {
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
@@ -184,6 +186,12 @@ namespace FacebookApplication
             {
                 m_AppConfig.RememberMe = false;
             }
+        }
+
+        private void buttonMusicView_Click(object sender, EventArgs e)
+        {
+            m_musicForm = new MusicForm(m_LoggedInUser);
+            m_musicForm.ShowDialog();
         }
     }
 }

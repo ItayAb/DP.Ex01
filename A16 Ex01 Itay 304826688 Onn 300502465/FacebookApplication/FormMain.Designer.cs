@@ -30,7 +30,7 @@
         {
             this.pictureCoverPhoto = new System.Windows.Forms.PictureBox();
             this.pictureProfilePhoto = new System.Windows.Forms.PictureBox();
-            this.buttonGroupView = new System.Windows.Forms.Button();
+            this.buttonMusicView = new System.Windows.Forms.Button();
             this.buttonLikeAnaylzer = new System.Windows.Forms.Button();
             this.textBoxStatusFromUser = new System.Windows.Forms.TextBox();
             this.buttonPostStatus = new System.Windows.Forms.Button();
@@ -46,10 +46,9 @@
             // pictureCoverPhoto
             // 
             this.pictureCoverPhoto.Image = global::FacebookApplication.Properties.Resources.CoverDefault;
-            this.pictureCoverPhoto.Location = new System.Drawing.Point(-3, -1);
-            this.pictureCoverPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureCoverPhoto.Location = new System.Drawing.Point(-2, -1);
             this.pictureCoverPhoto.Name = "pictureCoverPhoto";
-            this.pictureCoverPhoto.Size = new System.Drawing.Size(868, 320);
+            this.pictureCoverPhoto.Size = new System.Drawing.Size(651, 260);
             this.pictureCoverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureCoverPhoto.TabIndex = 0;
             this.pictureCoverPhoto.TabStop = false;
@@ -58,31 +57,29 @@
             // 
             this.pictureProfilePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureProfilePhoto.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
-            this.pictureProfilePhoto.Location = new System.Drawing.Point(344, 98);
-            this.pictureProfilePhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureProfilePhoto.Location = new System.Drawing.Point(258, 80);
             this.pictureProfilePhoto.Name = "pictureProfilePhoto";
-            this.pictureProfilePhoto.Size = new System.Drawing.Size(166, 163);
+            this.pictureProfilePhoto.Size = new System.Drawing.Size(124, 132);
             this.pictureProfilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureProfilePhoto.TabIndex = 1;
             this.pictureProfilePhoto.TabStop = false;
             // 
-            // buttonGroupView
+            // buttonMusicView
             // 
-            this.buttonGroupView.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonGroupView.Location = new System.Drawing.Point(344, 9);
-            this.buttonGroupView.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonGroupView.Name = "buttonGroupView";
-            this.buttonGroupView.Size = new System.Drawing.Size(125, 32);
-            this.buttonGroupView.TabIndex = 2;
-            this.buttonGroupView.Text = "Group View";
-            this.buttonGroupView.UseVisualStyleBackColor = false;
+            this.buttonMusicView.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonMusicView.Location = new System.Drawing.Point(258, 7);
+            this.buttonMusicView.Name = "buttonMusicView";
+            this.buttonMusicView.Size = new System.Drawing.Size(94, 26);
+            this.buttonMusicView.TabIndex = 2;
+            this.buttonMusicView.Text = "Music";
+            this.buttonMusicView.UseVisualStyleBackColor = false;
+            this.buttonMusicView.Click += new System.EventHandler(this.buttonMusicView_Click);
             // 
             // buttonLikeAnaylzer
             // 
-            this.buttonLikeAnaylzer.Location = new System.Drawing.Point(612, 9);
-            this.buttonLikeAnaylzer.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLikeAnaylzer.Location = new System.Drawing.Point(459, 7);
             this.buttonLikeAnaylzer.Name = "buttonLikeAnaylzer";
-            this.buttonLikeAnaylzer.Size = new System.Drawing.Size(140, 32);
+            this.buttonLikeAnaylzer.Size = new System.Drawing.Size(105, 26);
             this.buttonLikeAnaylzer.TabIndex = 3;
             this.buttonLikeAnaylzer.Text = "Like Analyzer";
             this.buttonLikeAnaylzer.UseVisualStyleBackColor = true;
@@ -90,28 +87,25 @@
             // 
             // textBoxStatusFromUser
             // 
-            this.textBoxStatusFromUser.Location = new System.Drawing.Point(211, 394);
-            this.textBoxStatusFromUser.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxStatusFromUser.Location = new System.Drawing.Point(158, 320);
             this.textBoxStatusFromUser.Name = "textBoxStatusFromUser";
-            this.textBoxStatusFromUser.Size = new System.Drawing.Size(435, 22);
+            this.textBoxStatusFromUser.Size = new System.Drawing.Size(327, 20);
             this.textBoxStatusFromUser.TabIndex = 5;
             // 
             // buttonPostStatus
             // 
-            this.buttonPostStatus.Location = new System.Drawing.Point(48, 388);
-            this.buttonPostStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPostStatus.Location = new System.Drawing.Point(36, 315);
             this.buttonPostStatus.Name = "buttonPostStatus";
-            this.buttonPostStatus.Size = new System.Drawing.Size(100, 28);
+            this.buttonPostStatus.Size = new System.Drawing.Size(75, 23);
             this.buttonPostStatus.TabIndex = 6;
             this.buttonPostStatus.Text = "Post";
             this.buttonPostStatus.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(48, 562);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(36, 457);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 28);
+            this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = "Button 4";
             this.button4.UseVisualStyleBackColor = true;
@@ -119,10 +113,9 @@
             // buttonLogin
             // 
             this.buttonLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonLogin.Location = new System.Drawing.Point(27, 9);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLogin.Location = new System.Drawing.Point(20, 7);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(121, 32);
+            this.buttonLogin.Size = new System.Drawing.Size(91, 26);
             this.buttonLogin.TabIndex = 8;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -131,28 +124,26 @@
             // listBoxPosts
             // 
             this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.ItemHeight = 16;
-            this.listBoxPosts.Location = new System.Drawing.Point(211, 445);
-            this.listBoxPosts.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxPosts.Location = new System.Drawing.Point(158, 362);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(435, 324);
+            this.listBoxPosts.Size = new System.Drawing.Size(327, 264);
             this.listBoxPosts.TabIndex = 9;
             // 
             // label_FullName
             // 
             this.label_FullName.AutoSize = true;
-            this.label_FullName.Location = new System.Drawing.Point(93, 244);
-            this.label_FullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_FullName.Location = new System.Drawing.Point(70, 198);
             this.label_FullName.Name = "label_FullName";
-            this.label_FullName.Size = new System.Drawing.Size(0, 17);
+            this.label_FullName.Size = new System.Drawing.Size(0, 13);
             this.label_FullName.TabIndex = 10;
             // 
             // checkBoxRemeberMe
             // 
             this.checkBoxRemeberMe.AutoSize = true;
-            this.checkBoxRemeberMe.Location = new System.Drawing.Point(164, 16);
+            this.checkBoxRemeberMe.Location = new System.Drawing.Point(123, 13);
+            this.checkBoxRemeberMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBoxRemeberMe.Name = "checkBoxRemeberMe";
-            this.checkBoxRemeberMe.Size = new System.Drawing.Size(122, 21);
+            this.checkBoxRemeberMe.Size = new System.Drawing.Size(94, 17);
             this.checkBoxRemeberMe.TabIndex = 11;
             this.checkBoxRemeberMe.Text = "Remember me";
             this.checkBoxRemeberMe.UseVisualStyleBackColor = true;
@@ -160,9 +151,9 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 805);
+            this.ClientSize = new System.Drawing.Size(650, 628);
             this.Controls.Add(this.checkBoxRemeberMe);
             this.Controls.Add(this.label_FullName);
             this.Controls.Add(this.listBoxPosts);
@@ -171,10 +162,9 @@
             this.Controls.Add(this.buttonPostStatus);
             this.Controls.Add(this.textBoxStatusFromUser);
             this.Controls.Add(this.buttonLikeAnaylzer);
-            this.Controls.Add(this.buttonGroupView);
+            this.Controls.Add(this.buttonMusicView);
             this.Controls.Add(this.pictureProfilePhoto);
             this.Controls.Add(this.pictureCoverPhoto);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Facebook Application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureCoverPhoto)).EndInit();
@@ -188,7 +178,7 @@
 
         private System.Windows.Forms.PictureBox pictureCoverPhoto;
         private System.Windows.Forms.PictureBox pictureProfilePhoto;
-        private System.Windows.Forms.Button buttonGroupView;
+        private System.Windows.Forms.Button buttonMusicView;
         private System.Windows.Forms.Button buttonLikeAnaylzer;
         private System.Windows.Forms.TextBox textBoxStatusFromUser;
         private System.Windows.Forms.Button buttonPostStatus;
