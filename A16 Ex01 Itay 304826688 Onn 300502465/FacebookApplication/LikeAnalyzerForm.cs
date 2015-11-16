@@ -149,5 +149,10 @@ namespace FacebookApplication
                 MessageBox.Show("Please login first");
             }
         }
+
+        private void LikeAnalyzerForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
