@@ -168,10 +168,9 @@ namespace FacebookApplication
         protected override void OnClosing(CancelEventArgs e)
         {
             //  m_RememberMe = checkBox_RememberMe.Checked ? true : false;
-            if (checkBoxRemeberMe.Checked)
-            {
-                SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
-            }
+            
+           SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
+            
 
             base.OnClosing(e);
         }

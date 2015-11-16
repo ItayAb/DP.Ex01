@@ -73,6 +73,16 @@ namespace FacebookApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap facebook_logo {
+            get {
+                object obj = ResourceManager.GetObject("facebook_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FilterIcon {
             get {
                 object obj = ResourceManager.GetObject("FilterIcon", resourceCulture);
@@ -86,6 +96,26 @@ namespace FacebookApplication.Properties {
         internal static System.Drawing.Bitmap ProfileDefault {
             get {
                 object obj = ResourceManager.GetObject("ProfileDefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap youtube_logo {
+            get {
+                object obj = ResourceManager.GetObject("youtube_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap youtube_square_color {
+            get {
+                object obj = ResourceManager.GetObject("youtube_square_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
