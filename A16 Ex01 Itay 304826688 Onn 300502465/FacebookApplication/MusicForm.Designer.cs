@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusicForm));
             this.ListBoxMusicans = new System.Windows.Forms.ListBox();
             this.buttonYouTubeChannel = new System.Windows.Forms.Button();
             this.profileName = new System.Windows.Forms.Label();
@@ -40,10 +41,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.musicianImage = new System.Windows.Forms.PictureBox();
             this.profileImage = new System.Windows.Forms.PictureBox();
+            this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.SuspendLayout();
             // 
             // ListBoxMusicans
@@ -63,7 +66,7 @@
             this.buttonYouTubeChannel.BackColor = System.Drawing.Color.Crimson;
             this.buttonYouTubeChannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonYouTubeChannel.ForeColor = System.Drawing.Color.White;
-            this.buttonYouTubeChannel.Location = new System.Drawing.Point(313, 298);
+            this.buttonYouTubeChannel.Location = new System.Drawing.Point(723, 3);
             this.buttonYouTubeChannel.Name = "buttonYouTubeChannel";
             this.buttonYouTubeChannel.Size = new System.Drawing.Size(135, 58);
             this.buttonYouTubeChannel.TabIndex = 5;
@@ -101,7 +104,7 @@
             this.ListBoxMusicianVideos.FormattingEnabled = true;
             this.ListBoxMusicianVideos.HorizontalScrollbar = true;
             this.ListBoxMusicianVideos.ItemHeight = 18;
-            this.ListBoxMusicianVideos.Location = new System.Drawing.Point(483, 118);
+            this.ListBoxMusicianVideos.Location = new System.Drawing.Point(651, 118);
             this.ListBoxMusicianVideos.MaximumSize = new System.Drawing.Size(500, 238);
             this.ListBoxMusicianVideos.MinimumSize = new System.Drawing.Size(383, 238);
             this.ListBoxMusicianVideos.Name = "ListBoxMusicianVideos";
@@ -111,13 +114,14 @@
             // 
             // buttonPlayVideoOnYouTube
             // 
-            this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonPlayVideoOnYouTube.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPlayVideoOnYouTube.Location = new System.Drawing.Point(483, 72);
+            this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.Gold;
+            this.buttonPlayVideoOnYouTube.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlayVideoOnYouTube.ForeColor = System.Drawing.Color.White;
+            this.buttonPlayVideoOnYouTube.Location = new System.Drawing.Point(651, 58);
             this.buttonPlayVideoOnYouTube.Name = "buttonPlayVideoOnYouTube";
-            this.buttonPlayVideoOnYouTube.Size = new System.Drawing.Size(153, 40);
+            this.buttonPlayVideoOnYouTube.Size = new System.Drawing.Size(135, 58);
             this.buttonPlayVideoOnYouTube.TabIndex = 11;
-            this.buttonPlayVideoOnYouTube.Text = "Play Video";
+            this.buttonPlayVideoOnYouTube.Text = "Play In Browser";
             this.buttonPlayVideoOnYouTube.UseVisualStyleBackColor = false;
             this.buttonPlayVideoOnYouTube.Click += new System.EventHandler(this.buttonPlayVideoOnYouTube_Click);
             // 
@@ -125,7 +129,7 @@
             // 
             this.labelPageLikes.AutoSize = true;
             this.labelPageLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPageLikes.Location = new System.Drawing.Point(331, 170);
+            this.labelPageLikes.Location = new System.Drawing.Point(492, 12);
             this.labelPageLikes.Margin = new System.Windows.Forms.Padding(3);
             this.labelPageLikes.MinimumSize = new System.Drawing.Size(3, 3);
             this.labelPageLikes.Name = "labelPageLikes";
@@ -140,7 +144,7 @@
             this.buttonLinkToPage.BackColor = System.Drawing.Color.MediumBlue;
             this.buttonLinkToPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLinkToPage.ForeColor = System.Drawing.Color.White;
-            this.buttonLinkToPage.Location = new System.Drawing.Point(313, 236);
+            this.buttonLinkToPage.Location = new System.Drawing.Point(792, 58);
             this.buttonLinkToPage.Name = "buttonLinkToPage";
             this.buttonLinkToPage.Size = new System.Drawing.Size(135, 58);
             this.buttonLinkToPage.TabIndex = 13;
@@ -151,7 +155,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
-            this.pictureBox2.Location = new System.Drawing.Point(838, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(1005, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
             this.pictureBox2.TabIndex = 15;
@@ -160,7 +164,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(919, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1087, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 14;
@@ -169,9 +173,9 @@
             // musicianImage
             // 
             this.musicianImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.musicianImage.Location = new System.Drawing.Point(284, 12);
+            this.musicianImage.Location = new System.Drawing.Point(337, 12);
             this.musicianImage.Name = "musicianImage";
-            this.musicianImage.Size = new System.Drawing.Size(184, 152);
+            this.musicianImage.Size = new System.Drawing.Size(121, 100);
             this.musicianImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.musicianImage.TabIndex = 3;
             this.musicianImage.TabStop = false;
@@ -188,11 +192,22 @@
             this.profileImage.TabIndex = 0;
             this.profileImage.TabStop = false;
             // 
+            // axShockwaveFlash1
+            // 
+            this.axShockwaveFlash1.Enabled = true;
+            this.axShockwaveFlash1.Location = new System.Drawing.Point(273, 118);
+            this.axShockwaveFlash1.Name = "axShockwaveFlash1";
+            this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
+            this.axShockwaveFlash1.Size = new System.Drawing.Size(374, 238);
+            this.axShockwaveFlash1.TabIndex = 16;
+            this.axShockwaveFlash1.Enter += new System.EventHandler(this.axShockwaveFlash1_Enter);
+            // 
             // MusicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 373);
+            this.ClientSize = new System.Drawing.Size(1163, 367);
+            this.Controls.Add(this.axShockwaveFlash1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonLinkToPage);
@@ -211,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +246,6 @@
         private System.Windows.Forms.Button buttonLinkToPage;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private AxShockwaveFlashObjects.AxShockwaveFlash axShockwaveFlash1;
     }
 }
