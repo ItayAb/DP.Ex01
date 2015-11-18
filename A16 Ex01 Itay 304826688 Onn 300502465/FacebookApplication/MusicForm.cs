@@ -12,6 +12,7 @@ using Google.Apis.YouTube.v3;
 using Google.Apis.Services;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using YouTubeSearch;
 
 namespace FacebookApplication
 {
@@ -19,6 +20,7 @@ namespace FacebookApplication
     {
         private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
         private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
+        private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
         private User m_LoggedUser;
         private List<Page> m_pagesList;
         private YouTubeClass m_youTubeSearchObject;
@@ -96,6 +98,7 @@ namespace FacebookApplication
         /// <param name="e"></param>
         private async void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ListBoxMusicans.Enabled = false;
             ListBoxMusicianVideos.Items.Clear();
             
             Page selectedPage = ListBoxMusicans.SelectedItem as Page;
@@ -142,13 +145,9 @@ namespace FacebookApplication
                     MessageBox.Show(error.Message);
                 }
             }
-            catch (SystemException sysError)
-            {
-                MessageBox.Show(sysError.Message);
-
-            }
 
             fetchMusicianVideos();
+            ListBoxMusicans.Enabled = true;
         }
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
@@ -193,6 +192,7 @@ namespace FacebookApplication
         {
             Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
             m_videoId = selectedItem.Item2;
+            axShockwaveFlash1.Movie = r_youTubeVideoLinkForPlayer + m_videoId;
         }
 
         private void buttonPlayVideoOnYouTube_Click(object sender, EventArgs e)
@@ -217,6 +217,12 @@ namespace FacebookApplication
             {
                Process.Start(m_pageUrl);
             }
+        }
+
+        private void axShockwaveFlash1_Enter(object sender, EventArgs e)
+        {
+          
+            
         } 
     }
 }
