@@ -37,13 +37,13 @@
             this.buttonPlayVideoOnYouTube = new System.Windows.Forms.Button();
             this.labelPageLikes = new System.Windows.Forms.Label();
             this.buttonLinkToPage = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxYouTube = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFacebook = new System.Windows.Forms.PictureBox();
             this.musicianImage = new System.Windows.Forms.PictureBox();
             this.profileImage = new System.Windows.Forms.PictureBox();
             this.ShockwaveFlashPlayerBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).BeginInit();
@@ -152,23 +152,23 @@
             this.buttonLinkToPage.UseVisualStyleBackColor = false;
             this.buttonLinkToPage.Click += new System.EventHandler(this.buttonLinkToPage_Click);
             // 
-            // pictureBox2
+            // pictureBoxYouTube
             // 
-            this.pictureBox2.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
-            this.pictureBox2.Location = new System.Drawing.Point(1005, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxYouTube.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
+            this.pictureBoxYouTube.Location = new System.Drawing.Point(1005, 12);
+            this.pictureBoxYouTube.Name = "pictureBoxYouTube";
+            this.pictureBoxYouTube.Size = new System.Drawing.Size(64, 64);
+            this.pictureBoxYouTube.TabIndex = 15;
+            this.pictureBoxYouTube.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBoxFacebook
             // 
-            this.pictureBox1.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(1087, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxFacebook.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
+            this.pictureBoxFacebook.Location = new System.Drawing.Point(1087, 12);
+            this.pictureBoxFacebook.Name = "pictureBoxFacebook";
+            this.pictureBoxFacebook.Size = new System.Drawing.Size(64, 64);
+            this.pictureBoxFacebook.TabIndex = 14;
+            this.pictureBoxFacebook.TabStop = false;
             // 
             // musicianImage
             // 
@@ -209,8 +209,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 360);
             this.Controls.Add(this.ShockwaveFlashPlayerBox);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxYouTube);
+            this.Controls.Add(this.pictureBoxFacebook);
             this.Controls.Add(this.buttonLinkToPage);
             this.Controls.Add(this.labelPageLikes);
             this.Controls.Add(this.buttonPlayVideoOnYouTube);
@@ -225,8 +225,8 @@
             this.MaximizeBox = false;
             this.Name = "MusicForm";
             this.Text = "MusicForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).EndInit();
@@ -247,8 +247,8 @@
         private System.Windows.Forms.Button buttonPlayVideoOnYouTube;
         private System.Windows.Forms.Label labelPageLikes;
         private System.Windows.Forms.Button buttonLinkToPage;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxFacebook;
+        private System.Windows.Forms.PictureBox pictureBoxYouTube;
         private AxShockwaveFlashObjects.AxShockwaveFlash ShockwaveFlashPlayerBox;
     }
 }
