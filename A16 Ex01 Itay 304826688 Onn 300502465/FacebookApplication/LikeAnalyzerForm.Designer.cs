@@ -186,7 +186,7 @@
             this.Controls.Add(this.listBoxDescendingLikeFriends);
             this.Name = "LikeAnalyzerForm";
             this.Text = "Like Analyzer ";
-            this.Load += new System.EventHandler(this.LikeAnalyzerForm_Load);
+            //this.Load += new System.EventHandler(this.LikeAnalyzerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).EndInit();
             this.ResumeLayout(false);

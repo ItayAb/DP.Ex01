@@ -7,12 +7,12 @@ using FacebookWrapper;
 using System.IO;
 
 namespace FacebookApplication
-{    
-    class LikeAnalyzer
-    {        
-        Dictionary<User, int> m_LikeDataAnalysis;
-        User m_LoggedUser;
-        AnalysisProgressBar m_progressBarForm;
+{
+    public class LikeAnalyzer
+    {
+        private Dictionary<User, int> m_LikeDataAnalysis;
+        private User m_LoggedUser;
+        private AnalysisProgressBar m_progressBarForm;
 
         public LikeAnalyzer(User i_LoggedUser)
         {
@@ -20,13 +20,16 @@ namespace FacebookApplication
             m_LoggedUser = i_LoggedUser;
         }
 
-        public void calculateLikeToList(int i_NumOfPosts)
+        // TODO : Find a more elegant way to compare users
+        public void CalculateLikeToList(int i_NumOfPosts)
         {
             initProgressBar(i_NumOfPosts);
+
             //Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
-            // iterating all the posts             
+            // iterating all the posts 
+            //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
             for (int i = 0; i < i_NumOfPosts; i++)
             {
                 // iterating all user who liked the post
@@ -36,10 +39,6 @@ namespace FacebookApplication
                     if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
                         updateRecordInDictionary(userWhoLikedThePost);
-                        //TODO : find a safer way to compare users and handle the dictionary
-                        //int likeCountForCurrentCalculatedUser = m_LikeDataAnalysis[userWhoLikedThePost];
-                        //likeCountForCurrentCalculatedUser++;
-                        //m_LikeDataAnalysis[userWhoLikedThePost] = likeCountForCurrentCalculatedUser;                    
                     }
                     else
                     {
@@ -47,7 +46,7 @@ namespace FacebookApplication
                     }
                 }
 
-                m_progressBarForm.incrementProgressBar();
+                m_progressBarForm.IncrementProgressBar();
             }
         }
 

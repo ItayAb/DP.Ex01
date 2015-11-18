@@ -192,5 +192,66 @@ namespace FacebookApplication
             m_musicForm = new MusicForm(m_LoggedInUser);
             m_musicForm.ShowDialog();
         }
+
+        private void buttonPostStatus_Click(object sender, EventArgs e)
+        {
+            postStatus();
+        }
+
+        private void postStatus()
+        {
+            // if user hasnt logged in yet
+            if (m_LoggedInUser == null)
+            {
+                MessageBox.Show("Please login first");
+            }
+            else
+            {
+                m_LoggedInUser.ReFetch();
+                if (string.IsNullOrWhiteSpace(textBoxStatusFromUser.Text))
+                {
+                    MessageBox.Show("Nothing to post, please enter your status and then click 'Post'");
+                }
+                else
+                {
+                    m_LoggedInUser.PostStatus(textBoxStatusFromUser.Text);
+                    textBoxStatusFromUser.Text = "";
+                    MessageBox.Show("Your status was posted!");
+                }
+            }
+        }
+
+        private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Post selectedPost = listBoxPosts.SelectedItem as Post;
+            if (selectedPost != null)
+            {
+                fillCommentsBox(selectedPost);
+            }
+        }
+        
+        private void fillCommentsBox(Post i_postToFetchComments)
+        {
+            // TODO: make it work
+            listBoxCommentPerPost.DisplayMember = "Message";
+            listBoxCommentPerPost.ValueMember = "From"; // trying
+            listBoxCommentPerPost.Items.Clear();
+
+            if (i_postToFetchComments.Comments.Count > 0)
+            {
+                foreach (Comment selectedPostComment in i_postToFetchComments.Comments)
+                {
+                    listBoxCommentPerPost.Items.Add(selectedPostComment);
+                    //listBoxCommentPerPost.Items.Add(string.Format("{0} : {1}\n{2}", selectedPostComment.From, selectedPostComment.Message, selectedPostComment.CreatedTime));
+                }
+            }
+            else
+            {
+                listBoxCommentPerPost.Items.Add("No posts to show");
+            }
+        }
+
     }
+
+
 }

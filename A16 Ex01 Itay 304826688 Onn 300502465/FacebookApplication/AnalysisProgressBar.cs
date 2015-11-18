@@ -11,13 +11,12 @@ namespace FacebookApplication
 {
     public partial class AnalysisProgressBar : Form
     {
-        
-        int m_NumOfPosts;        
+        private int m_NumOfPosts;
 
         public AnalysisProgressBar(int i_numOfPosts)
         {
             InitializeComponent();
-            m_NumOfPosts = i_numOfPosts;            
+            m_NumOfPosts = i_numOfPosts;
             initProgress();
         }
 
@@ -29,20 +28,20 @@ namespace FacebookApplication
 
         private void initProgress()
         {
-            progressBarForLikeAnalysis.Value = 0;            
+            progressBarForLikeAnalysis.Value = 0;
             progressBarForLikeAnalysis.Minimum = 0;
             progressBarForLikeAnalysis.Maximum = m_NumOfPosts;
-            progressBarForLikeAnalysis.Step = 1;            
+            progressBarForLikeAnalysis.Step = 1;
         }
 
-        public void incrementProgressBar()
-        {                     
+        public void IncrementProgressBar()
+        {
             progressBarForLikeAnalysis.PerformStep();
-            // TODO: think of a better way to increment, delegate?                        
+
             if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
             {
-                this.Close();    
+                this.Close();
             }
-        }        
+        }
     }
 }
