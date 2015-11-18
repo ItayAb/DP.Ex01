@@ -16,6 +16,7 @@ namespace FacebookApplication
         private const string k_FormHeader = "Like Analyzer";
         private LikeAnalyzer m_LikeAnalyzer;
         private User m_LoggedUser;
+        private AnalysisProgressBar m_ProgressBarForm;
 
         public LikeAnalyzerForm(User i_LoggedUser)
         {
@@ -27,6 +28,8 @@ namespace FacebookApplication
                 m_LoggedUser = i_LoggedUser;
                 initUiLikeAnaylzer();
             }
+
+
         }
 
         public User LoggedUser
@@ -67,13 +70,24 @@ namespace FacebookApplication
             listBoxDescendingLikeFriends.Items.Clear();
         }
 
+        private void initProgressBar(int i_NumOfPosts)
+        {
+            m_ProgressBarForm = new AnalysisProgressBar(i_NumOfPosts, m_LikeAnalyzer);
+            m_ProgressBarForm.Show();
+        }
+
         private void runLikeAnalysis()
         {
             resetUiForAnalysis();
+
             if (m_LoggedUser != null)
             {
                 int numOfPosts;
-                m_LikeAnalyzer = new LikeAnalyzer(m_LoggedUser);
+                if (m_LikeAnalyzer == null)
+                {
+                    m_LikeAnalyzer = new LikeAnalyzer(m_LoggedUser);
+                }
+
                 if (int.TryParse(textBoxAmountPostsToParse.Text, out numOfPosts))
                 {
                     // see if there are any posts to parse
@@ -83,6 +97,7 @@ namespace FacebookApplication
                     }
                     else
                     {
+                        initProgressBar(numOfPosts);
                         m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
                     }
                 }

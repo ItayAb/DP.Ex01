@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.IO;
 
 namespace FacebookApplication
-{
+{   
     public class LikeAnalyzer
     {
         private Dictionary<User, int> m_LikeDataAnalysis;
-        private User m_LoggedUser;
-        private AnalysisProgressBar m_progressBarForm;
+        private User m_LoggedUser;        
+        public event EventHandler ParsedPost;
 
         public LikeAnalyzer(User i_LoggedUser)
         {
@@ -23,7 +23,7 @@ namespace FacebookApplication
         // TODO : Find a more elegant way to compare users
         public void CalculateLikeToList(int i_NumOfPosts)
         {
-            initProgressBar(i_NumOfPosts);
+            //initProgressBar(i_NumOfPosts);
 
             //Reset the Dictionary
             m_LikeDataAnalysis.Clear();
@@ -46,20 +46,15 @@ namespace FacebookApplication
                     }
                 }
 
-                m_progressBarForm.IncrementProgressBar();
+                onParsedPost();
             }
         }
-
-        private void initProgressBar(int i_NumOfPosts)
+      
+        protected void onParsedPost()
         {
-            if (m_progressBarForm != null)
+            if (ParsedPost != null)
             {
-                m_progressBarForm.resetProgress(i_NumOfPosts);
-            }
-            else
-            {
-                m_progressBarForm = new AnalysisProgressBar(i_NumOfPosts);
-                m_progressBarForm.Show();
+                ParsedPost.Invoke(this, null);
             }
         }
 
@@ -69,7 +64,7 @@ namespace FacebookApplication
 
             foreach (User userInDictionary in m_LikeDataAnalysis.Keys)
             {
-                if (userInDictionary.Name.Equals(i_UserToCheck.Name))
+                if (userInDictionary.Id.Equals(i_UserToCheck.Id))
                 {
                     doesExist = true;
                     break;
