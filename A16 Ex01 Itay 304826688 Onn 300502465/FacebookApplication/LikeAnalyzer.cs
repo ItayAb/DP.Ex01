@@ -49,16 +49,12 @@ namespace FacebookApplication
             return amountOfLikes;
         }
 
-        // TODO : Find a more elegant way to compare users
         public void CalculateLikeToList(int i_NumOfPosts)
-        {
-            //initProgressBar(i_NumOfPosts);
-
+        {           
             //Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
             // iterating all the posts 
-            //foreach (Post postCurrentlyCalculating in m_LoggedUser.Posts)
             for (int i = 0; i < i_NumOfPosts; i++)
             {
                 // iterating all user who liked the post

@@ -140,8 +140,8 @@ namespace FacebookApplication
 
             listBoxPosts.DisplayMember = "Message";
             listBoxPosts.ValueMember = "Caption";
-            // TODO: need to present the posts in a better way
-            // writing the posts to the 'news feed' (needs work)
+
+            // writing the posts to the 'news feed'
             for (int i = 0; i < m_LoggedInUser.NewsFeed.Count; i++)
             {
                 listBoxPosts.Items.Add(m_LoggedInUser.NewsFeed[i]);                
@@ -223,9 +223,8 @@ namespace FacebookApplication
         
         private void fillCommentsBox(Post i_postToFetchComments)
         {
-            // TODO: make it work
             listBoxCommentPerPost.DisplayMember = "Message";
-            listBoxCommentPerPost.ValueMember = "From"; // trying
+            listBoxCommentPerPost.ValueMember = "From"; 
             listBoxCommentPerPost.Items.Clear();
 
             if (i_postToFetchComments.Comments.Count > 0)
@@ -233,7 +232,6 @@ namespace FacebookApplication
                 foreach (Comment selectedPostComment in i_postToFetchComments.Comments)
                 {
                     listBoxCommentPerPost.Items.Add(selectedPostComment);
-                    //listBoxCommentPerPost.Items.Add(string.Format("{0} : {1}\n{2}", selectedPostComment.From, selectedPostComment.Message, selectedPostComment.CreatedTime));
                 }
             }
             else
