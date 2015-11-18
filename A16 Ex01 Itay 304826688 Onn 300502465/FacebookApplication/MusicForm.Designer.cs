@@ -173,6 +173,7 @@
             // musicianImage
             // 
             this.musicianImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.musicianImage.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
             this.musicianImage.Location = new System.Drawing.Point(337, 12);
             this.musicianImage.Name = "musicianImage";
             this.musicianImage.Size = new System.Drawing.Size(121, 100);
@@ -183,6 +184,7 @@
             // profileImage
             // 
             this.profileImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.profileImage.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
             this.profileImage.Location = new System.Drawing.Point(12, 12);
             this.profileImage.MinimumSize = new System.Drawing.Size(100, 100);
             this.profileImage.Name = "profileImage";
