@@ -55,6 +55,10 @@ namespace FacebookApplication
             {
                 this.Text = string.Format("{0} - {1}", k_FormHeader, m_LoggedUser.Name);
             }
+            if (!string.IsNullOrEmpty(m_LoggedUser.PictureLargeURL))
+            {
+                pictureBoxProfilePic.LoadAsync(m_LoggedUser.PictureLargeURL);
+            }
 
             textBoxAmountOfPosts.Text = m_LoggedUser.Posts.Count.ToString();
         }
@@ -129,7 +133,10 @@ namespace FacebookApplication
             User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
             if (selectedUser != null)
             {
-                PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureNormalURL);
+                if (!string.IsNullOrEmpty(selectedUser.PictureLargeURL))
+                {
+                    PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureLargeURL);
+                }
                 string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
                 textBoxAmountOfLikeForUser.Text = amountOfLikesStr;
 
