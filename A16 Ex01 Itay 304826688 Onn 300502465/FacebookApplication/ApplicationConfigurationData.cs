@@ -7,24 +7,16 @@ namespace FacebookApplication
 {
     public class ApplicationConfigurationData
     {
-        private string m_AccessToken;
-        private bool m_RememberMe = false;
+        
 
         public ApplicationConfigurationData()
         {
+            RememberMe = false;
         }
+        
+        public string AccessToken { get; set; }
 
-        // TODO : change to .NET 3 feature? AccessToken(get; set;)
-        public string AccessToken
-        {
-            get { return m_AccessToken; }
-            set { m_AccessToken = value; }
-        }
+        public bool RememberMe { get; set; }
 
-        public bool RememberMe
-        {
-            get { return m_RememberMe; }
-            set { m_RememberMe = value; }
-        }
     }
 }
