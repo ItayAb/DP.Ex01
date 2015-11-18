@@ -41,12 +41,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.musicianImage = new System.Windows.Forms.PictureBox();
             this.profileImage = new System.Windows.Forms.PictureBox();
-            this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
+            this.ShockwaveFlashPlayerBox = new AxShockwaveFlashObjects.AxShockwaveFlash();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ListBoxMusicans
@@ -192,22 +192,22 @@
             this.profileImage.TabIndex = 0;
             this.profileImage.TabStop = false;
             // 
-            // axShockwaveFlash1
+            // ShockwaveFlashPlayerBox
             // 
-            this.axShockwaveFlash1.Enabled = true;
-            this.axShockwaveFlash1.Location = new System.Drawing.Point(273, 118);
-            this.axShockwaveFlash1.Name = "axShockwaveFlash1";
-            this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
-            this.axShockwaveFlash1.Size = new System.Drawing.Size(374, 238);
-            this.axShockwaveFlash1.TabIndex = 16;
-            this.axShockwaveFlash1.Enter += new System.EventHandler(this.axShockwaveFlash1_Enter);
+            this.ShockwaveFlashPlayerBox.Enabled = true;
+            this.ShockwaveFlashPlayerBox.Location = new System.Drawing.Point(273, 118);
+            this.ShockwaveFlashPlayerBox.Name = "ShockwaveFlashPlayerBox";
+            this.ShockwaveFlashPlayerBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ShockwaveFlashPlayerBox.OcxState")));
+            this.ShockwaveFlashPlayerBox.Size = new System.Drawing.Size(374, 238);
+            this.ShockwaveFlashPlayerBox.TabIndex = 16;
+            this.ShockwaveFlashPlayerBox.Enter += new System.EventHandler(this.axShockwaveFlash1_Enter);
             // 
             // MusicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 367);
-            this.Controls.Add(this.axShockwaveFlash1);
+            this.Controls.Add(this.ShockwaveFlashPlayerBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonLinkToPage);
@@ -220,13 +220,14 @@
             this.Controls.Add(this.musicianImage);
             this.Controls.Add(this.ListBoxMusicans);
             this.Controls.Add(this.profileImage);
+            this.MaximizeBox = false;
             this.Name = "MusicForm";
             this.Text = "MusicForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +247,6 @@
         private System.Windows.Forms.Button buttonLinkToPage;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private AxShockwaveFlashObjects.AxShockwaveFlash axShockwaveFlash1;
+        private AxShockwaveFlashObjects.AxShockwaveFlash ShockwaveFlashPlayerBox;
     }
 }

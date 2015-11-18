@@ -192,7 +192,7 @@ namespace FacebookApplication
         {
             Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
             m_videoId = selectedItem.Item2;
-            axShockwaveFlash1.Movie = r_youTubeVideoLinkForPlayer + m_videoId;
+            ShockwaveFlashPlayerBox.Movie = r_youTubeVideoLinkForPlayer + m_videoId;
         }
 
         private void buttonPlayVideoOnYouTube_Click(object sender, EventArgs e)
