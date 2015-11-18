@@ -130,35 +130,26 @@ namespace FacebookApplication
             // setting the images profile & cover 
             if (!string.IsNullOrEmpty(m_LoggedInUser.PictureNormalURL))
             {
-                pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);
+                pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);                
             }
-
-            // TODO: not working without cover photo 
+           
             if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
             {
-                pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
+                pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);                
             }
 
+            listBoxPosts.DisplayMember = "Message";
+            listBoxPosts.ValueMember = "Caption";
             // TODO: need to present the posts in a better way
             // writing the posts to the 'news feed' (needs work)
-            for (int i = 0; i < m_LoggedInUser.Posts.Count; i++)
+            for (int i = 0; i < m_LoggedInUser.NewsFeed.Count; i++)
             {
-                if (m_LoggedInUser.Posts[i].Message != null)
-                {
-                    if (m_LoggedInUser.Posts[i].Caption != null)
-                    {
-                        listBoxPosts.Items.Add(string.Format("{0}     {1}", m_LoggedInUser.Posts[i].Message, m_LoggedInUser.Posts[i].Caption));
-                    }
-                    else
-                    {
-                        listBoxPosts.Items.Add(m_LoggedInUser.Posts[i].Message);
-                    }
-                }
+                listBoxPosts.Items.Add(m_LoggedInUser.NewsFeed[i]);                
             }
 
             checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
         }
-
+       
         private void buttonLikeAnalyzer_Click(object sender, EventArgs e)
         {
             m_likeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
