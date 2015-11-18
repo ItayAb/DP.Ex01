@@ -204,6 +204,7 @@
             this.Controls.Add(this.buttonMusicView);
             this.Controls.Add(this.pictureProfilePhoto);
             this.Controls.Add(this.pictureCoverPhoto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
