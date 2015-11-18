@@ -80,7 +80,7 @@
             this.profileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profileName.Location = new System.Drawing.Point(118, 24);
             this.profileName.Name = "profileName";
-            this.profileName.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.profileName.Padding = new System.Windows.Forms.Padding(2);
             this.profileName.Size = new System.Drawing.Size(160, 20);
             this.profileName.TabIndex = 8;
             this.profileName.Text = "Facebook UserName";
@@ -130,10 +130,10 @@
             this.labelPageLikes.AutoSize = true;
             this.labelPageLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPageLikes.Location = new System.Drawing.Point(492, 12);
-            this.labelPageLikes.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.labelPageLikes.Margin = new System.Windows.Forms.Padding(3);
             this.labelPageLikes.MinimumSize = new System.Drawing.Size(3, 3);
             this.labelPageLikes.Name = "labelPageLikes";
-            this.labelPageLikes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelPageLikes.Padding = new System.Windows.Forms.Padding(2);
             this.labelPageLikes.Size = new System.Drawing.Size(101, 24);
             this.labelPageLikes.TabIndex = 12;
             this.labelPageLikes.Text = "PageLikes:";
@@ -186,7 +186,7 @@
             this.profileImage.Location = new System.Drawing.Point(12, 12);
             this.profileImage.MinimumSize = new System.Drawing.Size(100, 100);
             this.profileImage.Name = "profileImage";
-            this.profileImage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.profileImage.Padding = new System.Windows.Forms.Padding(2);
             this.profileImage.Size = new System.Drawing.Size(100, 100);
             this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImage.TabIndex = 0;
@@ -196,7 +196,7 @@
             // 
             this.ShockwaveFlashPlayerBox.Enabled = true;
             this.ShockwaveFlashPlayerBox.Location = new System.Drawing.Point(273, 118);
-            this.ShockwaveFlashPlayerBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ShockwaveFlashPlayerBox.Margin = new System.Windows.Forms.Padding(2);
             this.ShockwaveFlashPlayerBox.Name = "ShockwaveFlashPlayerBox";
             this.ShockwaveFlashPlayerBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ShockwaveFlashPlayerBox.OcxState")));
             this.ShockwaveFlashPlayerBox.Size = new System.Drawing.Size(374, 238);
@@ -207,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 360);
+            this.ClientSize = new System.Drawing.Size(1165, 368);
             this.Controls.Add(this.ShockwaveFlashPlayerBox);
             this.Controls.Add(this.pictureBoxYouTube);
             this.Controls.Add(this.pictureBoxFacebook);
@@ -221,8 +221,9 @@
             this.Controls.Add(this.musicianImage);
             this.Controls.Add(this.ListBoxMusicans);
             this.Controls.Add(this.profileImage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MusicForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

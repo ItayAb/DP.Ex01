@@ -149,7 +149,7 @@
             this.checkBoxRemeberMe.AutoSize = true;
             this.checkBoxRemeberMe.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxRemeberMe.Location = new System.Drawing.Point(176, 31);
-            this.checkBoxRemeberMe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxRemeberMe.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxRemeberMe.Name = "checkBoxRemeberMe";
             this.checkBoxRemeberMe.Size = new System.Drawing.Size(94, 17);
             this.checkBoxRemeberMe.TabIndex = 11;
@@ -161,7 +161,7 @@
             // 
             this.listBoxCommentPerPost.FormattingEnabled = true;
             this.listBoxCommentPerPost.Location = new System.Drawing.Point(361, 398);
-            this.listBoxCommentPerPost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxCommentPerPost.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxCommentPerPost.Name = "listBoxCommentPerPost";
             this.listBoxCommentPerPost.Size = new System.Drawing.Size(248, 225);
             this.listBoxCommentPerPost.TabIndex = 12;
