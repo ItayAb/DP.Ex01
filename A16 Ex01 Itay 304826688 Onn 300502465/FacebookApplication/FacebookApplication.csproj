@@ -207,6 +207,7 @@
     <None Include="Resources\ProfileDefault.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\facebook_app_ico.ico" />
     <Content Include="Resources\facebook_logo.jpg" />
     <Content Include="Resources\youtube_logo.jpg" />
   </ItemGroup>
