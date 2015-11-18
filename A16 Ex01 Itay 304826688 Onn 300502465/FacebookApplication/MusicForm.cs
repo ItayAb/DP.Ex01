@@ -17,19 +17,20 @@ namespace FacebookApplication
 {
     public partial class MusicForm : Form
     {
-        //MusicForm m_MusicForm;
-        User m_LoggedUser;
-        List<Page> m_pagesList;
-        YouTubeClass m_youTubeSearchObject;
-        string m_musicainSelected;
-        string m_videoId;
-        string m_pageUrl;
-        private string m_youTubeChannelLink = "https://www.youtube.com/channel/";
-        private string m_youTubeVideoLink = "https://www.youtube.com/watch?v=";
+        private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
+        private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
+        private User m_LoggedUser;
+        private List<Page> m_pagesList;
+        private YouTubeClass m_youTubeSearchObject;
+        private string m_musicainSelected;
+        private string m_videoId;
+        private string m_pageUrl;
 
+        /// <param name="i_LoggedUser"> get user object from the main form</param>
         public MusicForm(User i_LoggedUser)
         {
             InitializeComponent();
+
             if (i_LoggedUser != null)
             {
                 m_LoggedUser = i_LoggedUser;
@@ -51,11 +52,15 @@ namespace FacebookApplication
             }
         }
 
-
+        // load the user profile picture and init welcome message
         private void initMusicForm()
         {
             profileName.Text = "Hello " + m_LoggedUser.Name;
-            profileImage.LoadAsync(m_LoggedUser.PictureNormalURL);
+
+            if (!string.IsNullOrEmpty(m_LoggedUser.PictureNormalURL))
+            {
+                profileImage.LoadAsync(m_LoggedUser.PictureNormalURL);
+            }
         }
 
         // fetches the pages and filtring the pages of Musicians
@@ -65,125 +70,125 @@ namespace FacebookApplication
 
             if (m_LoggedUser.LikedPages.Count == 0)
             {
-                MessageBox.Show("No liked pages to retrieve :(");
+                MessageBox.Show("No liked pages to retrieve :( ");
             }
 
             ListBoxMusicans.DisplayMember = "Name";
 
-            foreach (Page p in m_LoggedUser.LikedPages)
+            foreach (Page page in m_LoggedUser.LikedPages)
             {
-                if (p.Category == "Musician/Band")
+                if (page.Category == "Musician/Band")
                 {
-                    ListBoxMusicans.Items.Add(p);
-
+                    ListBoxMusicans.Items.Add(page);
                 }
             }
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MusicForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void profileName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void profileImage_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonFetchMusic_Click(object sender, EventArgs e)
         {
             fetchPages();
         }
-
         
-
+        /// <summary>
+        /// async method that activate the youtube search and all the data necessary for the form buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListBoxMusicianVideos.Items.Clear();
             
             Page selectedPage = ListBoxMusicans.SelectedItem as Page;
+
             if (selectedPage != null)
             {
-                musicianImage.LoadAsync(selectedPage.PictureLargeURL);
+                if (!string.IsNullOrEmpty(selectedPage.PictureLargeURL))
+                {
+                    musicianImage.LoadAsync(selectedPage.PictureLargeURL);
+                }
+
                 m_musicainSelected = selectedPage.Name;
 
                 string pageLikes = "Page Likes: ";
-                labelPageLikes.Text = pageLikes + "\n\n" + selectedPage.LikesCount.ToString();
+                labelPageLikes.Text = pageLikes + "\n" + selectedPage.LikesCount.ToString();
+
                 m_pageUrl = selectedPage.URL;
             }
-
+            
+            // initate the youtube object
             if (m_youTubeSearchObject == null)
             {
                 m_youTubeSearchObject = new YouTubeClass();
             }
             else
             {
-                m_youTubeSearchObject.m_musicianVideos.Clear();
+                m_youTubeSearchObject.getMusicianVideos.Clear();
             }
 
             try
             {
                 await m_youTubeSearchObject.YouTubeSearch(m_musicainSelected);
-                if (string.IsNullOrEmpty(m_youTubeSearchObject.m_musicianChannelID))
-                {
-                    //TODO: change
-                    buttonYouTubeChannel.Enabled = false;
 
+                // if the search not find the channel ID disable the button
+                if (string.IsNullOrEmpty(m_youTubeSearchObject.getMusicianChannelID))
+                {
+                    buttonYouTubeChannel.Enabled = false;
                 }
             }
             catch (AggregateException errors)
             {
-                foreach (Exception a in errors.InnerExceptions)
+                foreach (Exception error in errors.InnerExceptions)
                 {
-                    MessageBox.Show("Error: " + a.Message);
+                    MessageBox.Show(error.Message);
                 }
             }
             catch (SystemException sysError)
             {
-                MessageBox.Show("Error: " + sysError.Message);
+                MessageBox.Show(sysError.Message);
 
             }
 
             fetchMusicianVideos();
-
         }
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
         {
-            Process.Start(m_youTubeChannelLink + m_youTubeSearchObject.m_musicianChannelID);
+            if (m_youTubeSearchObject == null)
+            {
+                MessageBox.Show("Please Choose a Musician Page First");
+            }
+            else
+            {
+                Process.Start(r_youTubeChannelLink + m_youTubeSearchObject.getMusicianChannelID);
+            }
         }
 
-
+        /// <summary>
+        /// get the top videos of the musician from youtube and reflect the resultes to the user
+        /// </summary>
         private void fetchMusicianVideos()
         {
             ListBoxMusicianVideos.Items.Clear();
 
-            if (m_youTubeSearchObject.m_musicianVideos.Count == 0)
+            if (m_youTubeSearchObject.getMusicianVideos.Count == 0)
             {
                 MessageBox.Show("No Videos to retrieve :(");
             }
-
-            foreach (Tuple<string,string> tuple in m_youTubeSearchObject.m_musicianVideos)
+            else
             {
-                ListBoxMusicianVideos.DisplayMember = "tuple.Item1";
-                ListBoxMusicianVideos.Items.Add(tuple);
+                foreach (Tuple<string,string> tuple in m_youTubeSearchObject.getMusicianVideos)
+                {
+                    ListBoxMusicianVideos.DisplayMember = "tuple.Item1";
+                    ListBoxMusicianVideos.Items.Add(tuple);
+                }
             }
-
         }
 
-        
-        
+        /// <summary>
+        /// each time the user select a video the video id changes for the play button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListBoxMusicianVideos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
@@ -198,22 +203,20 @@ namespace FacebookApplication
             }
             else
             {
-                Process.Start(m_youTubeVideoLink + m_videoId);
+                Process.Start(r_youTubeVideoLink + m_videoId);
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonLinkToPage_Click(object sender, EventArgs e)
         {
-            if (m_pageUrl != null)
+            if (m_pageUrl == null)
             {
-                Process.Start(m_pageUrl);                
+                MessageBox.Show("Please Choose a Music Page From The List");
+            }
+            else
+            {
+               Process.Start(m_pageUrl);
             }
         } 
-
     }
 }

@@ -99,12 +99,13 @@
             this.ListBoxMusicianVideos.BackColor = System.Drawing.Color.AliceBlue;
             this.ListBoxMusicianVideos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListBoxMusicianVideos.FormattingEnabled = true;
+            this.ListBoxMusicianVideos.HorizontalScrollbar = true;
             this.ListBoxMusicianVideos.ItemHeight = 18;
             this.ListBoxMusicianVideos.Location = new System.Drawing.Point(483, 118);
             this.ListBoxMusicianVideos.MaximumSize = new System.Drawing.Size(500, 238);
             this.ListBoxMusicianVideos.MinimumSize = new System.Drawing.Size(383, 238);
             this.ListBoxMusicianVideos.Name = "ListBoxMusicianVideos";
-            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(439, 238);
+            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(500, 238);
             this.ListBoxMusicianVideos.TabIndex = 10;
             this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
             // 
@@ -124,7 +125,7 @@
             // 
             this.labelPageLikes.AutoSize = true;
             this.labelPageLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPageLikes.Location = new System.Drawing.Point(331, 158);
+            this.labelPageLikes.Location = new System.Drawing.Point(331, 170);
             this.labelPageLikes.Margin = new System.Windows.Forms.Padding(3);
             this.labelPageLikes.MinimumSize = new System.Drawing.Size(3, 3);
             this.labelPageLikes.Name = "labelPageLikes";
@@ -133,7 +134,6 @@
             this.labelPageLikes.TabIndex = 12;
             this.labelPageLikes.Text = "PageLikes:";
             this.labelPageLikes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelPageLikes.Click += new System.EventHandler(this.label1_Click);
             // 
             // buttonLinkToPage
             // 
@@ -151,7 +151,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
-            this.pictureBox2.Location = new System.Drawing.Point(766, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(838, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
             this.pictureBox2.TabIndex = 15;
@@ -160,7 +160,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(848, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(919, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 14;
@@ -169,9 +169,10 @@
             // musicianImage
             // 
             this.musicianImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.musicianImage.Location = new System.Drawing.Point(313, 12);
+            this.musicianImage.Location = new System.Drawing.Point(284, 12);
             this.musicianImage.Name = "musicianImage";
-            this.musicianImage.Size = new System.Drawing.Size(135, 131);
+            this.musicianImage.Size = new System.Drawing.Size(184, 152);
+            this.musicianImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.musicianImage.TabIndex = 3;
             this.musicianImage.TabStop = false;
             // 
@@ -186,13 +187,12 @@
             this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImage.TabIndex = 0;
             this.profileImage.TabStop = false;
-            this.profileImage.Click += new System.EventHandler(this.profileImage_Click);
             // 
             // MusicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 373);
+            this.ClientSize = new System.Drawing.Size(995, 373);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonLinkToPage);
@@ -207,7 +207,6 @@
             this.Controls.Add(this.profileImage);
             this.Name = "MusicForm";
             this.Text = "MusicForm";
-            this.Load += new System.EventHandler(this.MusicForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicianImage)).EndInit();
