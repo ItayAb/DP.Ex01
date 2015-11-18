@@ -143,6 +143,7 @@ namespace FacebookApplication
         private void buttonLikeBack_Click(object sender, EventArgs e)
         {
             likeBackUserChosenPost();
+            //TODO : send a message to the client so the likeback worked!
         }
 
         private void likeBackUserChosenPost()
