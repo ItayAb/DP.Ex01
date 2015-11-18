@@ -113,7 +113,7 @@ namespace FacebookApplication
         private void updateUi()
         {
             listBoxDescendingLikeFriends.Items.Clear();
-            List<User> likers = m_LikeAnalyzer.GetDescendingTopLikeUserList();
+            List<User> likers = m_LikeAnalyzer.DescendingListOfLikes;
             listBoxDescendingLikeFriends.DisplayMember = "Name";
             listBoxRecentPost.DisplayMember = "Message";
 

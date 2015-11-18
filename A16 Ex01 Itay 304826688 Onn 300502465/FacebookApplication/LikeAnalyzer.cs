@@ -7,17 +7,46 @@ using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
 namespace FacebookApplication
-{   
+{
     public class LikeAnalyzer
     {
         private Dictionary<User, int> m_LikeDataAnalysis;
-        private User m_LoggedUser;        
+        private User m_LoggedUser;
         public event EventHandler ParsedPost;
 
         public LikeAnalyzer(User i_LoggedUser)
         {
             m_LikeDataAnalysis = new Dictionary<User, int>();
             m_LoggedUser = i_LoggedUser;
+        }
+
+        public List<User> DescendingListOfLikes
+        {
+            get
+            {
+                List<User> topLikeUsers = new List<User>();
+                if (m_LikeDataAnalysis.Count > 0)
+                {
+                    foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value))
+                    {
+                        topLikeUsers.Add(currentPairInCalculatedData.Key);
+                    }                    
+                }
+
+                return topLikeUsers;
+            }
+        }
+
+        public int GetAmountOfLikesByUser(User i_UserToCheck)
+        {
+            int amountOfLikes = 0;
+
+            if (m_LikeDataAnalysis.ContainsKey(i_UserToCheck))
+            {
+                amountOfLikes = m_LikeDataAnalysis[i_UserToCheck];
+            }
+
+            return amountOfLikes;
         }
 
         // TODO : Find a more elegant way to compare users
@@ -49,7 +78,7 @@ namespace FacebookApplication
                 onParsedPost();
             }
         }
-      
+
         protected void onParsedPost()
         {
             if (ParsedPost != null)
@@ -86,30 +115,6 @@ namespace FacebookApplication
                     break;
                 }
             }
-        }
-
-        public List<User> GetDescendingTopLikeUserList()
-        {
-            List<User> topLikeUsers = new List<User>();
-
-            foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value))
-            {
-                topLikeUsers.Add(currentPairInCalculatedData.Key);
-            }
-
-            return topLikeUsers;
-        }
-
-        public int GetAmountOfLikesByUser(User i_UserToCheck)
-        {
-            int amountOfLikes = 0;
-
-            if (m_LikeDataAnalysis.ContainsKey(i_UserToCheck))
-            {
-                amountOfLikes = m_LikeDataAnalysis[i_UserToCheck];
-            }
-
-            return amountOfLikes;
-        }
+        }       
     }
 }
