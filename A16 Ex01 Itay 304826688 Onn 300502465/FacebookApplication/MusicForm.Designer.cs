@@ -141,7 +141,7 @@
             // 
             // buttonLinkToPage
             // 
-            this.buttonLinkToPage.BackColor = System.Drawing.Color.MediumBlue;
+            this.buttonLinkToPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(89)))), ((int)(((byte)(152)))));
             this.buttonLinkToPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLinkToPage.ForeColor = System.Drawing.Color.White;
             this.buttonLinkToPage.Location = new System.Drawing.Point(792, 58);
@@ -221,6 +221,7 @@
             this.Controls.Add(this.musicianImage);
             this.Controls.Add(this.ListBoxMusicans);
             this.Controls.Add(this.profileImage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "MusicForm";
