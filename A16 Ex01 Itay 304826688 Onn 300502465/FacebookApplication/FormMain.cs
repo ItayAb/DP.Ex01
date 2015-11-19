@@ -50,16 +50,22 @@ namespace FacebookApplication
 
         private void autoLogin()
         {
-            LoginResult resultOfLogin = FacebookService.Connect(m_AppConfig.AccessToken);
-            if (resultOfLogin != null)
+            try
             {
-                m_LoggedInUser = resultOfLogin.LoggedInUser;
-                fillUserInformation();
+                LoginResult resultOfLogin = FacebookService.Connect(m_AppConfig.AccessToken);
+                if (resultOfLogin != null)
+                {
+                    m_LoggedInUser = resultOfLogin.LoggedInUser;
+                    fillUserInformation();
+                }
+
             }
-            else
+            catch (Exception)
             {
+                
                 MessageBox.Show("Error in autoLogin");
             }
+            
         }
 
         private void loginAndInit()
