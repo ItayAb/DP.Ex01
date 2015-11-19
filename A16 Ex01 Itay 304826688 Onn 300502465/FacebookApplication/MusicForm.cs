@@ -56,8 +56,8 @@ namespace FacebookApplication
 
         // load the user profile picture and init welcome message
         private void initMusicForm()
-        {
-            profileName.Text = "Hello " + m_LoggedUser.Name;
+        {            
+            profileName.Text = string.Format("Hello {0}", m_LoggedUser.Name);
 
             if (!string.IsNullOrEmpty(m_LoggedUser.PictureNormalURL))
             {
@@ -120,8 +120,7 @@ namespace FacebookApplication
                 m_musicainSelected = selectedPage.Name;
 
                 string pageLikes = "Page Likes: ";
-                labelPageLikes.Text = pageLikes + "\n" + selectedPage.LikesCount.ToString();
-
+                labelPageLikes.Text = string.Format("{0}\n{1}", pageLikes, selectedPage.LikesCount.ToString());
                 m_pageUrl = selectedPage.URL;
             }
 
@@ -165,7 +164,7 @@ namespace FacebookApplication
             }
             else
             {
-                Process.Start(r_youTubeChannelLink + m_youTubeSearchObject.getMusicianChannelID);
+                Process.Start(string.Format("{0}{1}", r_youTubeChannelLink, m_youTubeSearchObject.getMusicianChannelID));
             }
         }
 
@@ -199,7 +198,7 @@ namespace FacebookApplication
         {
             Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
             m_videoId = selectedItem.Item2;
-            ShockwaveFlashPlayerBox.Movie = r_youTubeVideoLinkForPlayer + m_videoId;
+            ShockwaveFlashPlayerBox.Movie = string.Format("{0}{1}", r_youTubeVideoLinkForPlayer, m_videoId);
         }
 
         private void buttonPlayVideoOnYouTube_Click(object sender, EventArgs e)
@@ -210,7 +209,7 @@ namespace FacebookApplication
             }
             else
             {
-                Process.Start(r_youTubeVideoLink + m_videoId);
+                Process.Start(string.Format("{0}{1}", r_youTubeVideoLink, m_videoId));
             }
         }
 
