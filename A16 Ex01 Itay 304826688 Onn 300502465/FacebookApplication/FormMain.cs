@@ -6,19 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
 using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
+using FacebookWrapper.ObjectModel;
+using FacebookWrapper;
 
 namespace FacebookApplication
 {
     // add more functionality : like, comment, post, (search google)?
     public partial class FormMain : Form
     {
-        private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
         private const string k_AppId = "843647649088563";
+        private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
         private User m_LoggedInUser;
         private LikeAnalyzerForm m_likeAnalyzerForm;
         private MusicForm m_musicForm;
@@ -41,7 +41,6 @@ namespace FacebookApplication
                         autoLogin();
                     }
                 }
-
             }
             catch (Exception)
             {
@@ -97,7 +96,7 @@ namespace FacebookApplication
                     "user_relationship_details",
                     "user_religion_politics",
 
-                    //"user_status" (This permission is only available for apps using Graph API version v2.3 or older.)
+                    // "user_status" (This permission is only available for apps using Graph API version v2.3 or older.)
                     "user_tagged_places",
                     "user_videos",
                     "user_website",
@@ -146,7 +145,6 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
-
             // writing the posts to the 'news feed'
             listBoxNewsFeed.DisplayMember = "Message";
             listBoxNewsFeed.ValueMember = "Caption";
@@ -159,8 +157,7 @@ namespace FacebookApplication
                 }
             }
 
-
-            //writing events
+            // writing events
             listBoxEvents.DisplayMember = "Name";            
             if (m_LoggedInUser.Events.Count > 0)
             {
@@ -169,8 +166,6 @@ namespace FacebookApplication
                     listBoxEvents.Items.Add(userEvent);
                 }
             }
-
-
 
             checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
         }
@@ -235,7 +230,7 @@ namespace FacebookApplication
                 else
                 {
                     m_LoggedInUser.PostStatus(textBoxStatusFromUser.Text);
-                    textBoxStatusFromUser.Text = "";
+                    textBoxStatusFromUser.Text = string.Empty;
                     MessageBox.Show("Your status was posted!");
                 }
             }
@@ -268,6 +263,5 @@ namespace FacebookApplication
                 listBoxEvents.Items.Add("No posts to show");
             }
         }
-
     }
 }

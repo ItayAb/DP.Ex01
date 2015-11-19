@@ -12,6 +12,7 @@ namespace FacebookApplication
     {
         private Dictionary<User, int> m_LikeDataAnalysis;
         private User m_LoggedUser;
+
         public event EventHandler ParsedPost;
 
         public LikeAnalyzer(User i_LoggedUser)
@@ -51,7 +52,7 @@ namespace FacebookApplication
 
         public void CalculateLikeToList(int i_NumOfPosts)
         {           
-            //Reset the Dictionary
+            // Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
             // iterating all the posts 

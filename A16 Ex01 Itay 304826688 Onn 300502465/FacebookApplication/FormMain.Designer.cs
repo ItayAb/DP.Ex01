@@ -1,6 +1,6 @@
 ﻿namespace FacebookApplication
 {
-    partial class FormMain
+    public partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -17,9 +17,9 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -247,4 +247,3 @@
         private System.Windows.Forms.Label label_coomnts;
     }
 }
-

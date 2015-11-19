@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Diagnostics;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Services;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using YouTubeSearch;
 
 namespace FacebookApplication
@@ -224,12 +224,6 @@ namespace FacebookApplication
             {
                 Process.Start(m_pageUrl);
             }
-        }
-
-        private void axShockwaveFlash1_Enter(object sender, EventArgs e)
-        {
-
-
         }
     }
 }

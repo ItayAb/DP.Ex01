@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace FacebookApplication
 {
     public partial class AnalysisProgressBar : Form
@@ -24,8 +23,6 @@ namespace FacebookApplication
             setProgressToStart();          
         }
 
-  
-
         public void resetProgress(int i_NumOfPosts)
         {
             m_NumOfPosts = i_NumOfPosts;
@@ -38,13 +35,11 @@ namespace FacebookApplication
             progressBarForLikeAnalysis.Minimum = 0;
             progressBarForLikeAnalysis.Maximum = m_NumOfPosts;
             progressBarForLikeAnalysis.Step = 1; 
-            
         }
 
         private void IncrementProgressBar(object sender, EventArgs e)
         {
             progressBarForLikeAnalysis.PerformStep();
-
             if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
             {
                 this.Close();

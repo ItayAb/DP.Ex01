@@ -1,6 +1,6 @@
 ﻿namespace FacebookApplication
 {
-    partial class MusicForm
+    public partial class MusicForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -203,8 +204,7 @@
             this.ShockwaveFlashPlayerBox.Name = "ShockwaveFlashPlayerBox";
             this.ShockwaveFlashPlayerBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ShockwaveFlashPlayerBox.OcxState")));
             this.ShockwaveFlashPlayerBox.Size = new System.Drawing.Size(374, 238);
-            this.ShockwaveFlashPlayerBox.TabIndex = 16;
-            this.ShockwaveFlashPlayerBox.Enter += new System.EventHandler(this.axShockwaveFlash1_Enter);
+            this.ShockwaveFlashPlayerBox.TabIndex = 16;            
             // 
             // MusicForm
             // 

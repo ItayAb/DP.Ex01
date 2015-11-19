@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+
 namespace FacebookApplication
 {
-
     public class SaveLoadUtil
     {
         public static bool SaveAppData(string i_pathToSave, ApplicationConfigurationData i_AppData)

@@ -7,8 +7,6 @@ namespace FacebookApplication
 {
     public class ApplicationConfigurationData
     {
-        
-
         public ApplicationConfigurationData()
         {
             RememberMe = false;
@@ -17,6 +15,5 @@ namespace FacebookApplication
         public string AccessToken { get; set; }
 
         public bool RememberMe { get; set; }
-
     }
 }

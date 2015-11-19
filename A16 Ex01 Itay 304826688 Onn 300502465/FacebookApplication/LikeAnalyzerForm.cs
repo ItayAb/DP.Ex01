@@ -28,21 +28,6 @@ namespace FacebookApplication
                 m_LoggedUser = i_LoggedUser;
                 initUiLikeAnaylzer();
             }
-
-
-        }
-
-        public User LoggedUser
-        {
-            get
-            {
-                return m_LoggedUser;
-            }
-
-            set
-            {
-                m_LoggedUser = value;
-            }
         }
 
         public void initUiLikeAnaylzer()
@@ -51,10 +36,12 @@ namespace FacebookApplication
             {
                 pictureBoxCoverPhoto.LoadAsync(m_LoggedUser.Cover.SourceURL);
             }
+
             if (!string.IsNullOrEmpty(m_LoggedUser.Name))
             {
                 this.Text = string.Format("{0} - {1}", k_FormHeader, m_LoggedUser.Name);
             }
+
             if (!string.IsNullOrEmpty(m_LoggedUser.PictureLargeURL))
             {
                 pictureBoxProfilePic.LoadAsync(m_LoggedUser.PictureLargeURL);
@@ -137,6 +124,7 @@ namespace FacebookApplication
                 {
                     PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureLargeURL);
                 }
+
                 string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
                 textBoxAmountOfLikeForUser.Text = amountOfLikesStr;
 
