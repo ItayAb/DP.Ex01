@@ -39,7 +39,7 @@
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
             this.label_FullName = new System.Windows.Forms.Label();
             this.checkBoxRemeberMe = new System.Windows.Forms.CheckBox();
-            this.listBoxCommentPerPost = new System.Windows.Forms.ListBox();
+            this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.labelPosts = new System.Windows.Forms.Label();
             this.label_coomnts = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCoverPhoto)).BeginInit();
@@ -167,15 +167,15 @@
             this.checkBoxRemeberMe.UseVisualStyleBackColor = false;
             this.checkBoxRemeberMe.CheckedChanged += new System.EventHandler(this.checkBoxRemeberMe_CheckedChanged);
             // 
-            // listBoxCommentPerPost
+            // listBoxEvents
             // 
-            this.listBoxCommentPerPost.FormattingEnabled = true;
-            this.listBoxCommentPerPost.ItemHeight = 16;
-            this.listBoxCommentPerPost.Location = new System.Drawing.Point(481, 490);
-            this.listBoxCommentPerPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxCommentPerPost.Name = "listBoxCommentPerPost";
-            this.listBoxCommentPerPost.Size = new System.Drawing.Size(329, 276);
-            this.listBoxCommentPerPost.TabIndex = 12;
+            this.listBoxEvents.FormattingEnabled = true;
+            this.listBoxEvents.ItemHeight = 16;
+            this.listBoxEvents.Location = new System.Drawing.Point(481, 490);
+            this.listBoxEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxEvents.Name = "listBoxEvents";
+            this.listBoxEvents.Size = new System.Drawing.Size(329, 276);
+            this.listBoxEvents.TabIndex = 12;
             // 
             // labelPosts
             // 
@@ -195,9 +195,9 @@
             this.label_coomnts.Location = new System.Drawing.Point(476, 460);
             this.label_coomnts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_coomnts.Name = "label_coomnts";
-            this.label_coomnts.Size = new System.Drawing.Size(242, 29);
+            this.label_coomnts.Size = new System.Drawing.Size(98, 29);
             this.label_coomnts.TabIndex = 14;
-            this.label_coomnts.Text = "Comments To Post:";
+            this.label_coomnts.Text = "Events:";
             // 
             // FormMain
             // 
@@ -206,7 +206,7 @@
             this.ClientSize = new System.Drawing.Size(867, 773);
             this.Controls.Add(this.label_coomnts);
             this.Controls.Add(this.labelPosts);
-            this.Controls.Add(this.listBoxCommentPerPost);
+            this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.checkBoxRemeberMe);
             this.Controls.Add(this.label_FullName);
             this.Controls.Add(this.listBoxNewsFeed);
@@ -242,7 +242,7 @@
         private System.Windows.Forms.ListBox listBoxNewsFeed;
         private System.Windows.Forms.Label label_FullName;
         private System.Windows.Forms.CheckBox checkBoxRemeberMe;
-        private System.Windows.Forms.ListBox listBoxCommentPerPost;
+        private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.Label labelPosts;
         private System.Windows.Forms.Label label_coomnts;
     }

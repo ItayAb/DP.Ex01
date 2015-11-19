@@ -146,14 +146,31 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
+
+            // writing the posts to the 'news feed'
             listBoxNewsFeed.DisplayMember = "Message";
             listBoxNewsFeed.ValueMember = "Caption";
 
-            // writing the posts to the 'news feed'
-            for (int i = 0; i < m_LoggedInUser.NewsFeed.Count; i++)
+            if (m_LoggedInUser.NewsFeed.Count > 0)
             {
-                listBoxNewsFeed.Items.Add(m_LoggedInUser.NewsFeed[i]);
+                foreach (Post newsFeedInUser in m_LoggedInUser.NewsFeed)
+                {
+                    listBoxNewsFeed.Items.Add(newsFeedInUser);
+                }
             }
+
+
+            //writing events
+            listBoxEvents.DisplayMember = "Name";            
+            if (m_LoggedInUser.Events.Count > 0)
+            {
+                foreach (Event userEvent in m_LoggedInUser.Events)
+                {
+                    listBoxEvents.Items.Add(userEvent);
+                }
+            }
+
+
 
             checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
         }
@@ -235,20 +252,20 @@ namespace FacebookApplication
 
         private void fillCommentsBox(Post i_postToFetchComments)
         {
-            listBoxCommentPerPost.DisplayMember = "Message";
-            listBoxCommentPerPost.ValueMember = "From";
-            listBoxCommentPerPost.Items.Clear();
+            listBoxEvents.DisplayMember = "Message";
+            listBoxEvents.ValueMember = "From";
+            listBoxEvents.Items.Clear();
 
             if (i_postToFetchComments.Comments.Count > 0)
             {
                 foreach (Comment selectedPostComment in i_postToFetchComments.Comments)
                 {
-                    listBoxCommentPerPost.Items.Add(selectedPostComment);
+                    listBoxEvents.Items.Add(selectedPostComment);
                 }
             }
             else
             {
-                listBoxCommentPerPost.Items.Add("No posts to show");
+                listBoxEvents.Items.Add("No posts to show");
             }
         }
 
