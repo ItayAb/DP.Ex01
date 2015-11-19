@@ -144,6 +144,8 @@ namespace FacebookApplication
                 {
                     listBoxRecentPost.Items.Add(selectedUser.Posts[i]);
                 }
+
+                labelFriendPosts.Text = selectedUser.Name + " Posts:";
             }
         }
 
