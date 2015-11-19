@@ -71,10 +71,10 @@ namespace FacebookApplication
             }
             else
             {
-                LoginResult result = FacebookService.Login(k_AppId, /// (desig patter's "Design Patterns Course App 2.4" app)
+                LoginResult result = FacebookService.Login(
+                    k_AppId,
                     "public_profile",
                     "user_education_history",
-                    "user_birthday",
                     "user_actions.video",
                     "user_actions.news",
                     "user_actions.music",
@@ -84,35 +84,14 @@ namespace FacebookApplication
                     "user_friends",
                     "publish_actions",
                     "user_events",
-                    "user_games_activity",
-                    "user_groups", // (This permission is only available for apps using Graph API version v2.3 or older.)
-                    "user_hometown",
                     "user_likes",
-                    "user_location",
-                    "user_managed_groups",
-                    "user_photos",
                     "user_posts",
-                    "user_relationships",
-                    "user_relationship_details",
-                    "user_religion_politics",
-
-                    // "user_status" (This permission is only available for apps using Graph API version v2.3 or older.)
-                    "user_tagged_places",
                     "user_videos",
                     "user_website",
-                    "user_work_history",
                     "read_custom_friendlists",
-
-                    // "read_mailbox", (This permission is only available for apps using Graph API version v2.3 or older.)
-                    "read_page_mailboxes",
-                    // "read_stream", (This permission is only available for apps using Graph API version v2.3 or older.)
-                    // "manage_notifications", (This permission is only available for apps using Graph API version v2.3 or older.)
-                    "manage_pages",
                     "publish_pages",
                     "publish_actions",
-
-                    "rsvp_event"
-                    );
+                    "rsvp_event");
 
                 if (!string.IsNullOrEmpty(result.AccessToken))
                 {
@@ -234,34 +213,6 @@ namespace FacebookApplication
                     MessageBox.Show("Your status was posted!");
                 }
             }
-        }
-
-        private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Post selectedPost = listBoxNewsFeed.SelectedItem as Post;
-            if (selectedPost != null)
-            {
-                fillCommentsBox(selectedPost);
-            }
-        }
-
-        private void fillCommentsBox(Post i_postToFetchComments)
-        {
-            listBoxEvents.DisplayMember = "Message";
-            listBoxEvents.ValueMember = "From";
-            listBoxEvents.Items.Clear();
-
-            if (i_postToFetchComments.Comments.Count > 0)
-            {
-                foreach (Comment selectedPostComment in i_postToFetchComments.Comments)
-                {
-                    listBoxEvents.Items.Add(selectedPostComment);
-                }
-            }
-            else
-            {
-                listBoxEvents.Items.Add("No posts to show");
-            }
-        }
+        }        
     }
 }

@@ -50,7 +50,7 @@
             // 
             this.pictureCoverPhoto.Image = global::FacebookApplication.Properties.Resources.CoverDefault;
             this.pictureCoverPhoto.Location = new System.Drawing.Point(-3, -1);
-            this.pictureCoverPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureCoverPhoto.Margin = new System.Windows.Forms.Padding(4);
             this.pictureCoverPhoto.Name = "pictureCoverPhoto";
             this.pictureCoverPhoto.Size = new System.Drawing.Size(868, 320);
             this.pictureCoverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -62,7 +62,7 @@
             this.pictureProfilePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureProfilePhoto.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
             this.pictureProfilePhoto.Location = new System.Drawing.Point(27, 188);
-            this.pictureProfilePhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureProfilePhoto.Margin = new System.Windows.Forms.Padding(4);
             this.pictureProfilePhoto.Name = "pictureProfilePhoto";
             this.pictureProfilePhoto.Size = new System.Drawing.Size(165, 162);
             this.pictureProfilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -75,7 +75,7 @@
             this.buttonMusicView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMusicView.ForeColor = System.Drawing.Color.White;
             this.buttonMusicView.Location = new System.Drawing.Point(232, 252);
-            this.buttonMusicView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonMusicView.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMusicView.Name = "buttonMusicView";
             this.buttonMusicView.Size = new System.Drawing.Size(176, 98);
             this.buttonMusicView.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.buttonLikeAnaylzer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLikeAnaylzer.ForeColor = System.Drawing.Color.White;
             this.buttonLikeAnaylzer.Location = new System.Drawing.Point(416, 252);
-            this.buttonLikeAnaylzer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLikeAnaylzer.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLikeAnaylzer.Name = "buttonLikeAnaylzer";
             this.buttonLikeAnaylzer.Size = new System.Drawing.Size(176, 98);
             this.buttonLikeAnaylzer.TabIndex = 3;
@@ -100,7 +100,7 @@
             // textBoxStatusFromUser
             // 
             this.textBoxStatusFromUser.Location = new System.Drawing.Point(232, 368);
-            this.textBoxStatusFromUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxStatusFromUser.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxStatusFromUser.Multiline = true;
             this.textBoxStatusFromUser.Name = "textBoxStatusFromUser";
             this.textBoxStatusFromUser.Size = new System.Drawing.Size(435, 80);
@@ -112,7 +112,7 @@
             this.buttonPostStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPostStatus.ForeColor = System.Drawing.Color.White;
             this.buttonPostStatus.Location = new System.Drawing.Point(676, 366);
-            this.buttonPostStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPostStatus.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPostStatus.Name = "buttonPostStatus";
             this.buttonPostStatus.Size = new System.Drawing.Size(100, 81);
             this.buttonPostStatus.TabIndex = 6;
@@ -126,7 +126,7 @@
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(89)))), ((int)(((byte)(152)))));
             this.buttonLogin.Location = new System.Drawing.Point(24, 4);
-            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(204, 55);
             this.buttonLogin.TabIndex = 8;
@@ -139,11 +139,10 @@
             this.listBoxNewsFeed.FormattingEnabled = true;
             this.listBoxNewsFeed.ItemHeight = 16;
             this.listBoxNewsFeed.Location = new System.Drawing.Point(24, 490);
-            this.listBoxNewsFeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxNewsFeed.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxNewsFeed.Name = "listBoxNewsFeed";
             this.listBoxNewsFeed.Size = new System.Drawing.Size(435, 276);
             this.listBoxNewsFeed.TabIndex = 9;
-            this.listBoxNewsFeed.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
             // 
             // label_FullName
             // 
@@ -184,9 +183,9 @@
             this.labelPosts.Location = new System.Drawing.Point(21, 460);
             this.labelPosts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPosts.Name = "labelPosts";
-            this.labelPosts.Size = new System.Drawing.Size(202, 29);
+            this.labelPosts.Size = new System.Drawing.Size(147, 29);
             this.labelPosts.TabIndex = 13;
-            this.labelPosts.Text = "Last NewsFeed:";
+            this.labelPosts.Text = "NewsFeed:";
             // 
             // label_coomnts
             // 
@@ -219,7 +218,7 @@
             this.Controls.Add(this.pictureCoverPhoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook Application";
