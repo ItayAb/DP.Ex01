@@ -171,6 +171,7 @@ namespace FacebookApplication
                         if (chosenPost != null)
                         {
                             chosenPost.Like();
+                            MessageBox.Show(string.Format("You liked back!"));
                         }
                     }
                 }
