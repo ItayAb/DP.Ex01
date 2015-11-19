@@ -87,11 +87,12 @@
             // 
             // buttonFetchMusic
             // 
-            this.buttonFetchMusic.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonFetchMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFetchMusic.Location = new System.Drawing.Point(118, 72);
+            this.buttonFetchMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(37)))));
+            this.buttonFetchMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFetchMusic.ForeColor = System.Drawing.Color.White;
+            this.buttonFetchMusic.Location = new System.Drawing.Point(118, 58);
             this.buttonFetchMusic.Name = "buttonFetchMusic";
-            this.buttonFetchMusic.Size = new System.Drawing.Size(153, 40);
+            this.buttonFetchMusic.Size = new System.Drawing.Size(153, 54);
             this.buttonFetchMusic.TabIndex = 9;
             this.buttonFetchMusic.Text = "Fetch Music";
             this.buttonFetchMusic.UseVisualStyleBackColor = false;
@@ -108,13 +109,13 @@
             this.ListBoxMusicianVideos.MaximumSize = new System.Drawing.Size(500, 238);
             this.ListBoxMusicianVideos.MinimumSize = new System.Drawing.Size(383, 238);
             this.ListBoxMusicianVideos.Name = "ListBoxMusicianVideos";
-            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(500, 238);
+            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(438, 238);
             this.ListBoxMusicianVideos.TabIndex = 10;
             this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
             // 
             // buttonPlayVideoOnYouTube
             // 
-            this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.Gold;
+            this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(183)))), ((int)(((byte)(0)))));
             this.buttonPlayVideoOnYouTube.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlayVideoOnYouTube.ForeColor = System.Drawing.Color.White;
             this.buttonPlayVideoOnYouTube.Location = new System.Drawing.Point(651, 58);
@@ -155,7 +156,7 @@
             // pictureBoxYouTube
             // 
             this.pictureBoxYouTube.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
-            this.pictureBoxYouTube.Location = new System.Drawing.Point(1005, 12);
+            this.pictureBoxYouTube.Location = new System.Drawing.Point(955, 12);
             this.pictureBoxYouTube.Name = "pictureBoxYouTube";
             this.pictureBoxYouTube.Size = new System.Drawing.Size(64, 64);
             this.pictureBoxYouTube.TabIndex = 15;
@@ -164,7 +165,7 @@
             // pictureBoxFacebook
             // 
             this.pictureBoxFacebook.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
-            this.pictureBoxFacebook.Location = new System.Drawing.Point(1087, 12);
+            this.pictureBoxFacebook.Location = new System.Drawing.Point(1025, 12);
             this.pictureBoxFacebook.Name = "pictureBoxFacebook";
             this.pictureBoxFacebook.Size = new System.Drawing.Size(64, 64);
             this.pictureBoxFacebook.TabIndex = 14;
@@ -209,7 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 368);
+            this.ClientSize = new System.Drawing.Size(1100, 368);
             this.Controls.Add(this.ShockwaveFlashPlayerBox);
             this.Controls.Add(this.pictureBoxYouTube);
             this.Controls.Add(this.pictureBoxFacebook);
