@@ -12,18 +12,25 @@ namespace FacebookApplication
         public static bool SaveAppData(string i_pathToSave, ApplicationConfigurationData i_AppData)
         {
             bool resultOfSaveOperation = false;
+            StreamWriter dataWriter = null;
             // TODO: using
             try
             {
                 XmlSerializer XmlAppConfigSerializer = new XmlSerializer(i_AppData.GetType());
-                StreamWriter dataWriter = new StreamWriter(i_pathToSave);
+                dataWriter = new StreamWriter(i_pathToSave);
                 XmlAppConfigSerializer.Serialize(dataWriter, i_AppData);
-                dataWriter.Dispose();
                 resultOfSaveOperation = true;
-            }
+            }            
             catch (Exception e)
             {
                 throw e;
+            }
+            finally
+            {
+                if (dataWriter != null)
+                {
+                    dataWriter.Close();
+                }
             }
 
             return resultOfSaveOperation;
@@ -33,6 +40,7 @@ namespace FacebookApplication
         {
             bool resultOfLoad = false;
             StreamReader dataReader = null;
+
             if (File.Exists(i_PathToLoad))
             {
                 try
@@ -44,9 +52,6 @@ namespace FacebookApplication
                     {
                         resultOfLoad = true;
                     }
-
-
-                    dataReader.Close();
                 }
                 catch (Exception e)
                 {
@@ -56,7 +61,7 @@ namespace FacebookApplication
                 {
                     if (dataReader != null)
                     {
-                        dataReader.Dispose();
+                        dataReader.Close();
                     }
                 }
             }

@@ -32,12 +32,20 @@ namespace FacebookApplication
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 1000;
 
-            if (SaveLoadUtil.LoadAppData(m_PathOfAppDataFile, ref m_AppConfig))
+            try
             {
-                if (m_AppConfig.RememberMe)
+                if (SaveLoadUtil.LoadAppData(m_PathOfAppDataFile, ref m_AppConfig))
                 {
-                    autoLogin();
+                    if (m_AppConfig.RememberMe)
+                    {
+                        autoLogin();
+                    }
                 }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in loading configuration!");
             }
         }
 
@@ -130,12 +138,12 @@ namespace FacebookApplication
             // setting the images profile & cover 
             if (!string.IsNullOrEmpty(m_LoggedInUser.PictureNormalURL))
             {
-                pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);                
+                pictureProfilePhoto.LoadAsync(m_LoggedInUser.PictureNormalURL);
             }
-           
+
             if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
             {
-                pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);                
+                pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
             listBoxPosts.DisplayMember = "Message";
@@ -144,12 +152,12 @@ namespace FacebookApplication
             // writing the posts to the 'news feed'
             for (int i = 0; i < m_LoggedInUser.NewsFeed.Count; i++)
             {
-                listBoxPosts.Items.Add(m_LoggedInUser.NewsFeed[i]);                
+                listBoxPosts.Items.Add(m_LoggedInUser.NewsFeed[i]);
             }
 
             checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
         }
-       
+
         private void buttonLikeAnalyzer_Click(object sender, EventArgs e)
         {
             m_likeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
@@ -158,10 +166,14 @@ namespace FacebookApplication
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            //  m_RememberMe = checkBox_RememberMe.Checked ? true : false;
-            
-           SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
-            
+            try
+            {
+                SaveLoadUtil.SaveAppData(m_PathOfAppDataFile, m_AppConfig);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in saving configuration!");
+            }
 
             base.OnClosing(e);
         }
@@ -220,11 +232,11 @@ namespace FacebookApplication
                 fillCommentsBox(selectedPost);
             }
         }
-        
+
         private void fillCommentsBox(Post i_postToFetchComments)
         {
             listBoxCommentPerPost.DisplayMember = "Message";
-            listBoxCommentPerPost.ValueMember = "From"; 
+            listBoxCommentPerPost.ValueMember = "From";
             listBoxCommentPerPost.Items.Clear();
 
             if (i_postToFetchComments.Comments.Count > 0)
