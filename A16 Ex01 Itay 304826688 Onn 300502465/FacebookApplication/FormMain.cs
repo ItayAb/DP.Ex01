@@ -14,14 +14,13 @@ using FacebookWrapper;
 
 namespace FacebookApplication
 {
-    // add more functionality : like, comment, post, (search google)?
     public partial class FormMain : Form
     {
         private const string k_AppId = "843647649088563";
         private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
         private User m_LoggedInUser;
-        private LikeAnalyzerForm m_likeAnalyzerForm;
-        private MusicForm m_musicForm;
+        private LikeAnalyzerForm m_LikeAnalyzerForm;
+        private MusicForm m_MusicForm;
 
         private ApplicationConfigurationData m_AppConfig;
 
@@ -157,8 +156,8 @@ namespace FacebookApplication
 
         private void buttonLikeAnalyzer_Click(object sender, EventArgs e)
         {
-            m_likeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
-            m_likeAnalyzerForm.ShowDialog();
+            m_LikeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
+            m_LikeAnalyzerForm.ShowDialog();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -189,8 +188,8 @@ namespace FacebookApplication
 
         private void buttonMusicView_Click(object sender, EventArgs e)
         {
-            m_musicForm = new MusicForm(m_LoggedInUser);
-            m_musicForm.ShowDialog();
+            m_MusicForm = new MusicForm(m_LoggedInUser);
+            m_MusicForm.ShowDialog();
         }
 
         private void buttonPostStatus_Click(object sender, EventArgs e)
