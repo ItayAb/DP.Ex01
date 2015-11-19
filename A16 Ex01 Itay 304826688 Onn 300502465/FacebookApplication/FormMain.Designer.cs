@@ -36,7 +36,7 @@
             this.textBoxStatusFromUser = new System.Windows.Forms.TextBox();
             this.buttonPostStatus = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
             this.label_FullName = new System.Windows.Forms.Label();
             this.checkBoxRemeberMe = new System.Windows.Forms.CheckBox();
             this.listBoxCommentPerPost = new System.Windows.Forms.ListBox();
@@ -49,9 +49,10 @@
             // pictureCoverPhoto
             // 
             this.pictureCoverPhoto.Image = global::FacebookApplication.Properties.Resources.CoverDefault;
-            this.pictureCoverPhoto.Location = new System.Drawing.Point(-2, -1);
+            this.pictureCoverPhoto.Location = new System.Drawing.Point(-3, -1);
+            this.pictureCoverPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureCoverPhoto.Name = "pictureCoverPhoto";
-            this.pictureCoverPhoto.Size = new System.Drawing.Size(651, 260);
+            this.pictureCoverPhoto.Size = new System.Drawing.Size(868, 320);
             this.pictureCoverPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureCoverPhoto.TabIndex = 0;
             this.pictureCoverPhoto.TabStop = false;
@@ -60,9 +61,10 @@
             // 
             this.pictureProfilePhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureProfilePhoto.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
-            this.pictureProfilePhoto.Location = new System.Drawing.Point(20, 153);
+            this.pictureProfilePhoto.Location = new System.Drawing.Point(27, 188);
+            this.pictureProfilePhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureProfilePhoto.Name = "pictureProfilePhoto";
-            this.pictureProfilePhoto.Size = new System.Drawing.Size(124, 132);
+            this.pictureProfilePhoto.Size = new System.Drawing.Size(165, 162);
             this.pictureProfilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureProfilePhoto.TabIndex = 1;
             this.pictureProfilePhoto.TabStop = false;
@@ -72,9 +74,10 @@
             this.buttonMusicView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(45)))), ((int)(((byte)(39)))));
             this.buttonMusicView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMusicView.ForeColor = System.Drawing.Color.White;
-            this.buttonMusicView.Location = new System.Drawing.Point(174, 205);
+            this.buttonMusicView.Location = new System.Drawing.Point(232, 252);
+            this.buttonMusicView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonMusicView.Name = "buttonMusicView";
-            this.buttonMusicView.Size = new System.Drawing.Size(132, 80);
+            this.buttonMusicView.Size = new System.Drawing.Size(176, 98);
             this.buttonMusicView.TabIndex = 2;
             this.buttonMusicView.Text = "Music";
             this.buttonMusicView.UseVisualStyleBackColor = false;
@@ -85,9 +88,10 @@
             this.buttonLikeAnaylzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(37)))));
             this.buttonLikeAnaylzer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLikeAnaylzer.ForeColor = System.Drawing.Color.White;
-            this.buttonLikeAnaylzer.Location = new System.Drawing.Point(312, 205);
+            this.buttonLikeAnaylzer.Location = new System.Drawing.Point(416, 252);
+            this.buttonLikeAnaylzer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLikeAnaylzer.Name = "buttonLikeAnaylzer";
-            this.buttonLikeAnaylzer.Size = new System.Drawing.Size(132, 80);
+            this.buttonLikeAnaylzer.Size = new System.Drawing.Size(176, 98);
             this.buttonLikeAnaylzer.TabIndex = 3;
             this.buttonLikeAnaylzer.Text = "Like Analyzer";
             this.buttonLikeAnaylzer.UseVisualStyleBackColor = false;
@@ -95,10 +99,11 @@
             // 
             // textBoxStatusFromUser
             // 
-            this.textBoxStatusFromUser.Location = new System.Drawing.Point(174, 299);
+            this.textBoxStatusFromUser.Location = new System.Drawing.Point(232, 368);
+            this.textBoxStatusFromUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxStatusFromUser.Multiline = true;
             this.textBoxStatusFromUser.Name = "textBoxStatusFromUser";
-            this.textBoxStatusFromUser.Size = new System.Drawing.Size(327, 66);
+            this.textBoxStatusFromUser.Size = new System.Drawing.Size(435, 80);
             this.textBoxStatusFromUser.TabIndex = 5;
             // 
             // buttonPostStatus
@@ -106,9 +111,10 @@
             this.buttonPostStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(89)))), ((int)(((byte)(152)))));
             this.buttonPostStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPostStatus.ForeColor = System.Drawing.Color.White;
-            this.buttonPostStatus.Location = new System.Drawing.Point(507, 297);
+            this.buttonPostStatus.Location = new System.Drawing.Point(676, 366);
+            this.buttonPostStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonPostStatus.Name = "buttonPostStatus";
-            this.buttonPostStatus.Size = new System.Drawing.Size(75, 66);
+            this.buttonPostStatus.Size = new System.Drawing.Size(100, 81);
             this.buttonPostStatus.TabIndex = 6;
             this.buttonPostStatus.Text = "Post";
             this.buttonPostStatus.UseVisualStyleBackColor = false;
@@ -119,39 +125,43 @@
             this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(234)))));
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(89)))), ((int)(((byte)(152)))));
-            this.buttonLogin.Location = new System.Drawing.Point(18, 3);
+            this.buttonLogin.Location = new System.Drawing.Point(24, 4);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(153, 45);
+            this.buttonLogin.Size = new System.Drawing.Size(204, 55);
             this.buttonLogin.TabIndex = 8;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // listBoxPosts
+            // listBoxNewsFeed
             // 
-            this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.Location = new System.Drawing.Point(18, 398);
-            this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(327, 225);
-            this.listBoxPosts.TabIndex = 9;
-            this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
+            this.listBoxNewsFeed.FormattingEnabled = true;
+            this.listBoxNewsFeed.ItemHeight = 16;
+            this.listBoxNewsFeed.Location = new System.Drawing.Point(24, 490);
+            this.listBoxNewsFeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxNewsFeed.Name = "listBoxNewsFeed";
+            this.listBoxNewsFeed.Size = new System.Drawing.Size(435, 276);
+            this.listBoxNewsFeed.TabIndex = 9;
+            this.listBoxNewsFeed.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
             // 
             // label_FullName
             // 
             this.label_FullName.AutoSize = true;
-            this.label_FullName.Location = new System.Drawing.Point(70, 198);
+            this.label_FullName.Location = new System.Drawing.Point(93, 244);
+            this.label_FullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_FullName.Name = "label_FullName";
-            this.label_FullName.Size = new System.Drawing.Size(0, 13);
+            this.label_FullName.Size = new System.Drawing.Size(0, 17);
             this.label_FullName.TabIndex = 10;
             // 
             // checkBoxRemeberMe
             // 
             this.checkBoxRemeberMe.AutoSize = true;
             this.checkBoxRemeberMe.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxRemeberMe.Location = new System.Drawing.Point(176, 31);
-            this.checkBoxRemeberMe.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxRemeberMe.Location = new System.Drawing.Point(235, 38);
+            this.checkBoxRemeberMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxRemeberMe.Name = "checkBoxRemeberMe";
-            this.checkBoxRemeberMe.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxRemeberMe.Size = new System.Drawing.Size(122, 21);
             this.checkBoxRemeberMe.TabIndex = 11;
             this.checkBoxRemeberMe.Text = "Remember me";
             this.checkBoxRemeberMe.UseVisualStyleBackColor = false;
@@ -160,43 +170,46 @@
             // listBoxCommentPerPost
             // 
             this.listBoxCommentPerPost.FormattingEnabled = true;
-            this.listBoxCommentPerPost.Location = new System.Drawing.Point(361, 398);
-            this.listBoxCommentPerPost.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxCommentPerPost.ItemHeight = 16;
+            this.listBoxCommentPerPost.Location = new System.Drawing.Point(481, 490);
+            this.listBoxCommentPerPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxCommentPerPost.Name = "listBoxCommentPerPost";
-            this.listBoxCommentPerPost.Size = new System.Drawing.Size(248, 225);
+            this.listBoxCommentPerPost.Size = new System.Drawing.Size(329, 276);
             this.listBoxCommentPerPost.TabIndex = 12;
             // 
             // labelPosts
             // 
             this.labelPosts.AutoSize = true;
             this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosts.Location = new System.Drawing.Point(16, 374);
+            this.labelPosts.Location = new System.Drawing.Point(21, 460);
+            this.labelPosts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPosts.Name = "labelPosts";
-            this.labelPosts.Size = new System.Drawing.Size(109, 24);
+            this.labelPosts.Size = new System.Drawing.Size(202, 29);
             this.labelPosts.TabIndex = 13;
-            this.labelPosts.Text = "Last Posts:";
+            this.labelPosts.Text = "Last NewsFeed:";
             // 
             // label_coomnts
             // 
             this.label_coomnts.AutoSize = true;
             this.label_coomnts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_coomnts.Location = new System.Drawing.Point(357, 374);
+            this.label_coomnts.Location = new System.Drawing.Point(476, 460);
+            this.label_coomnts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_coomnts.Name = "label_coomnts";
-            this.label_coomnts.Size = new System.Drawing.Size(192, 24);
+            this.label_coomnts.Size = new System.Drawing.Size(242, 29);
             this.label_coomnts.TabIndex = 14;
             this.label_coomnts.Text = "Comments To Post:";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 628);
+            this.ClientSize = new System.Drawing.Size(867, 773);
             this.Controls.Add(this.label_coomnts);
             this.Controls.Add(this.labelPosts);
             this.Controls.Add(this.listBoxCommentPerPost);
             this.Controls.Add(this.checkBoxRemeberMe);
             this.Controls.Add(this.label_FullName);
-            this.Controls.Add(this.listBoxPosts);
+            this.Controls.Add(this.listBoxNewsFeed);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.buttonPostStatus);
             this.Controls.Add(this.textBoxStatusFromUser);
@@ -206,6 +219,7 @@
             this.Controls.Add(this.pictureCoverPhoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook Application";
@@ -225,7 +239,7 @@
         private System.Windows.Forms.TextBox textBoxStatusFromUser;
         private System.Windows.Forms.Button buttonPostStatus;
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.ListBox listBoxPosts;
+        private System.Windows.Forms.ListBox listBoxNewsFeed;
         private System.Windows.Forms.Label label_FullName;
         private System.Windows.Forms.CheckBox checkBoxRemeberMe;
         private System.Windows.Forms.ListBox listBoxCommentPerPost;

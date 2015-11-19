@@ -146,13 +146,13 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
-            listBoxPosts.DisplayMember = "Message";
-            listBoxPosts.ValueMember = "Caption";
+            listBoxNewsFeed.DisplayMember = "Message";
+            listBoxNewsFeed.ValueMember = "Caption";
 
             // writing the posts to the 'news feed'
             for (int i = 0; i < m_LoggedInUser.NewsFeed.Count; i++)
             {
-                listBoxPosts.Items.Add(m_LoggedInUser.NewsFeed[i]);
+                listBoxNewsFeed.Items.Add(m_LoggedInUser.NewsFeed[i]);
             }
 
             checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
@@ -226,7 +226,7 @@ namespace FacebookApplication
 
         private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Post selectedPost = listBoxPosts.SelectedItem as Post;
+            Post selectedPost = listBoxNewsFeed.SelectedItem as Post;
             if (selectedPost != null)
             {
                 fillCommentsBox(selectedPost);
@@ -253,6 +253,4 @@ namespace FacebookApplication
         }
 
     }
-
-
 }

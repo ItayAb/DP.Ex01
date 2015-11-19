@@ -13,7 +13,6 @@ namespace FacebookApplication
         {
             bool resultOfSaveOperation = false;
             StreamWriter dataWriter = null;
-            // TODO: using
             try
             {
                 XmlSerializer XmlAppConfigSerializer = new XmlSerializer(i_AppData.GetType());
