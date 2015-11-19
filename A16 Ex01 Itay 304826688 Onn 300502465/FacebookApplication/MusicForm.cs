@@ -88,9 +88,16 @@ namespace FacebookApplication
 
         private void buttonFetchMusic_Click(object sender, EventArgs e)
         {
-            fetchPages();
+            if (m_LoggedUser == null)
+            {
+                MessageBox.Show("Please login to Facebook First...");
+            }
+            else
+            {
+                fetchPages();
+            }
         }
-        
+
         /// <summary>
         /// async method that activate the youtube search and all the data necessary for the form buttons
         /// </summary>
@@ -100,7 +107,7 @@ namespace FacebookApplication
         {
             ListBoxMusicans.Enabled = false;
             ListBoxMusicianVideos.Items.Clear();
-            
+
             Page selectedPage = ListBoxMusicans.SelectedItem as Page;
 
             if (selectedPage != null)
@@ -117,7 +124,7 @@ namespace FacebookApplication
 
                 m_pageUrl = selectedPage.URL;
             }
-            
+
             // initate the youtube object
             if (m_youTubeSearchObject == null)
             {
@@ -175,7 +182,7 @@ namespace FacebookApplication
             }
             else
             {
-                foreach (Tuple<string,string> tuple in m_youTubeSearchObject.getMusicianVideos)
+                foreach (Tuple<string, string> tuple in m_youTubeSearchObject.getMusicianVideos)
                 {
                     ListBoxMusicianVideos.DisplayMember = "tuple.Item1";
                     ListBoxMusicianVideos.Items.Add(tuple);
@@ -215,14 +222,14 @@ namespace FacebookApplication
             }
             else
             {
-               Process.Start(m_pageUrl);
+                Process.Start(m_pageUrl);
             }
         }
 
         private void axShockwaveFlash1_Enter(object sender, EventArgs e)
         {
-          
-            
-        } 
+
+
+        }
     }
 }
