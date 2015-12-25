@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
+using System.Threading;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.Threading;
 
 namespace FacebookApplication
 {
@@ -23,11 +23,8 @@ namespace FacebookApplication
         private ApplicationConfigurationData m_AppConfig;
         
         // added static factory class for the like analyzer form and the music form.
-
-
         public FormMain()
         {            
-
             m_AppConfig = new ApplicationConfigurationData();
 
             InitializeComponent();
@@ -56,19 +53,17 @@ namespace FacebookApplication
                 LoginResult resultOfLogin = FacebookService.Connect(m_AppConfig.AccessToken);
                 if (resultOfLogin != null)
                 {
-                    new Thread(new ThreadStart(new Action(() =>{
+                    new Thread(new ThreadStart(new Action(() => 
+                    {
                         m_LoggedInUser = resultOfLogin.LoggedInUser;
                         fillUserInformation();
                     }))).Start();
                 }
-
             }
             catch (Exception)
             {
-                
                 MessageBox.Show("Error in autoLogin");
             }
-            
         }
 
         private void loginAndInit()
@@ -144,7 +139,6 @@ namespace FacebookApplication
             {
                 checkBoxRemeberMe.Invoke(new Action(() => checkBoxRemeberMe.Checked = m_AppConfig.RememberMe));
             }
-
         }
 
         private void fetchEvent()
@@ -153,7 +147,6 @@ namespace FacebookApplication
             if (!listBoxEvents.InvokeRequired)
             {
                 eventsBindingSource.DataSource = userEvents;
-
             }
             else
             {
@@ -167,7 +160,6 @@ namespace FacebookApplication
             if (!listBoxNewsFeed.InvokeRequired)
             {
                 newsFeedBindingSource.DataSource = userNewsfeed;
-
             }
             else
             {

@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using System.Threading;
 
 namespace FacebookApplication
 {
@@ -29,8 +29,6 @@ namespace FacebookApplication
                 m_LoggedUser = i_LoggedUser;
                 initUiLikeAnaylzer();
             }
-
-            
         }
 
         public void initUiLikeAnaylzer()
@@ -72,7 +70,6 @@ namespace FacebookApplication
                 if (m_LikeAnalyzer == null)
                 {
                     m_LikeAnalyzer = new LikeAnalyzer(m_LoggedUser);
-                    
                 }
 
                 if (int.TryParse(textBoxAmountPostsToParse.Text, out numOfPosts))
@@ -90,20 +87,16 @@ namespace FacebookApplication
                             {
                                 this.Invoke(new Action(() => buttonRunAnalysis.Enabled = false));
                                 m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
-                                this.Invoke(new Action(()=> 
+                                this.Invoke(new Action(() => 
                                     {
                                         userBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
                                         userBindingSource.CurrentItemChanged += userBindingSource_CurrentItemChanged;
                                         userBindingSource_CurrentItemChanged(null, null); // set the ui according to previoulsly/initial selected value           
                                         buttonRunAnalysis.Enabled = true;
                                     }));
-                                    
                             })).Start();
-                        
-
                     }
                 }
-
             }
             else
             {
@@ -111,7 +104,7 @@ namespace FacebookApplication
             }
         }
 
-        void userBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        private void userBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             if (!listBoxDescendingLikeFriends.InvokeRequired)
             {
@@ -123,7 +116,7 @@ namespace FacebookApplication
                 else
                 {
                     // means the list is empty
-                    textBoxAmountOfLikeForUser.Text = "";
+                    textBoxAmountOfLikeForUser.Text = string.Empty;
                 }
             }
         }
