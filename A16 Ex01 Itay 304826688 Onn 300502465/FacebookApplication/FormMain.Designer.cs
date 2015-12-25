@@ -38,17 +38,17 @@
             this.buttonPostStatus = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
-            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label_FullName = new System.Windows.Forms.Label();
             this.checkBoxRemeberMe = new System.Windows.Forms.CheckBox();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelPosts = new System.Windows.Forms.Label();
             this.label_coomnts = new System.Windows.Forms.Label();
+            this.newsFeedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eventsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureCoverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureProfilePhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newsFeedBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureCoverPhoto
@@ -142,7 +142,7 @@
             // 
             // listBoxNewsFeed
             // 
-            this.listBoxNewsFeed.DataSource = this.postBindingSource;
+            this.listBoxNewsFeed.DataSource = this.newsFeedBindingSource;
             this.listBoxNewsFeed.DisplayMember = "Message";
             this.listBoxNewsFeed.FormattingEnabled = true;
             this.listBoxNewsFeed.ItemHeight = 16;
@@ -151,11 +151,7 @@
             this.listBoxNewsFeed.Name = "listBoxNewsFeed";
             this.listBoxNewsFeed.Size = new System.Drawing.Size(435, 276);
             this.listBoxNewsFeed.TabIndex = 9;
-            this.listBoxNewsFeed.ValueMember = "Description";
-            // 
-            // postBindingSource
-            // 
-            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            this.listBoxNewsFeed.ValueMember = "Albums";
             // 
             // label_FullName
             // 
@@ -181,7 +177,7 @@
             // 
             // listBoxEvents
             // 
-            this.listBoxEvents.DataSource = this.eventBindingSource;
+            this.listBoxEvents.DataSource = this.eventsBindingSource;
             this.listBoxEvents.DisplayMember = "Description";
             this.listBoxEvents.FormattingEnabled = true;
             this.listBoxEvents.ItemHeight = 16;
@@ -190,10 +186,7 @@
             this.listBoxEvents.Name = "listBoxEvents";
             this.listBoxEvents.Size = new System.Drawing.Size(329, 276);
             this.listBoxEvents.TabIndex = 12;
-            // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
+            this.listBoxEvents.ValueMember = "Albums";
             // 
             // labelPosts
             // 
@@ -243,8 +236,8 @@
             this.Text = "Facebook Application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureCoverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureProfilePhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newsFeedBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,7 +258,7 @@
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.Label labelPosts;
         private System.Windows.Forms.Label label_coomnts;
-        private System.Windows.Forms.BindingSource postBindingSource;
-        private System.Windows.Forms.BindingSource eventBindingSource;
+        private System.Windows.Forms.BindingSource newsFeedBindingSource;
+        private System.Windows.Forms.BindingSource eventsBindingSource;
     }
 }

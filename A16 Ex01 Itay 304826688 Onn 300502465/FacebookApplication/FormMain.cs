@@ -121,7 +121,7 @@ namespace FacebookApplication
         }
 
         private void fillUserInformation()
-        {
+        {            
             // setting the images profile & cover 
             if (!string.IsNullOrEmpty(m_LoggedInUser.PictureNormalURL))
             {
@@ -152,12 +152,12 @@ namespace FacebookApplication
             var userEvents = m_LoggedInUser.Events;
             if (!listBoxEvents.InvokeRequired)
             {
-            eventBindingSource.DataSource = userEvents;
-                
+                eventsBindingSource.DataSource = userEvents;
+
             }
             else
             {
-                listBoxEvents.Invoke(new Action(() => eventBindingSource.DataSource = userEvents));
+                listBoxEvents.Invoke(new Action(() => eventsBindingSource.DataSource = userEvents));
             }
         }
 
@@ -166,12 +166,12 @@ namespace FacebookApplication
             var userNewsfeed = m_LoggedInUser.NewsFeed;
             if (!listBoxNewsFeed.InvokeRequired)
             {
-            postBindingSource.DataSource = userNewsfeed;
-                
+                newsFeedBindingSource.DataSource = userNewsfeed;
+
             }
             else
             {
-                listBoxNewsFeed.Invoke(new Action(() => postBindingSource.DataSource = userNewsfeed));
+                listBoxNewsFeed.Invoke(new Action(() => newsFeedBindingSource.DataSource = userNewsfeed));
             }
         }
 
@@ -246,9 +246,17 @@ namespace FacebookApplication
                 }
                 else
                 {
-                    m_LoggedInUser.PostStatus(textBoxStatusFromUser.Text);
-                    textBoxStatusFromUser.Text = string.Empty;
-                    MessageBox.Show("Your status was posted!");
+                    buttonPostStatus.Enabled = false;
+                    new Thread(new ThreadStart(() =>
+                        {
+                            m_LoggedInUser.PostStatus(textBoxStatusFromUser.Text);
+                            this.Invoke(new Action(() =>
+                                {
+                                    textBoxStatusFromUser.Text = string.Empty;
+                                    MessageBox.Show("Your status was posted!");
+                                    buttonPostStatus.Enabled = true;
+                                }));
+                        })).Start();
                 }
             }
         }

@@ -87,9 +87,6 @@
       <GenericObjectDataSource DisplayName="MessageUpdates" Version="1.0">
          <TypeInfo>FacebookWrapper.ObjectModel.Message, FbGraphApiWrapper, Version=6.8.0.13, Culture=neutral, PublicKeyToken=null</TypeInfo>
       </GenericObjectDataSource>
-      <GenericObjectDataSource DisplayName="Videos" Version="1.0">
-         <TypeInfo>FacebookWrapper.ObjectModel.Video, FbGraphApiWrapper, Version=6.8.0.13, Culture=neutral, PublicKeyToken=null</TypeInfo>
-      </GenericObjectDataSource>
       <GenericObjectDataSource DisplayName="Pictures" Version="1.0">
          <TypeInfo>FacebookWrapper.ObjectModel.PicturesColleciton, FbGraphApiWrapper, Version=6.8.0.13, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
@@ -153,7 +150,7 @@
          <PropertyUISetting Name="ImageNormal">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="PictureBox" Type="System.Windows.Forms.PictureBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
@@ -272,7 +269,7 @@
          <PropertyUISetting Name="UserName">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="ListBox" Type="System.Windows.Forms.ListBox" AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+                  <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
