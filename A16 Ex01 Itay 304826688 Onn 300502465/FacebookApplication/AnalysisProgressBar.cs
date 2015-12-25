@@ -39,11 +39,18 @@ namespace FacebookApplication
 
         private void IncrementProgressBar(object sender, EventArgs e)
         {
-            progressBarForLikeAnalysis.PerformStep();
-            if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
-            {
-                this.Close();
+            
+            progressBarForLikeAnalysis.Invoke(new Action(()=>{
+                progressBarForLikeAnalysis.PerformStep();
+                if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
+                {
+                    // remove 'myself' as a listener.
+                    m_LikeAnalyzer.ParsedPost -= IncrementProgressBar;
+                    this.Close();                      
+                }
+                
             }
+            ));
         }
     }
 }

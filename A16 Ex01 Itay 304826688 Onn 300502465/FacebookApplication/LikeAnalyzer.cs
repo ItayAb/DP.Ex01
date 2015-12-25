@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Reflection;
 
 namespace FacebookApplication
 {
@@ -64,7 +65,7 @@ namespace FacebookApplication
                     // if the user already appeared in previous calculations
                     if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
-                        updateRecordInDictionary(userWhoLikedThePost);
+                        updateRecordInDictionary(userWhoLikedThePost);                        
                     }
                     else
                     {

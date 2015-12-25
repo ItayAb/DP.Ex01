@@ -32,6 +32,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LikeAnalyzerForm));
             this.listBoxDescendingLikeFriends = new System.Windows.Forms.ListBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PictureBoxSelectedFriend = new System.Windows.Forms.PictureBox();
             this.listBoxRecentPost = new System.Windows.Forms.ListBox();
             this.buttonLikeBack = new System.Windows.Forms.Button();
@@ -47,12 +48,11 @@
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.labelLikerWinner = new System.Windows.Forms.Label();
             this.labelFriendPosts = new System.Windows.Forms.Label();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,10 @@
             this.listBoxDescendingLikeFriends.Size = new System.Drawing.Size(180, 228);
             this.listBoxDescendingLikeFriends.TabIndex = 0;
             this.listBoxDescendingLikeFriends.ValueMember = "Albums";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
             // 
             // PictureBoxSelectedFriend
             // 
@@ -242,10 +246,6 @@
             this.labelFriendPosts.TabIndex = 16;
             this.labelFriendPosts.Text = "Your Friend Posts:";
             // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
-            // 
             // postsBindingSource
             // 
             this.postsBindingSource.DataMember = "Posts";
@@ -279,10 +279,10 @@
             this.Name = "LikeAnalyzerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Like Analyzer ";
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

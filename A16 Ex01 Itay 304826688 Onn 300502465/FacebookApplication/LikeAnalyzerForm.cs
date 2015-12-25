@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Threading;
 
 namespace FacebookApplication
 {
@@ -55,13 +56,7 @@ namespace FacebookApplication
         private void button_RunAnalysis_Click(object sender, EventArgs e)
         {
             runLikeAnalysis();
-        }
-
-        private void resetUiForAnalysis()
-        {
-            listBoxRecentPost.Items.Clear();
-            listBoxDescendingLikeFriends.Items.Clear();
-        }
+        }  
 
         private void initProgressBar(int i_NumOfPosts)
         {
@@ -70,10 +65,7 @@ namespace FacebookApplication
         }
 
         private void runLikeAnalysis()
-        {
-            
-            //resetUiForAnalysis();            
-
+        {          
             if (m_LoggedUser != null)
             {
                 int numOfPosts;
@@ -93,14 +85,25 @@ namespace FacebookApplication
                     else
                     {
                         initProgressBar(numOfPosts);
-                        m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
+                        buttonRunAnalysis.Enabled = false;
+                        new Thread(new ThreadStart(() =>
+                            {
+                                this.Invoke(new Action(() => buttonRunAnalysis.Enabled = false));
+                                m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
+                                this.Invoke(new Action(()=> 
+                                    {
+                                        userBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
+                                        userBindingSource.CurrentItemChanged += userBindingSource_CurrentItemChanged;
+                                        userBindingSource_CurrentItemChanged(null, null); // set the ui according to previoulsly/initial selected value           
+                                        buttonRunAnalysis.Enabled = true;
+                                    }));
+                                    
+                            })).Start();
+                        
+
                     }
                 }
 
-                userBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
-                userBindingSource.CurrentItemChanged += userBindingSource_CurrentItemChanged;                
-                userBindingSource_CurrentItemChanged(null, null);
-                //updateUi();
             }
             else
             {
@@ -110,60 +113,25 @@ namespace FacebookApplication
 
         void userBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
-            User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
-            if (selectedUser != null)
-	        {
-                textBoxAmountOfLikeForUser.Text = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
-	        }
-            else
+            if (!listBoxDescendingLikeFriends.InvokeRequired)
             {
-                // means the list is empty
-                textBoxAmountOfLikeForUser.Text = "";
+                User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
+                if (selectedUser != null)
+                {
+                    textBoxAmountOfLikeForUser.Text = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
+                }
+                else
+                {
+                    // means the list is empty
+                    textBoxAmountOfLikeForUser.Text = "";
+                }
             }
         }
-
-        private void updateUi()
-        {
-            listBoxDescendingLikeFriends.Items.Clear();
-            List<User> likers = m_LikeAnalyzer.DescendingListOfLikes;                                   
-            listBoxDescendingLikeFriends.DisplayMember = "Name";
-            listBoxRecentPost.DisplayMember = "Message";
-
-            foreach (User likeUser in likers)
-            {
-                listBoxDescendingLikeFriends.Items.Add(likeUser);
-            }
-        }
-
-        //private void listBoxDescendingLikeFriends_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    listBoxRecentPost.Items.Clear();
-        //    User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
-        //    if (selectedUser != null)
-        //    {
-        //        if (!string.IsNullOrEmpty(selectedUser.PictureLargeURL))
-        //        {
-        //            PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureLargeURL);
-        //        }
-
-        //        string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
-        //        textBoxAmountOfLikeForUser.Text = amountOfLikesStr;
-
-        //        for (int i = 0; i < selectedUser.Posts.Count; i++)
-        //        {
-        //            listBoxRecentPost.Items.Add(selectedUser.Posts[i]);
-        //        }
-
-        //        labelFriendPosts.Text = selectedUser.Name + " Posts:";
-        //    }
-        //}
 
         private void buttonLikeBack_Click(object sender, EventArgs e)
         {
             likeBackUserChosenPost();
         }
-
-
 
         private void likeBackUserChosenPost()
         {
