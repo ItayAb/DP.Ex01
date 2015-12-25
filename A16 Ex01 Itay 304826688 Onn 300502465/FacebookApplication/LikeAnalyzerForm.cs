@@ -28,6 +28,8 @@ namespace FacebookApplication
                 m_LoggedUser = i_LoggedUser;
                 initUiLikeAnaylzer();
             }
+
+            
         }
 
         public void initUiLikeAnaylzer()
@@ -69,7 +71,8 @@ namespace FacebookApplication
 
         private void runLikeAnalysis()
         {
-            resetUiForAnalysis();
+            
+            //resetUiForAnalysis();            
 
             if (m_LoggedUser != null)
             {
@@ -77,6 +80,7 @@ namespace FacebookApplication
                 if (m_LikeAnalyzer == null)
                 {
                     m_LikeAnalyzer = new LikeAnalyzer(m_LoggedUser);
+                    
                 }
 
                 if (int.TryParse(textBoxAmountPostsToParse.Text, out numOfPosts))
@@ -93,7 +97,10 @@ namespace FacebookApplication
                     }
                 }
 
-                updateUi();
+                userBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
+                userBindingSource.CurrentItemChanged += userBindingSource_CurrentItemChanged;                
+                userBindingSource_CurrentItemChanged(null, null);
+                //updateUi();
             }
             else
             {
@@ -101,10 +108,24 @@ namespace FacebookApplication
             }
         }
 
+        void userBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
+            if (selectedUser != null)
+	        {
+                textBoxAmountOfLikeForUser.Text = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
+	        }
+            else
+            {
+                // means the list is empty
+                textBoxAmountOfLikeForUser.Text = "";
+            }
+        }
+
         private void updateUi()
         {
             listBoxDescendingLikeFriends.Items.Clear();
-            List<User> likers = m_LikeAnalyzer.DescendingListOfLikes;
+            List<User> likers = m_LikeAnalyzer.DescendingListOfLikes;                                   
             listBoxDescendingLikeFriends.DisplayMember = "Name";
             listBoxRecentPost.DisplayMember = "Message";
 
@@ -114,33 +135,35 @@ namespace FacebookApplication
             }
         }
 
-        private void listBoxDescendingLikeFriends_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listBoxRecentPost.Items.Clear();
-            User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
-            if (selectedUser != null)
-            {
-                if (!string.IsNullOrEmpty(selectedUser.PictureLargeURL))
-                {
-                    PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureLargeURL);
-                }
+        //private void listBoxDescendingLikeFriends_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    listBoxRecentPost.Items.Clear();
+        //    User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
+        //    if (selectedUser != null)
+        //    {
+        //        if (!string.IsNullOrEmpty(selectedUser.PictureLargeURL))
+        //        {
+        //            PictureBoxSelectedFriend.LoadAsync(selectedUser.PictureLargeURL);
+        //        }
 
-                string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
-                textBoxAmountOfLikeForUser.Text = amountOfLikesStr;
+        //        string amountOfLikesStr = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
+        //        textBoxAmountOfLikeForUser.Text = amountOfLikesStr;
 
-                for (int i = 0; i < selectedUser.Posts.Count; i++)
-                {
-                    listBoxRecentPost.Items.Add(selectedUser.Posts[i]);
-                }
+        //        for (int i = 0; i < selectedUser.Posts.Count; i++)
+        //        {
+        //            listBoxRecentPost.Items.Add(selectedUser.Posts[i]);
+        //        }
 
-                labelFriendPosts.Text = selectedUser.Name + " Posts:";
-            }
-        }
+        //        labelFriendPosts.Text = selectedUser.Name + " Posts:";
+        //    }
+        //}
 
         private void buttonLikeBack_Click(object sender, EventArgs e)
         {
             likeBackUserChosenPost();
         }
+
+
 
         private void likeBackUserChosenPost()
         {

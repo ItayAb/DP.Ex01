@@ -11,22 +11,23 @@ using System.IO;
 using System.Xml.Serialization;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Threading;
 
 namespace FacebookApplication
 {
-    // add more functionality : like, comment, post, (search google)?
     public partial class FormMain : Form
     {
         private const string k_AppId = "843647649088563";
         private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
         private User m_LoggedInUser;
-        private LikeAnalyzerForm m_likeAnalyzerForm;
-        private MusicForm m_musicForm;
-
         private ApplicationConfigurationData m_AppConfig;
+        
+        // added static factory class for the like analyzer form and the music form.
+
 
         public FormMain()
-        {
+        {            
+
             m_AppConfig = new ApplicationConfigurationData();
 
             InitializeComponent();
@@ -55,8 +56,10 @@ namespace FacebookApplication
                 LoginResult resultOfLogin = FacebookService.Connect(m_AppConfig.AccessToken);
                 if (resultOfLogin != null)
                 {
-                    m_LoggedInUser = resultOfLogin.LoggedInUser;
-                    fillUserInformation();
+                    new Thread(new ThreadStart(new Action(() =>{
+                        m_LoggedInUser = resultOfLogin.LoggedInUser;
+                        fillUserInformation();
+                    }))).Start();
                 }
 
             }
@@ -130,35 +133,58 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
-            // writing the posts to the 'news feed'
-            listBoxNewsFeed.DisplayMember = "Message";
-            listBoxNewsFeed.ValueMember = "Caption";
+            new Thread(new ThreadStart(fetchEvent)).Start();
+            new Thread(new ThreadStart(fetchNewsfeed)).Start();
 
-            if (m_LoggedInUser.NewsFeed.Count > 0)
+            if (!checkBoxRemeberMe.InvokeRequired)
             {
-                foreach (Post newsFeedInUser in m_LoggedInUser.NewsFeed)
-                {
-                    listBoxNewsFeed.Items.Add(newsFeedInUser);
-                }
+                checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
+            }
+            else
+            {
+                checkBoxRemeberMe.Invoke(new Action(() => checkBoxRemeberMe.Checked = m_AppConfig.RememberMe));
             }
 
-            // writing events
-            listBoxEvents.DisplayMember = "Name";            
-            if (m_LoggedInUser.Events.Count > 0)
-            {
-                foreach (Event userEvent in m_LoggedInUser.Events)
-                {
-                    listBoxEvents.Items.Add(userEvent);
-                }
-            }
+        }
 
-            checkBoxRemeberMe.Checked = m_AppConfig.RememberMe;
+        private void fetchEvent()
+        {
+            var userEvents = m_LoggedInUser.Events;
+            if (!listBoxEvents.InvokeRequired)
+            {
+            eventBindingSource.DataSource = userEvents;
+                
+            }
+            else
+            {
+                listBoxEvents.Invoke(new Action(() => eventBindingSource.DataSource = userEvents));
+            }
+        }
+
+        private void fetchNewsfeed()
+        {
+            var userNewsfeed = m_LoggedInUser.NewsFeed;
+            if (!listBoxNewsFeed.InvokeRequired)
+            {
+            postBindingSource.DataSource = userNewsfeed;
+                
+            }
+            else
+            {
+                listBoxNewsFeed.Invoke(new Action(() => postBindingSource.DataSource = userNewsfeed));
+            }
         }
 
         private void buttonLikeAnalyzer_Click(object sender, EventArgs e)
-        {
-            m_likeAnalyzerForm = new LikeAnalyzerForm(m_LoggedInUser);
-            m_likeAnalyzerForm.ShowDialog();
+        {          
+            if (Application.OpenForms.OfType<LikeAnalyzerForm>().Count() > 0)
+            {
+                MessageBox.Show("Like Analyzer is already open!");
+            }
+            else
+            {
+                FormFacebookFactory.CreateFacebookForm(typeof(LikeAnalyzerForm), m_LoggedInUser).Show();
+            }
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -189,8 +215,14 @@ namespace FacebookApplication
 
         private void buttonMusicView_Click(object sender, EventArgs e)
         {
-            m_musicForm = new MusicForm(m_LoggedInUser);
-            m_musicForm.ShowDialog();
+            if (Application.OpenForms.OfType<MusicForm>().Count() > 0)
+            {
+                MessageBox.Show("Music is already open!");
+            }
+            else
+            {
+                FormFacebookFactory.CreateFacebookForm(typeof(MusicForm), m_LoggedInUser).Show();
+            }
         }
 
         private void buttonPostStatus_Click(object sender, EventArgs e)
@@ -219,6 +251,6 @@ namespace FacebookApplication
                     MessageBox.Show("Your status was posted!");
                 }
             }
-        }        
+        }
     }
 }

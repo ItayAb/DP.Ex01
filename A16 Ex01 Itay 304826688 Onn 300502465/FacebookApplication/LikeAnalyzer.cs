@@ -36,7 +36,7 @@ namespace FacebookApplication
 
                 return topLikeUsers;
             }
-        }
+        }       
 
         public int GetAmountOfLikesByUser(User i_UserToCheck)
         {
