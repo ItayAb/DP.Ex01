@@ -141,7 +141,7 @@
       <DependentUpon>AnalysisProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationConfigurationData.cs" />
-    <Compile Include="FacebookFormFactory.cs" />
+    <Compile Include="FormFacebookFactory.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +164,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveLoadUtil.cs" />
+    <Compile Include="UserProxy.cs" />
     <EmbeddedResource Include="AnalysisProgressBar.resx">
       <DependentUpon>AnalysisProgressBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +190,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User.datasource" />
+    <None Include="Properties\DataSources\UserProxy.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

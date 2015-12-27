@@ -32,9 +32,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LikeAnalyzerForm));
             this.listBoxDescendingLikeFriends = new System.Windows.Forms.ListBox();
+            this.userProxyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PictureBoxSelectedFriend = new System.Windows.Forms.PictureBox();
             this.listBoxRecentPost = new System.Windows.Forms.ListBox();
+            this.proxyPostBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonLikeBack = new System.Windows.Forms.Button();
             this.buttonRunAnalysis = new System.Windows.Forms.Button();
             this.textBoxAmountPostsToParse = new System.Windows.Forms.TextBox();
@@ -48,19 +51,20 @@
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.labelLikerWinner = new System.Windows.Forms.Label();
             this.labelFriendPosts = new System.Windows.Forms.Label();
-            this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.userProxyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proxyPostBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxDescendingLikeFriends
             // 
             this.listBoxDescendingLikeFriends.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(234)))));
-            this.listBoxDescendingLikeFriends.DataSource = this.userBindingSource;
-            this.listBoxDescendingLikeFriends.DisplayMember = "Name";
+            this.listBoxDescendingLikeFriends.DataSource = this.userProxyBindingSource;
+            this.listBoxDescendingLikeFriends.DisplayMember = "ProxyName";
             this.listBoxDescendingLikeFriends.FormattingEnabled = true;
             this.listBoxDescendingLikeFriends.ItemHeight = 16;
             this.listBoxDescendingLikeFriends.Location = new System.Drawing.Point(291, 297);
@@ -70,6 +74,10 @@
             this.listBoxDescendingLikeFriends.TabIndex = 0;
             this.listBoxDescendingLikeFriends.ValueMember = "Albums";
             // 
+            // userProxyBindingSource
+            // 
+            this.userProxyBindingSource.DataSource = typeof(FacebookApplication.UserProxy);
+            // 
             // userBindingSource
             // 
             this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
@@ -78,7 +86,7 @@
             // 
             this.PictureBoxSelectedFriend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBoxSelectedFriend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PictureBoxSelectedFriend.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userBindingSource, "ImageNormal", true));
+            this.PictureBoxSelectedFriend.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userProxyBindingSource, "ProxyImageNormal", true));
             this.PictureBoxSelectedFriend.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
             this.PictureBoxSelectedFriend.InitialImage = global::FacebookApplication.Properties.Resources.ProfileDefault;
             this.PictureBoxSelectedFriend.Location = new System.Drawing.Point(492, 297);
@@ -92,7 +100,7 @@
             // listBoxRecentPost
             // 
             this.listBoxRecentPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(234)))));
-            this.listBoxRecentPost.DataSource = this.postsBindingSource;
+            this.listBoxRecentPost.DataSource = this.proxyPostBindingSource;
             this.listBoxRecentPost.DisplayMember = "Message";
             this.listBoxRecentPost.FormattingEnabled = true;
             this.listBoxRecentPost.ItemHeight = 16;
@@ -102,6 +110,16 @@
             this.listBoxRecentPost.Size = new System.Drawing.Size(440, 132);
             this.listBoxRecentPost.TabIndex = 2;
             this.listBoxRecentPost.ValueMember = "Caption";
+            // 
+            // proxyPostBindingSource
+            // 
+            this.proxyPostBindingSource.DataMember = "ProxyPost";
+            this.proxyPostBindingSource.DataSource = this.userProxyBindingSource;
+            // 
+            // postsBindingSource
+            // 
+            this.postsBindingSource.DataMember = "Posts";
+            this.postsBindingSource.DataSource = this.userBindingSource;
             // 
             // buttonLikeBack
             // 
@@ -143,6 +161,9 @@
             // textBoxAmountOfLikeForUser
             // 
             this.textBoxAmountOfLikeForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(234)))));
+            this.textBoxAmountOfLikeForUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userProxyBindingSource, "AmountOfLikesGiven", true));
+            this.textBoxAmountOfLikeForUser.Enabled = false;
+            this.textBoxAmountOfLikeForUser.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.textBoxAmountOfLikeForUser.Location = new System.Drawing.Point(528, 501);
             this.textBoxAmountOfLikeForUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAmountOfLikeForUser.Name = "textBoxAmountOfLikeForUser";
@@ -242,14 +263,9 @@
             this.labelFriendPosts.Location = new System.Drawing.Point(31, 545);
             this.labelFriendPosts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFriendPosts.Name = "labelFriendPosts";
-            this.labelFriendPosts.Size = new System.Drawing.Size(166, 20);
+            this.labelFriendPosts.Size = new System.Drawing.Size(181, 20);
             this.labelFriendPosts.TabIndex = 16;
-            this.labelFriendPosts.Text = "Your Friend Posts:";
-            // 
-            // postsBindingSource
-            // 
-            this.postsBindingSource.DataMember = "Posts";
-            this.postsBindingSource.DataSource = this.userBindingSource;
+            this.labelFriendPosts.Text = "Your Friend\'s Posts:";
             // 
             // LikeAnalyzerForm
             // 
@@ -279,11 +295,13 @@
             this.Name = "LikeAnalyzerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Like Analyzer ";
+            ((System.ComponentModel.ISupportInitialize)(this.userProxyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSelectedFriend)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proxyPostBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +327,7 @@
         private System.Windows.Forms.Label labelFriendPosts;
         private System.Windows.Forms.BindingSource userBindingSource;
         private System.Windows.Forms.BindingSource postsBindingSource;
+        private System.Windows.Forms.BindingSource userProxyBindingSource;
+        private System.Windows.Forms.BindingSource proxyPostBindingSource;
     }
 }

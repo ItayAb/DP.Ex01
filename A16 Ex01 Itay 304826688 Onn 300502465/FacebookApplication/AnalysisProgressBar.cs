@@ -30,25 +30,28 @@ namespace FacebookApplication
         }
 
         private void setProgressToStart()
-        {
+        {                        
             progressBarForLikeAnalysis.Value = 0;
             progressBarForLikeAnalysis.Minimum = 0;
             progressBarForLikeAnalysis.Maximum = m_NumOfPosts;
             progressBarForLikeAnalysis.Step = 1; 
         }
 
+        // TODO: fix the multithreaded problem with closing the analysis progress bar before its finished.
         private void IncrementProgressBar(object sender, EventArgs e)
-        {
-            progressBarForLikeAnalysis.Invoke(new Action(() => 
-            {
-                progressBarForLikeAnalysis.PerformStep();
-                if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
+        {            
+                this.Invoke(new Action(() =>
                 {
-                    // remove 'myself' as a listener.
-                    m_LikeAnalyzer.ParsedPost -= IncrementProgressBar;
-                    this.Close();                      
-                }
-            }));
+                    progressBarForLikeAnalysis.PerformStep();
+                    if (progressBarForLikeAnalysis.Value == progressBarForLikeAnalysis.Maximum)
+                    {
+                        // remove 'myself' as a listener and close
+                        m_LikeAnalyzer.ParsedPost -= IncrementProgressBar;
+                      
+                            this.Close();
+                        
+                    }
+                }));
         }
     }
 }

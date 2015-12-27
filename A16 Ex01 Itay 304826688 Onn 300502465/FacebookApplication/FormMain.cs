@@ -70,7 +70,7 @@ namespace FacebookApplication
         {
             // allready logged in
             if (m_LoggedInUser != null)
-            {
+            {                
                 MessageBox.Show(string.Format("Already logged in as {0} {1}", m_LoggedInUser.FirstName, m_LoggedInUser.LastName));
             }
             else

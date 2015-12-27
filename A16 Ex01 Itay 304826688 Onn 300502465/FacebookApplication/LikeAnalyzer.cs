@@ -7,6 +7,7 @@ using System.Reflection;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
+
 namespace FacebookApplication
 {
     public class LikeAnalyzer
@@ -22,16 +23,18 @@ namespace FacebookApplication
             m_LoggedUser = i_LoggedUser;
         }
 
-        public List<User> DescendingListOfLikes
+        public List<UserProxy> DescendingListOfLikes
         {
             get
             {
-                List<User> topLikeUsers = new List<User>();
+                List<UserProxy> topLikeUsers = new List<UserProxy>();
                 if (m_LikeDataAnalysis.Count > 0)
                 {
                     foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value))
                     {
-                        topLikeUsers.Add(currentPairInCalculatedData.Key);
+                        UserProxy proxyUser = new UserProxy(currentPairInCalculatedData.Key);
+                        proxyUser.AmountOfLikesGiven = currentPairInCalculatedData.Value;
+                        topLikeUsers.Add(proxyUser);
                     }                    
                 }
 
