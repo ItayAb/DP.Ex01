@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using FacebookWrapper.ObjectModel;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
 using System.Drawing;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApplication
 {
@@ -45,7 +45,5 @@ namespace FacebookApplication
         {
             m_User = i_UserInProxy;
         }
-       
-        
     }
 }

@@ -44,7 +44,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 91);
+            this.ControlBox = false;
             this.Controls.Add(this.progressBarForLikeAnalysis);
+            this.Enabled = false;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AnalysisProgressBar";
             this.Text = "Analysis Progress";
             this.ResumeLayout(false);

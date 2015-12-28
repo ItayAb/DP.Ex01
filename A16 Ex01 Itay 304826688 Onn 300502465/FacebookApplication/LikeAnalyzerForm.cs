@@ -90,9 +90,6 @@ namespace FacebookApplication
                                 this.Invoke(new Action(() => 
                                     {
                                         userProxyBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
-                                        //userBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
-                                        //userBindingSource.CurrentItemChanged += userBindingSource_CurrentItemChanged;
-                                        //userBindingSource_CurrentItemChanged(null, null); // set the ui according to previoulsly/initial selected value           
                                         buttonRunAnalysis.Enabled = true;
                                     }));
                             })).Start();
@@ -102,26 +99,6 @@ namespace FacebookApplication
             else
             {
                 MessageBox.Show("Please login first");
-            }
-        }
-        
-        // this can be replaced with userProxy to hold within the amount of likes, an extension method
-        // for user clone is required so that the data binding can be for all controls in UI.
-
-        private void userBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (!listBoxDescendingLikeFriends.InvokeRequired)
-            {
-                User selectedUser = listBoxDescendingLikeFriends.SelectedItem as User;
-                if (selectedUser != null)
-                {
-                    textBoxAmountOfLikeForUser.Text = m_LikeAnalyzer.GetAmountOfLikesByUser(selectedUser).ToString();
-                }
-                else
-                {
-                    // means the list is empty
-                    textBoxAmountOfLikeForUser.Text = string.Empty;
-                }
             }
         }
 

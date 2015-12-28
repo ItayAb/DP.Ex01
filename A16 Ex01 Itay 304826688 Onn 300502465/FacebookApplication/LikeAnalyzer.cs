@@ -7,7 +7,6 @@ using System.Reflection;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
-
 namespace FacebookApplication
 {
     public class LikeAnalyzer
@@ -35,12 +34,12 @@ namespace FacebookApplication
                         UserProxy proxyUser = new UserProxy(currentPairInCalculatedData.Key);
                         proxyUser.AmountOfLikesGiven = currentPairInCalculatedData.Value;
                         topLikeUsers.Add(proxyUser);
-                    }                    
+                    }
                 }
 
                 return topLikeUsers;
             }
-        }       
+        }
 
         public int GetAmountOfLikesByUser(User i_UserToCheck)
         {
@@ -55,7 +54,7 @@ namespace FacebookApplication
         }
 
         public void CalculateLikeToList(int i_NumOfPosts)
-        {           
+        {
             // Reset the Dictionary
             m_LikeDataAnalysis.Clear();
 
@@ -68,7 +67,7 @@ namespace FacebookApplication
                     // if the user already appeared in previous calculations
                     if (checkIfUserExistsInDictionary(userWhoLikedThePost))
                     {
-                        updateRecordInDictionary(userWhoLikedThePost);                        
+                        updateRecordInDictionary(userWhoLikedThePost);
                     }
                     else
                     {
@@ -116,6 +115,6 @@ namespace FacebookApplication
                     break;
                 }
             }
-        }       
+        }
     }
 }

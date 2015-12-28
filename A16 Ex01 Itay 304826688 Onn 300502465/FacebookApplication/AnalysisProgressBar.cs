@@ -37,7 +37,6 @@ namespace FacebookApplication
             progressBarForLikeAnalysis.Step = 1; 
         }
 
-        // TODO: fix the multithreaded problem with closing the analysis progress bar before its finished.
         private void IncrementProgressBar(object sender, EventArgs e)
         {            
                 this.Invoke(new Action(() =>
@@ -47,9 +46,7 @@ namespace FacebookApplication
                     {
                         // remove 'myself' as a listener and close
                         m_LikeAnalyzer.ParsedPost -= IncrementProgressBar;
-                      
-                            this.Close();
-                        
+                        this.Close();
                     }
                 }));
         }
