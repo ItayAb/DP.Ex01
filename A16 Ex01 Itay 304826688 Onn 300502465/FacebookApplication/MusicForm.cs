@@ -13,6 +13,7 @@ using FacebookWrapper;
 using Google.Apis.YouTube.v3;
 using Google.Apis.Services;
 using YouTubeSearch;
+using System.Threading;
 
 namespace FacebookApplication
 {
@@ -27,11 +28,16 @@ namespace FacebookApplication
         private string m_MusicainSelected;
         private string m_VideoId;
         private string m_PageUrl;
+        private Thread m_Thread;
+        private bool v_FormOpen;
+        private FacebookObjectCollection<Page> m_MusicPages;
 
         /// <param name="i_LoggedUser"> get user object from the main form</param>
         public MusicForm(User i_LoggedUser)
         {
             InitializeComponent();
+
+            v_FormOpen = true;
 
             if (i_LoggedUser != null)
             {
@@ -56,7 +62,7 @@ namespace FacebookApplication
 
         // load the user profile picture and init welcome message
         private void initMusicForm()
-        {            
+        {
             profileName.Text = string.Format("Hello {0}", m_LoggedUser.Name);
 
             if (!string.IsNullOrEmpty(m_LoggedUser.PictureNormalURL))
@@ -68,22 +74,19 @@ namespace FacebookApplication
         // fetches the pages and filtring the pages of Musicians
         private void fetchPages()
         {
-            ListBoxMusicans.Items.Clear();
-
-            if (m_LoggedUser.LikedPages.Count == 0)
-            {
-                MessageBox.Show("No liked pages to retrieve :( ");
-            }
-
-            ListBoxMusicans.DisplayMember = "Name";
-
             foreach (Page page in m_LoggedUser.LikedPages)
             {
                 if (page.Category == "Musician/Band")
-                {
-                    ListBoxMusicans.Items.Add(page);
+                { 
+                    //ListBoxMusicans.Invoke(new Action(() => m_MusicPages.Add(page)));
+                    //musicPages.Add(page);
+                    m_MusicPages.Add(page);
                 }
             }
+
+            // using lambda in oreder to return to main thread for the UI
+            ListBoxMusicans.Invoke(new Action(() => pageBindingSource.DataSource = m_MusicPages));
+            
         }
 
         private void buttonFetchMusic_Click(object sender, EventArgs e)
@@ -94,7 +97,20 @@ namespace FacebookApplication
             }
             else
             {
-                fetchPages();
+                // Clear the Items in Music Box
+                //ListBoxMusicans.Items.Clear();
+
+                if (m_LoggedUser.LikedPages.Count == 0)
+                {
+                    MessageBox.Show("No liked pages to retrieve :( ");
+                }
+
+                //ListBoxMusicans.DisplayMember = "Name";
+                m_MusicPages = new FacebookObjectCollection<Page>();
+                Thread thread = new Thread(() => fetchPages());
+                thread.IsBackground = true;
+                thread.Start();
+                //fetchPages();
             }
         }
 
@@ -103,27 +119,36 @@ namespace FacebookApplication
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListBoxMusicans.Enabled = false;
+            //ListBoxMusicans.Enabled = false;
             ListBoxMusicianVideos.Items.Clear();
 
             Page selectedPage = ListBoxMusicans.SelectedItem as Page;
 
+            //TODO: Check if data source
             if (selectedPage != null)
             {
-                if (!string.IsNullOrEmpty(selectedPage.PictureLargeURL))
-                {
-                    musicianImage.LoadAsync(selectedPage.PictureLargeURL);
-                }
-
                 m_MusicainSelected = selectedPage.Name;
-
-                string pageLikes = "Page Likes: ";
-                labelPageLikes.Text = string.Format("{0}\n{1}", pageLikes, selectedPage.LikesCount.ToString());
                 m_PageUrl = selectedPage.URL;
             }
 
+            m_Thread = new Thread(() => searchYouTube());
+            m_Thread.IsBackground = true;
+            m_Thread.Start();
+
+
+            //combine the other tread to the ui
+            //Invoke(new Action(() => fetchMusicianVideos()));
+
+            //ListBoxMusicans.Invoke(new Action(() => musicPages.Add(page)));
+
+            //fetchMusicianVideos();
+            //ListBoxMusicans.Enabled = true;
+        }
+
+        private async void searchYouTube()
+        {
             // initate the youtube object
             if (m_YouTubeSearchObject == null)
             {
@@ -143,6 +168,8 @@ namespace FacebookApplication
                 {
                     buttonYouTubeChannel.Enabled = false;
                 }
+
+                fetchMusicianVideos();
             }
             catch (AggregateException errors)
             {
@@ -151,9 +178,6 @@ namespace FacebookApplication
                     MessageBox.Show(error.Message);
                 }
             }
-
-            fetchMusicianVideos();
-            ListBoxMusicans.Enabled = true;
         }
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
@@ -173,18 +197,32 @@ namespace FacebookApplication
         /// </summary>
         private void fetchMusicianVideos()
         {
-            ListBoxMusicianVideos.Items.Clear();
+            if (v_FormOpen)
+            {
+                Invoke(new Action(() => ListBoxMusicianVideos.Items.Clear()));
+                //ListBoxMusicianVideos.Items.Clear();
 
-            if (m_YouTubeSearchObject.getMusicianVideos.Count == 0)
-            {
-                MessageBox.Show("No Videos to retrieve :(");
-            }
-            else
-            {
-                foreach (Tuple<string, string> tuple in m_YouTubeSearchObject.getMusicianVideos)
+                if (m_YouTubeSearchObject.getMusicianVideos.Count == 0)
                 {
-                    ListBoxMusicianVideos.DisplayMember = "tuple.Item1";
-                    ListBoxMusicianVideos.Items.Add(tuple);
+                    MessageBox.Show("No Videos to retrieve :(");
+                }
+                else
+                {
+                    try
+                    {
+                        foreach (Tuple<string, string> tuple in m_YouTubeSearchObject.getMusicianVideos)
+                        {
+                            Invoke(new Action(() => ListBoxMusicianVideos.DisplayMember = "tuple.Item1"));
+                            Invoke(new Action(() => ListBoxMusicianVideos.Items.Add(tuple)));
+
+                            //ListBoxMusicianVideos.DisplayMember = "tuple.Item1";
+                            //ListBoxMusicianVideos.Items.Add(tuple);
+                        }
+                    } catch
+                    {
+                        // if the user selected an artist and the UI need to update with the new selected item
+                        return;
+                    }
                 }
             }
         }
@@ -223,6 +261,12 @@ namespace FacebookApplication
             {
                 Process.Start(m_PageUrl);
             }
+        }
+
+        private void MusicForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            v_FormOpen = false;
+
         }
     }
 }
