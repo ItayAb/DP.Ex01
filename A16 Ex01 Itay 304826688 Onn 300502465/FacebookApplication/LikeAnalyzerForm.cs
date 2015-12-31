@@ -83,16 +83,18 @@ namespace FacebookApplication
                     {
                         initProgressBar(numOfPosts);
                         buttonRunAnalysis.Enabled = false;
-                        new Thread(new ThreadStart(() =>
+                        Thread runAnalysisThread = new Thread(new ThreadStart(() =>
                             {
                                 this.Invoke(new Action(() => buttonRunAnalysis.Enabled = false));
                                 m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
-                                this.Invoke(new Action(() => 
+                                this.Invoke(new Action(() =>
                                     {
                                         userProxyBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
                                         buttonRunAnalysis.Enabled = true;
                                     }));
-                            })).Start();
+                            }));
+                        runAnalysisThread.IsBackground = true;
+                        runAnalysisThread.Start();
                     }
                 }
             }

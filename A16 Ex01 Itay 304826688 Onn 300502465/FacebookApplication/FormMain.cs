@@ -53,11 +53,13 @@ namespace FacebookApplication
                 LoginResult resultOfLogin = FacebookService.Connect(m_AppConfig.AccessToken);
                 if (resultOfLogin != null)
                 {
-                    new Thread(new ThreadStart(new Action(() => 
+                    Thread loginAndFillInfo = new Thread(new ThreadStart(new Action(() =>
                     {
                         m_LoggedInUser = resultOfLogin.LoggedInUser;
                         fillUserInformation();
-                    }))).Start();
+                    })));
+                    loginAndFillInfo.IsBackground = true;
+                    loginAndFillInfo.Start();
                 }
             }
             catch (Exception)
@@ -128,8 +130,13 @@ namespace FacebookApplication
                 pictureCoverPhoto.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             }
 
-            new Thread(new ThreadStart(fetchEvent)).Start();
-            new Thread(new ThreadStart(fetchNewsfeed)).Start();
+            Thread threadEventFetch = new Thread(new ThreadStart(fetchEvent));
+            threadEventFetch.IsBackground = true;
+            threadEventFetch.Start();
+
+            Thread threadNewsFeedFetch = new Thread(new ThreadStart(fetchNewsfeed));
+            threadNewsFeedFetch.IsBackground = true;
+            threadNewsFeedFetch.Start();
 
             if (!checkBoxRemeberMe.InvokeRequired)
             {
@@ -239,7 +246,7 @@ namespace FacebookApplication
                 else
                 {
                     buttonPostStatus.Enabled = false;
-                    new Thread(new ThreadStart(() =>
+                    Thread postActionThread = new Thread(new ThreadStart(() =>
                         {
                             m_LoggedInUser.PostStatus(textBoxStatusFromUser.Text);
                             this.Invoke(new Action(() =>
@@ -248,7 +255,9 @@ namespace FacebookApplication
                                     MessageBox.Show("Your status was posted!");
                                     buttonPostStatus.Enabled = true;
                                 }));
-                        })).Start();
+                        }));
+                    postActionThread.IsBackground = true;
+                    postActionThread.Start();
                 }
             }
         }
