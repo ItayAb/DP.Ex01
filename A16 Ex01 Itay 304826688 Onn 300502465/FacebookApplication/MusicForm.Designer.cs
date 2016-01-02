@@ -161,7 +161,7 @@
             // 
             // youTubeMusicVideosAdapterBindingSource
             // 
-            this.youTubeMusicVideosAdapterBindingSource.DataSource = typeof(FacebookApplication.YouTubeMusicVideosAdapter);
+            //this.youTubeMusicVideosAdapterBindingSource.DataSource = typeof(FacebookApplication.YouTubeMusicVideosAdapter);
             // 
             // buttonPlayVideoOnYouTube
             // 
