@@ -22,18 +22,18 @@ namespace FacebookApplication
             m_LoggedUser = i_LoggedUser;
         }
 
-        public List<UserProxy> DescendingListOfLikes
+        public List<UserAdapter> DescendingListOfLikes
         {
             get
             {
-                List<UserProxy> topLikeUsers = new List<UserProxy>();
+                List<UserAdapter> topLikeUsers = new List<UserAdapter>();
                 if (m_LikeDataAnalysis.Count > 0)
                 {
                     foreach (KeyValuePair<User, int> currentPairInCalculatedData in m_LikeDataAnalysis.OrderByDescending(Key => Key.Value))
                     {
-                        UserProxy proxyUser = new UserProxy(currentPairInCalculatedData.Key);
-                        proxyUser.AmountOfLikesGiven = currentPairInCalculatedData.Value;
-                        topLikeUsers.Add(proxyUser);
+                        UserAdapter UserAdapter = new UserAdapter(currentPairInCalculatedData.Key);
+                        UserAdapter.AmountOfLikesGiven = currentPairInCalculatedData.Value;
+                        topLikeUsers.Add(UserAdapter);
                     }
                 }
 
