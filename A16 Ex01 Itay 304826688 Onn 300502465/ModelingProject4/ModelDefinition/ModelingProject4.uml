@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="6f3c07e3-351a-41d1-9aec-e5ad4c170a85"
+  name="ModelingProject4" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="4a2b3330-a21b-409d-b483-88c261263aaa">
+      <body>Client
+</body>
+    </comment>
+    <comment
+      Id="01a42aa9-1087-4a61-a57a-cfe69f4ba95b">
+      <body>StaticFactoryClass
+</body>
+    </comment>
+    <comment
+      Id="f1b33b1c-28c6-43d6-953b-7cc0ae3811d0">
+      <body>AbstractProduct
+</body>
+    </comment>
+    <comment
+      Id="03112c01-7a53-4ac8-a49e-4e79679c3023">
+      <body>ConcretetProduct</body>
+    </comment>
+    <comment
+      Id="20d33956-406c-4bc3-80ec-c257efa53c57">
+      <body>ConcreteProduct
+</body>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="0b9f1059-536e-41e8-905e-f9ff05e252b3">
+      <profileInstance
+        Id="fc2a87e7-8839-4787-bd30-559951b4b220"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="11508de9-1f5d-4aac-83d6-8de28b76285a"
+        LastKnownName="FacebookApplication"
+        LastKnownLocation="Package_1354.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="fda48608-9f0d-43a7-b4d0-f6c48ada0e17"
+        LastKnownName="System"
+        LastKnownLocation="Package1_1354.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="85812331-7803-454f-b7a3-ea69b08bbcfd"
+        LastKnownName="FacebookWrapper"
+        LastKnownLocation="Package3_1354.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b82b5101-2c26-4831-85f1-d6449dd741bb"
+        LastKnownName="AxShockwaveFlashObjects"
+        LastKnownLocation="Package_1358.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e513ff40-0824-4cdc-b48f-d222f630653d"
+        LastKnownName="YouTubeSearch"
+        LastKnownLocation="Package4_1358.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2c266e3c-f475-4473-9f1b-709484b303eb"
+        name="Form"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

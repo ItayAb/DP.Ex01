@@ -11,21 +11,21 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApplication
 {
-    public class UserProxy
+    public class UserAdapter 
     {
         private User m_User;
 
         public int AmountOfLikesGiven { get; set; }
 
-        public FacebookObjectCollection<Post> ProxyPost 
+        public FacebookObjectCollection<Post> Posts 
         {
             get
-            {
+            {                
                 return m_User.Posts;
             }
         }
         
-        public string ProxyName 
+        public string Name 
         {
             get
             {
@@ -33,7 +33,7 @@ namespace FacebookApplication
             }
         }
         
-        public Image ProxyImageNormal 
+        public Image ImageNormal 
         {
             get
             {
@@ -41,7 +41,7 @@ namespace FacebookApplication
             }
         }
 
-        public UserProxy(User i_UserInProxy)
+        public UserAdapter(User i_UserInProxy)
         {
             m_User = i_UserInProxy;
         }

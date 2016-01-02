@@ -19,9 +19,9 @@ namespace FacebookApplication
     {
         private const string k_AppId = "843647649088563";
         private string m_PathOfAppDataFile = string.Format("{0}\\{1}", AppDomain.CurrentDomain.BaseDirectory, "Facebook App Config.txt");
-        private User m_LoggedInUser;
+        private User m_LoggedInUser;  
         private ApplicationConfigurationData m_AppConfig;
-        
+
         // added static factory class for the like analyzer form and the music form.
         public FormMain()
         {            
@@ -153,7 +153,7 @@ namespace FacebookApplication
             var userEvents = m_LoggedInUser.Events;
             if (!listBoxEvents.InvokeRequired)
             {
-                eventsBindingSource.DataSource = userEvents;
+                eventsBindingSource.DataSource = userEvents;                
             }
             else
             {

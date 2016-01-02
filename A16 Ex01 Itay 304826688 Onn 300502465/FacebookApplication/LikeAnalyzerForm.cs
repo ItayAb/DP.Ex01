@@ -89,7 +89,7 @@ namespace FacebookApplication
                                 m_LikeAnalyzer.CalculateLikeToList(numOfPosts);
                                 this.Invoke(new Action(() =>
                                     {
-                                        userProxyBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
+                                        userAdapterBindingSource.DataSource = m_LikeAnalyzer.DescendingListOfLikes;
                                         buttonRunAnalysis.Enabled = true;
                                     }));
                             }));
@@ -124,8 +124,13 @@ namespace FacebookApplication
                         Post chosenPost = postToLike as Post;
                         if (chosenPost != null)
                         {
-                            chosenPost.Like();
-                            MessageBox.Show(string.Format("You liked back!"));
+                            Thread likeBackThread = new Thread(() =>
+                            {
+                                chosenPost.Like();
+                                MessageBox.Show(string.Format("You liked back!"));
+                            });
+                            likeBackThread.IsBackground = true;
+                            likeBackThread.Start();
                         }
                     }
                 }
