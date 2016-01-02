@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>10334f38</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -168,6 +169,7 @@
     <Compile Include="SaveLoadUtil.cs" />
     <Compile Include="UserAdapter.cs" />
     <Compile Include="YouTubeProxy.cs" />
+    <Compile Include="YouTubeProxy1.cs" />
     <Compile Include="YouTubeVideo.cs" />
     <EmbeddedResource Include="AnalysisProgressBar.resx">
       <DependentUpon>AnalysisProgressBar.cs</DependentUpon>
