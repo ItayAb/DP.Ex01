@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using Google.Apis.YouTube.v3;
-using Google.Apis.Services;
+//using Google.Apis.YouTube.v3;
+//using Google.Apis.Services;
 using YouTubeSearch;
 using System.Threading;
 
@@ -19,18 +19,26 @@ namespace FacebookApplication
 {
     public partial class MusicForm : Form
     {
-        private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
-        private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
-        private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
+        //private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
+        //private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
+        //private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
+        
         private User m_LoggedUser;
+        
         private List<Page> m_PagesList;
         private YouTubeClass m_YouTubeSearchObject;
+        
         private string m_MusicainSelected;
-        private string m_VideoId;
+        
+        //private string m_VideoId;
         private string m_PageUrl;
         private Thread m_Thread;
         private bool v_FormOpen;
         private FacebookObjectCollection<Page> m_MusicPages;
+
+        // TODO: Facade or Adapter
+        private IFetchMusicData m_FacebookMusicPages;
+        private IFetchMusicData m_YouTubeVideos;
 
         /// <param name="i_LoggedUser"> get user object from the main form</param>
         public MusicForm(User i_LoggedUser)
@@ -43,6 +51,8 @@ namespace FacebookApplication
             {
                 m_LoggedUser = i_LoggedUser;
                 m_PagesList = new List<Page>();
+
+                m_FacebookMusicPages = new FacbookMusicPages(m_LoggedUser);
                 initMusicForm();
             }
         }
@@ -71,6 +81,7 @@ namespace FacebookApplication
             }
         }
 
+       /*
         // fetches the pages and filtring the pages of Musicians
         private void fetchPages()
         {
@@ -88,6 +99,7 @@ namespace FacebookApplication
             ListBoxMusicans.Invoke(new Action(() => pageBindingSource.DataSource = m_MusicPages));
             
         }
+        */
 
         private void buttonFetchMusic_Click(object sender, EventArgs e)
         {
@@ -105,15 +117,28 @@ namespace FacebookApplication
                     MessageBox.Show("No liked pages to retrieve :( ");
                 }
 
+                // collect 
+                m_FacebookMusicPages.fetch();
+                pageBindingSource.DataSource = m_FacebookMusicPages.get();
+
+                //Page select = pageBindingSource.Current as Page;
+                //m_YouTubeVideos = new YouTubeMusicVideosAdapter(select.Name);
+                //m_YouTubeVideos.fetch();
+                //youTubeVideoListBindingSource.DataSource = m_YouTubeVideos;
+
+
+                //youTubeMusicVideosAdapterBindingSource.DataSource = m_YouTubeVideos;
+
                 //ListBoxMusicans.DisplayMember = "Name";
-                m_MusicPages = new FacebookObjectCollection<Page>();
-                Thread thread = new Thread(() => fetchPages());
-                thread.IsBackground = true;
-                thread.Start();
+                //m_MusicPages = new FacebookObjectCollection<Page>();
+                //Thread thread = new Thread(() => fetchPages());
+                //thread.IsBackground = true;
+                //thread.Start();
                 //fetchPages();
             }
         }
 
+        
         /// <summary>
         /// async method that activate the youtube search and all the data necessary for the form buttons
         /// </summary>
@@ -122,9 +147,15 @@ namespace FacebookApplication
         private void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
         {
             //ListBoxMusicans.Enabled = false;
-            ListBoxMusicianVideos.Items.Clear();
+            //ListBoxMusicianVideos.Items.Clear();
 
-            Page selectedPage = ListBoxMusicans.SelectedItem as Page;
+
+
+            Page selectedPage = pageBindingSource.Current as Page;
+                //ListBoxMusicans.SelectedItem as Page;
+            
+            
+            //youTubeVideoListBindingSource.DataSource = m_YouTubeVideos.get();
 
             //TODO: Check if data source
             if (selectedPage != null)
@@ -132,6 +163,12 @@ namespace FacebookApplication
                 m_MusicainSelected = selectedPage.Name;
                 m_PageUrl = selectedPage.URL;
             }
+
+            //m_YouTubeVideos = new YouTubeMusicVideosAdapter(m_MusicainSelected);
+            //m_YouTubeVideos.fetch();
+
+            // fill list
+
 
             m_Thread = new Thread(() => searchYouTube());
             m_Thread.IsBackground = true;
@@ -147,6 +184,9 @@ namespace FacebookApplication
             //ListBoxMusicans.Enabled = true;
         }
 
+     
+
+        
         private async void searchYouTube()
         {
             // initate the youtube object
@@ -179,9 +219,11 @@ namespace FacebookApplication
                 }
             }
         }
+        
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
         {
+            /*
             if (m_YouTubeSearchObject == null)
             {
                 MessageBox.Show("Please Choose a Musician Page First");
@@ -190,8 +232,11 @@ namespace FacebookApplication
             {
                 Process.Start(string.Format("{0}{1}", r_youTubeChannelLink, m_YouTubeSearchObject.getMusicianChannelID));
             }
+             */
         }
 
+
+        
         /// <summary>
         /// get the top videos of the musician from youtube and reflect the resultes to the user
         /// </summary>
@@ -226,6 +271,7 @@ namespace FacebookApplication
                 }
             }
         }
+         
 
         /// <summary>
         /// each time the user select a video the video id changes for the play button
@@ -234,13 +280,16 @@ namespace FacebookApplication
         /// <param name="e"></param>
         private void ListBoxMusicianVideos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
             m_VideoId = selectedItem.Item2;
             ShockwaveFlashPlayerBox.Movie = string.Format("{0}{1}", r_youTubeVideoLinkForPlayer, m_VideoId);
+             */
         }
 
         private void buttonPlayVideoOnYouTube_Click(object sender, EventArgs e)
         {
+            /*
             if (m_VideoId == null)
             {
                 MessageBox.Show("Please Choose a Video From the List");
@@ -249,10 +298,12 @@ namespace FacebookApplication
             {
                 Process.Start(string.Format("{0}{1}", r_youTubeVideoLink, m_VideoId));
             }
+             */
         }
 
         private void buttonLinkToPage_Click(object sender, EventArgs e)
         {
+            /*
             if (m_PageUrl == null)
             {
                 MessageBox.Show("Please Choose a Music Page From The List");
@@ -261,12 +312,14 @@ namespace FacebookApplication
             {
                 Process.Start(m_PageUrl);
             }
+             */
         }
-
+        
         private void MusicForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             v_FormOpen = false;
 
         }
+        
     }
 }

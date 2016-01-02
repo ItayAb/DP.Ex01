@@ -5,8 +5,10 @@ using System.Text;
 
 namespace FacebookApplication
 {
-    interface IFetchMusicData<T>
+    interface IFetchMusicData
     {
-        List<T> fetch();
+        void fetch();
+
+        object get();
     }
 }
