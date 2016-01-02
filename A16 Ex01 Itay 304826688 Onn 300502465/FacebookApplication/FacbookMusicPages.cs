@@ -13,6 +13,8 @@ namespace FacebookApplication
         private User m_LoggedUserAdoptee;
         private List<Page> m_MusicPagesList;
 
+        
+
         public FacbookMusicPages(User i_LoggedUser)
         {
             m_LoggedUserAdoptee = i_LoggedUser;

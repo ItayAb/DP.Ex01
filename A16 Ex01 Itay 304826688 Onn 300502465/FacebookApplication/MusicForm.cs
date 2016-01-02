@@ -32,6 +32,10 @@ namespace FacebookApplication
         private bool v_FormOpen;
         private FacebookObjectCollection<Page> m_MusicPages;
 
+        // TODO: Facade or Adapter
+        private IFetchMusicData<Page> m_MusicData;
+        private IFetchMusicData<Tuple<string, string>> m_YouTubeVideos;
+
         /// <param name="i_LoggedUser"> get user object from the main form</param>
         public MusicForm(User i_LoggedUser)
         {
@@ -43,6 +47,8 @@ namespace FacebookApplication
             {
                 m_LoggedUser = i_LoggedUser;
                 m_PagesList = new List<Page>();
+
+                m_MusicData = new FacbookMusicPages(m_LoggedUser);
                 initMusicForm();
             }
         }
@@ -105,6 +111,11 @@ namespace FacebookApplication
                     MessageBox.Show("No liked pages to retrieve :( ");
                 }
 
+                // collect 
+                m_MusicData.fetch();
+
+                
+
                 //ListBoxMusicans.DisplayMember = "Name";
                 m_MusicPages = new FacebookObjectCollection<Page>();
                 Thread thread = new Thread(() => fetchPages());
@@ -132,6 +143,12 @@ namespace FacebookApplication
                 m_MusicainSelected = selectedPage.Name;
                 m_PageUrl = selectedPage.URL;
             }
+
+            m_YouTubeVideos = new YouTubeMusicVideos(m_MusicainSelected);
+            m_YouTubeVideos.fetch();
+
+            // fill list
+
 
             m_Thread = new Thread(() => searchYouTube());
             m_Thread.IsBackground = true;
