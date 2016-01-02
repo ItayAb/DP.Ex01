@@ -38,7 +38,10 @@ namespace FacebookApplication
 
         // TODO: Facade or Adapter
         private IFetchMusicData m_FacebookMusicPages;
-        private IFetchMusicData m_YouTubeVideos;
+
+        private YouTubeProxy m_YouTubeProxy;
+
+        public List<YouTubeVideo> VideosList { get; set; }
 
         /// <param name="i_LoggedUser"> get user object from the main form</param>
         public MusicForm(User i_LoggedUser)
@@ -53,6 +56,8 @@ namespace FacebookApplication
                 m_PagesList = new List<Page>();
 
                 m_FacebookMusicPages = new FacbookMusicPages(m_LoggedUser);
+                m_YouTubeProxy = new YouTubeProxy();
+                VideosList = new List<YouTubeVideo>();
                 initMusicForm();
             }
         }
@@ -135,6 +140,13 @@ namespace FacebookApplication
                 //thread.IsBackground = true;
                 //thread.Start();
                 //fetchPages();
+
+                Page selected = pageBindingSource.Current as Page;
+
+                VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
+
+
+
             }
         }
 
@@ -149,7 +161,9 @@ namespace FacebookApplication
             //ListBoxMusicans.Enabled = false;
             //ListBoxMusicianVideos.Items.Clear();
 
+            Page selected = pageBindingSource.Current as Page;
 
+            VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
 
             Page selectedPage = pageBindingSource.Current as Page;
                 //ListBoxMusicans.SelectedItem as Page;
@@ -170,9 +184,9 @@ namespace FacebookApplication
             // fill list
 
 
-            m_Thread = new Thread(() => searchYouTube());
-            m_Thread.IsBackground = true;
-            m_Thread.Start();
+            //m_Thread = new Thread(() => searchYouTube());
+            //m_Thread.IsBackground = true;
+            //m_Thread.Start();
 
 
             //combine the other tread to the ui
@@ -186,7 +200,7 @@ namespace FacebookApplication
 
      
 
-        
+        /*        
         private async void searchYouTube()
         {
             // initate the youtube object
@@ -219,6 +233,7 @@ namespace FacebookApplication
                 }
             }
         }
+         */ 
         
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)

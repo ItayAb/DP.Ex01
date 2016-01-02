@@ -154,15 +154,7 @@
             this.ListBoxMusicianVideos.TabIndex = 10;
             this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
             // 
-            // youTubeVideoListBindingSource
-            // 
-            this.youTubeVideoListBindingSource.DataMember = "YouTubeVideoList";
-            this.youTubeVideoListBindingSource.DataSource = this.youTubeMusicVideosAdapterBindingSource;
-            // 
-            // youTubeMusicVideosAdapterBindingSource
-            // 
-            this.youTubeMusicVideosAdapterBindingSource.DataSource = typeof(FacebookApplication.YouTubeMusicVideosAdapter);
-            // 
+            
             // buttonPlayVideoOnYouTube
             // 
             this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(183)))), ((int)(((byte)(0)))));
