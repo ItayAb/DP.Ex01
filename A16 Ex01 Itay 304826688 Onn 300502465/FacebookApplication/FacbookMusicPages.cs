@@ -8,7 +8,7 @@ using FacebookWrapper;
 
 namespace FacebookApplication
 {
-    class FacbookMusicPages : IFetchMusicData<Page>
+    class FacbookMusicPages : IFetchMusicData
     {
         private User m_LoggedUserAdoptee;
         private List<Page> m_MusicPagesList;
@@ -20,7 +20,7 @@ namespace FacebookApplication
             m_LoggedUserAdoptee = i_LoggedUser;
         }
         
-       
+       /*
         public List<Page> fetch()
         {
             m_MusicPagesList = new List<Page>();
@@ -33,6 +33,27 @@ namespace FacebookApplication
                 }
             }
 
+            return m_MusicPagesList;
+        }
+        */
+
+
+
+        public void fetch()
+        {
+            m_MusicPagesList = new List<Page>();
+
+            foreach (Page page in m_LoggedUserAdoptee.LikedPages)
+            {
+                if (page.Category == "Musician/Band")
+                {
+                    m_MusicPagesList.Add(page);
+                }
+            }
+        }
+
+        public object get()
+        {
             return m_MusicPagesList;
         }
     }

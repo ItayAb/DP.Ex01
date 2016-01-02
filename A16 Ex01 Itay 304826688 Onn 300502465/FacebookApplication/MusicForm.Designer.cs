@@ -39,6 +39,8 @@
             this.profileName = new System.Windows.Forms.Label();
             this.buttonFetchMusic = new System.Windows.Forms.Button();
             this.ListBoxMusicianVideos = new System.Windows.Forms.ListBox();
+            this.youTubeVideoListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.youTubeMusicVideosAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonPlayVideoOnYouTube = new System.Windows.Forms.Button();
             this.buttonLinkToPage = new System.Windows.Forms.Button();
             this.pictureBoxYouTube = new System.Windows.Forms.PictureBox();
@@ -52,6 +54,8 @@
             likesCountLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeVideoListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeMusicVideosAdapterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
@@ -64,10 +68,9 @@
             // 
             likesCountLabel.AutoSize = true;
             likesCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            likesCountLabel.Location = new System.Drawing.Point(141, 20);
-            likesCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            likesCountLabel.Location = new System.Drawing.Point(106, 16);
             likesCountLabel.Name = "likesCountLabel";
-            likesCountLabel.Size = new System.Drawing.Size(115, 20);
+            likesCountLabel.Size = new System.Drawing.Size(92, 16);
             likesCountLabel.TabIndex = 2;
             likesCountLabel.Text = "Likes Count:";
             // 
@@ -75,10 +78,9 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nameLabel.Location = new System.Drawing.Point(141, 68);
-            nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            nameLabel.Location = new System.Drawing.Point(106, 55);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(63, 20);
+            nameLabel.Size = new System.Drawing.Size(53, 16);
             nameLabel.TabIndex = 3;
             nameLabel.Text = "Name:";
             // 
@@ -89,11 +91,10 @@
             this.ListBoxMusicans.DisplayMember = "Name";
             this.ListBoxMusicans.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListBoxMusicans.FormattingEnabled = true;
-            this.ListBoxMusicans.ItemHeight = 23;
-            this.ListBoxMusicans.Location = new System.Drawing.Point(16, 145);
-            this.ListBoxMusicans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ListBoxMusicans.ItemHeight = 18;
+            this.ListBoxMusicans.Location = new System.Drawing.Point(12, 118);
             this.ListBoxMusicans.Name = "ListBoxMusicans";
-            this.ListBoxMusicans.Size = new System.Drawing.Size(344, 280);
+            this.ListBoxMusicans.Size = new System.Drawing.Size(259, 256);
             this.ListBoxMusicans.TabIndex = 2;
             this.ListBoxMusicans.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicans_SelectedIndexChanged);
             // 
@@ -106,10 +107,9 @@
             this.buttonYouTubeChannel.BackColor = System.Drawing.Color.Crimson;
             this.buttonYouTubeChannel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonYouTubeChannel.ForeColor = System.Drawing.Color.White;
-            this.buttonYouTubeChannel.Location = new System.Drawing.Point(964, 4);
-            this.buttonYouTubeChannel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonYouTubeChannel.Location = new System.Drawing.Point(723, 3);
             this.buttonYouTubeChannel.Name = "buttonYouTubeChannel";
-            this.buttonYouTubeChannel.Size = new System.Drawing.Size(180, 71);
+            this.buttonYouTubeChannel.Size = new System.Drawing.Size(135, 58);
             this.buttonYouTubeChannel.TabIndex = 5;
             this.buttonYouTubeChannel.Text = "YouTube Channel";
             this.buttonYouTubeChannel.UseVisualStyleBackColor = false;
@@ -119,11 +119,10 @@
             // 
             this.profileName.AutoSize = true;
             this.profileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileName.Location = new System.Drawing.Point(157, 30);
-            this.profileName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.profileName.Location = new System.Drawing.Point(118, 24);
             this.profileName.Name = "profileName";
-            this.profileName.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.profileName.Size = new System.Drawing.Size(189, 24);
+            this.profileName.Padding = new System.Windows.Forms.Padding(2);
+            this.profileName.Size = new System.Drawing.Size(160, 20);
             this.profileName.TabIndex = 8;
             this.profileName.Text = "Facebook UserName";
             // 
@@ -132,10 +131,9 @@
             this.buttonFetchMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(37)))));
             this.buttonFetchMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFetchMusic.ForeColor = System.Drawing.Color.White;
-            this.buttonFetchMusic.Location = new System.Drawing.Point(157, 71);
-            this.buttonFetchMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonFetchMusic.Location = new System.Drawing.Point(118, 58);
             this.buttonFetchMusic.Name = "buttonFetchMusic";
-            this.buttonFetchMusic.Size = new System.Drawing.Size(204, 66);
+            this.buttonFetchMusic.Size = new System.Drawing.Size(153, 54);
             this.buttonFetchMusic.TabIndex = 9;
             this.buttonFetchMusic.Text = "Fetch Music";
             this.buttonFetchMusic.UseVisualStyleBackColor = false;
@@ -147,25 +145,32 @@
             this.ListBoxMusicianVideos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListBoxMusicianVideos.FormattingEnabled = true;
             this.ListBoxMusicianVideos.HorizontalScrollbar = true;
-            this.ListBoxMusicianVideos.ItemHeight = 23;
-            this.ListBoxMusicianVideos.Location = new System.Drawing.Point(868, 145);
-            this.ListBoxMusicianVideos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ListBoxMusicianVideos.MaximumSize = new System.Drawing.Size(665, 292);
-            this.ListBoxMusicianVideos.MinimumSize = new System.Drawing.Size(509, 292);
+            this.ListBoxMusicianVideos.ItemHeight = 18;
+            this.ListBoxMusicianVideos.Location = new System.Drawing.Point(647, 118);
+            this.ListBoxMusicianVideos.MaximumSize = new System.Drawing.Size(500, 400);
+            this.ListBoxMusicianVideos.MinimumSize = new System.Drawing.Size(383, 238);
             this.ListBoxMusicianVideos.Name = "ListBoxMusicianVideos";
-            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(583, 280);
+            this.ListBoxMusicianVideos.Size = new System.Drawing.Size(438, 256);
             this.ListBoxMusicianVideos.TabIndex = 10;
             this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
+            // 
+            // youTubeVideoListBindingSource
+            // 
+            this.youTubeVideoListBindingSource.DataMember = "YouTubeVideoList";
+            this.youTubeVideoListBindingSource.DataSource = this.youTubeMusicVideosAdapterBindingSource;
+            // 
+            // youTubeMusicVideosAdapterBindingSource
+            // 
+            this.youTubeMusicVideosAdapterBindingSource.DataSource = typeof(FacebookApplication.YouTubeMusicVideosAdapter);
             // 
             // buttonPlayVideoOnYouTube
             // 
             this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(183)))), ((int)(((byte)(0)))));
             this.buttonPlayVideoOnYouTube.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPlayVideoOnYouTube.ForeColor = System.Drawing.Color.White;
-            this.buttonPlayVideoOnYouTube.Location = new System.Drawing.Point(868, 71);
-            this.buttonPlayVideoOnYouTube.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPlayVideoOnYouTube.Location = new System.Drawing.Point(651, 58);
             this.buttonPlayVideoOnYouTube.Name = "buttonPlayVideoOnYouTube";
-            this.buttonPlayVideoOnYouTube.Size = new System.Drawing.Size(180, 71);
+            this.buttonPlayVideoOnYouTube.Size = new System.Drawing.Size(135, 58);
             this.buttonPlayVideoOnYouTube.TabIndex = 11;
             this.buttonPlayVideoOnYouTube.Text = "Play In Browser";
             this.buttonPlayVideoOnYouTube.UseVisualStyleBackColor = false;
@@ -176,10 +181,9 @@
             this.buttonLinkToPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(89)))), ((int)(((byte)(152)))));
             this.buttonLinkToPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLinkToPage.ForeColor = System.Drawing.Color.White;
-            this.buttonLinkToPage.Location = new System.Drawing.Point(1056, 71);
-            this.buttonLinkToPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLinkToPage.Location = new System.Drawing.Point(792, 58);
             this.buttonLinkToPage.Name = "buttonLinkToPage";
-            this.buttonLinkToPage.Size = new System.Drawing.Size(180, 71);
+            this.buttonLinkToPage.Size = new System.Drawing.Size(135, 58);
             this.buttonLinkToPage.TabIndex = 13;
             this.buttonLinkToPage.Text = "Facebook Page";
             this.buttonLinkToPage.UseVisualStyleBackColor = false;
@@ -188,20 +192,18 @@
             // pictureBoxYouTube
             // 
             this.pictureBoxYouTube.BackgroundImage = global::FacebookApplication.Properties.Resources.youtube_logo;
-            this.pictureBoxYouTube.Location = new System.Drawing.Point(1273, 15);
-            this.pictureBoxYouTube.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxYouTube.Location = new System.Drawing.Point(955, 12);
             this.pictureBoxYouTube.Name = "pictureBoxYouTube";
-            this.pictureBoxYouTube.Size = new System.Drawing.Size(85, 79);
+            this.pictureBoxYouTube.Size = new System.Drawing.Size(64, 64);
             this.pictureBoxYouTube.TabIndex = 15;
             this.pictureBoxYouTube.TabStop = false;
             // 
             // pictureBoxFacebook
             // 
             this.pictureBoxFacebook.BackgroundImage = global::FacebookApplication.Properties.Resources.facebook_logo;
-            this.pictureBoxFacebook.Location = new System.Drawing.Point(1367, 15);
-            this.pictureBoxFacebook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxFacebook.Location = new System.Drawing.Point(1025, 12);
             this.pictureBoxFacebook.Name = "pictureBoxFacebook";
-            this.pictureBoxFacebook.Size = new System.Drawing.Size(85, 79);
+            this.pictureBoxFacebook.Size = new System.Drawing.Size(64, 64);
             this.pictureBoxFacebook.TabIndex = 14;
             this.pictureBoxFacebook.TabStop = false;
             // 
@@ -209,12 +211,11 @@
             // 
             this.profileImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.profileImage.Image = global::FacebookApplication.Properties.Resources.ProfileDefault;
-            this.profileImage.Location = new System.Drawing.Point(16, 15);
-            this.profileImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.profileImage.MinimumSize = new System.Drawing.Size(132, 122);
+            this.profileImage.Location = new System.Drawing.Point(12, 12);
+            this.profileImage.MinimumSize = new System.Drawing.Size(100, 100);
             this.profileImage.Name = "profileImage";
-            this.profileImage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.profileImage.Size = new System.Drawing.Size(132, 122);
+            this.profileImage.Padding = new System.Windows.Forms.Padding(2);
+            this.profileImage.Size = new System.Drawing.Size(100, 100);
             this.profileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.profileImage.TabIndex = 0;
             this.profileImage.TabStop = false;
@@ -222,11 +223,11 @@
             // ShockwaveFlashPlayerBox
             // 
             this.ShockwaveFlashPlayerBox.Enabled = true;
-            this.ShockwaveFlashPlayerBox.Location = new System.Drawing.Point(275, 117);
-            this.ShockwaveFlashPlayerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShockwaveFlashPlayerBox.Location = new System.Drawing.Point(273, 117);
+            this.ShockwaveFlashPlayerBox.Margin = new System.Windows.Forms.Padding(2);
             this.ShockwaveFlashPlayerBox.Name = "ShockwaveFlashPlayerBox";
             this.ShockwaveFlashPlayerBox.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ShockwaveFlashPlayerBox.OcxState")));
-            this.ShockwaveFlashPlayerBox.Size = new System.Drawing.Size(467, 297);
+            this.ShockwaveFlashPlayerBox.Size = new System.Drawing.Size(371, 255);
             this.ShockwaveFlashPlayerBox.TabIndex = 16;
             // 
             // panel1
@@ -236,48 +237,44 @@
             this.panel1.Controls.Add(this.imageNormalPictureBox);
             this.panel1.Controls.Add(likesCountLabel);
             this.panel1.Controls.Add(this.likesCountLabel1);
-            this.panel1.Location = new System.Drawing.Point(364, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(273, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 133);
+            this.panel1.Size = new System.Drawing.Size(373, 108);
             this.panel1.TabIndex = 17;
             // 
             // nameLabel1
             // 
             this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "Name", true));
             this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel1.Location = new System.Drawing.Point(220, 68);
-            this.nameLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nameLabel1.Location = new System.Drawing.Point(165, 55);
             this.nameLabel1.Name = "nameLabel1";
-            this.nameLabel1.Size = new System.Drawing.Size(257, 28);
+            this.nameLabel1.Size = new System.Drawing.Size(193, 23);
             this.nameLabel1.TabIndex = 4;
             this.nameLabel1.Text = "label1";
             // 
             // imageNormalPictureBox
             // 
             this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.pageBindingSource, "ImageNormal", true));
-            this.imageNormalPictureBox.Location = new System.Drawing.Point(0, 5);
-            this.imageNormalPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageNormalPictureBox.Location = new System.Drawing.Point(0, 4);
             this.imageNormalPictureBox.Name = "imageNormalPictureBox";
-            this.imageNormalPictureBox.Size = new System.Drawing.Size(133, 123);
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(100, 100);
             this.imageNormalPictureBox.TabIndex = 1;
             this.imageNormalPictureBox.TabStop = false;
             // 
             // likesCountLabel1
             // 
             this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pageBindingSource, "LikesCount", true));
-            this.likesCountLabel1.Location = new System.Drawing.Point(275, 20);
-            this.likesCountLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.likesCountLabel1.Location = new System.Drawing.Point(206, 16);
             this.likesCountLabel1.Name = "likesCountLabel1";
-            this.likesCountLabel1.Size = new System.Drawing.Size(133, 28);
+            this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
             this.likesCountLabel1.TabIndex = 3;
             this.likesCountLabel1.Text = "label1";
             // 
             // MusicForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1464, 475);
+            this.ClientSize = new System.Drawing.Size(1101, 386);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ShockwaveFlashPlayerBox);
             this.Controls.Add(this.pictureBoxYouTube);
@@ -292,13 +289,15 @@
             this.Controls.Add(this.profileImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MusicForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MusicForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MusicForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeVideoListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeMusicVideosAdapterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
@@ -329,5 +328,7 @@
         private System.Windows.Forms.PictureBox imageNormalPictureBox;
         private System.Windows.Forms.Label likesCountLabel1;
         private System.Windows.Forms.Label nameLabel1;
+        private System.Windows.Forms.BindingSource youTubeMusicVideosAdapterBindingSource;
+        private System.Windows.Forms.BindingSource youTubeVideoListBindingSource;
     }
 }

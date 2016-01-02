@@ -167,7 +167,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveLoadUtil.cs" />
     <Compile Include="UserProxy.cs" />
-    <Compile Include="YouTubeMusicVideos.cs" />
+    <Compile Include="YouTubeMusicVideosAdapter.cs" />
+    <Compile Include="YouTubeVideo.cs" />
     <EmbeddedResource Include="AnalysisProgressBar.resx">
       <DependentUpon>AnalysisProgressBar.cs</DependentUpon>
     </EmbeddedResource>
