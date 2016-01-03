@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FacebookApplication
 {
-    class YouTubeVideo
+    public class YouTubeVideo
     {
         public string VideoName { get; set; }
         public string VideoKey { get; set; }

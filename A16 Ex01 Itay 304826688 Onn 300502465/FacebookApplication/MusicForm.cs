@@ -57,7 +57,7 @@ namespace FacebookApplication
 
                 m_FacebookMusicPages = new FacbookMusicPages(m_LoggedUser);
                 m_YouTubeProxy = new YouTubeProxy();
-                VideosList = new List<YouTubeVideo>();
+                //VideosList = new List<YouTubeVideo>();
                 initMusicForm();
             }
         }
@@ -143,7 +143,7 @@ namespace FacebookApplication
 
                 Page selected = pageBindingSource.Current as Page;
 
-                VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
+                //VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
 
 
 
@@ -163,7 +163,7 @@ namespace FacebookApplication
 
             Page selected = pageBindingSource.Current as Page;
 
-            VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
+            //VideosList = m_YouTubeProxy.SearchProxy(selected.Name);
 
             Page selectedPage = pageBindingSource.Current as Page;
                 //ListBoxMusicans.SelectedItem as Page;
