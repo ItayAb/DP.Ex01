@@ -18,13 +18,9 @@ namespace FacebookApplication
     public partial class FormMusic : Form
     {
         private User m_LoggedUser;
-
         private bool v_FormOpen;
-
         private FacbookMusicPages m_FacebookMusicPages;
-
         private YouTubeProxy m_YouTubeProxy;
-
         private YouTubeVideo m_CurrentVideo;
         private Page m_CurrentPage;
 
@@ -71,16 +67,6 @@ namespace FacebookApplication
             }
 
             pageBindingSource.DataSource = m_FacebookMusicPages.MusicPagesList;
-            
-            //youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-
-            //Thread threadYouTube = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
-            //threadYouTube.IsBackground = true;
-            //threadYouTube.Start();
-            //threadYouTube.Join();
-
-
-            //this.Invoke(new Action(() => youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList));
         }
             
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
@@ -140,12 +126,8 @@ namespace FacebookApplication
 
             if (v_FormOpen)
             {
-                ListBoxMusicans.Enabled = false;
                 m_YouTubeProxy.Musician = m_CurrentPage.Name;
-                ListBoxMusicianVideos.Enabled = false;        
                 youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-                ListBoxMusicianVideos.Enabled = true;
-                ListBoxMusicans.Enabled = true;
             }
         }
     }

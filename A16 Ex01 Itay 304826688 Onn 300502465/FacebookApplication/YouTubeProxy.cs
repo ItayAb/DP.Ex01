@@ -25,7 +25,6 @@ namespace FacebookApplication
 
         public string Musician { get; set; }
 
-
         public List<YouTubeVideo> YouTubeVideoList
         {
             get {
@@ -41,6 +40,10 @@ namespace FacebookApplication
             }
         }
         
+        /// <summary>
+        /// Search if The Artist is Locally stores or go and Search him on YouTube
+        /// Also Create List of Video Object for the MUISC FORM
+        /// </summary>
         public void SearchProxy()
         {
             //check if the Dictionary was initilized
@@ -55,14 +58,8 @@ namespace FacebookApplication
             }
             else
             {
-                //Thread searchTread = new Thread(() => searchYouTube());
-                //searchTread.Start();
-                //searchTread.Join();
                 searchYouTube();
 
-                //Thread updateThread = new Thread(() => updateCached());
-                //updateThread.Start();
-                //updateThread.Join();
                 updateCached();
 
                 if (m_CacheVideos.ContainsKey(Musician))
