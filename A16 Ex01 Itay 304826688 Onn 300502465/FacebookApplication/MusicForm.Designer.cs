@@ -39,8 +39,6 @@
             this.profileName = new System.Windows.Forms.Label();
             this.buttonFetchMusic = new System.Windows.Forms.Button();
             this.ListBoxMusicianVideos = new System.Windows.Forms.ListBox();
-            this.youTubeVideoListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.youTubeMusicVideosAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonPlayVideoOnYouTube = new System.Windows.Forms.Button();
             this.buttonLinkToPage = new System.Windows.Forms.Button();
             this.pictureBoxYouTube = new System.Windows.Forms.PictureBox();
@@ -51,17 +49,17 @@
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.likesCountLabel1 = new System.Windows.Forms.Label();
+            this.youTubeProxyVideoListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             likesCountLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeVideoListBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeMusicVideosAdapterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // likesCountLabel
@@ -142,6 +140,8 @@
             // ListBoxMusicianVideos
             // 
             this.ListBoxMusicianVideos.BackColor = System.Drawing.Color.AliceBlue;
+            this.ListBoxMusicianVideos.DataSource = this.youTubeProxyVideoListBindingSource;
+            this.ListBoxMusicianVideos.DisplayMember = "VideoName";
             this.ListBoxMusicianVideos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListBoxMusicianVideos.FormattingEnabled = true;
             this.ListBoxMusicianVideos.HorizontalScrollbar = true;
@@ -152,9 +152,9 @@
             this.ListBoxMusicianVideos.Name = "ListBoxMusicianVideos";
             this.ListBoxMusicianVideos.Size = new System.Drawing.Size(438, 256);
             this.ListBoxMusicianVideos.TabIndex = 10;
+            this.ListBoxMusicianVideos.ValueMember = "VideoKey";
             this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
             // 
-            
             // buttonPlayVideoOnYouTube
             // 
             this.buttonPlayVideoOnYouTube.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(183)))), ((int)(((byte)(0)))));
@@ -262,6 +262,10 @@
             this.likesCountLabel1.TabIndex = 3;
             this.likesCountLabel1.Text = "label1";
             // 
+            // youTubeProxyVideoListBindingSource
+            // 
+            this.youTubeProxyVideoListBindingSource.DataSource = typeof(FacebookApplication.YouTubeVideo);
+            // 
             // MusicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,8 +292,6 @@
             this.Text = "MusicForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MusicForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeVideoListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeMusicVideosAdapterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
@@ -297,6 +299,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +323,6 @@
         private System.Windows.Forms.PictureBox imageNormalPictureBox;
         private System.Windows.Forms.Label likesCountLabel1;
         private System.Windows.Forms.Label nameLabel1;
-        private System.Windows.Forms.BindingSource youTubeMusicVideosAdapterBindingSource;
-        private System.Windows.Forms.BindingSource youTubeVideoListBindingSource;
+        private System.Windows.Forms.BindingSource youTubeProxyVideoListBindingSource;
     }
 }

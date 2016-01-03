@@ -15,11 +15,15 @@ namespace FacebookApplication
 
         private string m_Musician;
 
+        private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
+        private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
+        private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
 
+        public List<YouTubeVideo> YouTubeVideoList { get; set; }
         
         //public Dictionary<string, List<YouTubeVideo>> CachedVideos { get; }
 
-        public List<YouTubeVideo> SearchProxy(string i_Musician)
+        public void SearchProxy(string i_Musician)
         {
             m_Musician = i_Musician;
             List<YouTubeVideo> result = new List<YouTubeVideo>();
@@ -43,31 +47,14 @@ namespace FacebookApplication
 
                 if (m_CacheVideos.ContainsKey(m_Musician))
                 {
-                    result = m_CacheVideos[m_Musician];
+                    YouTubeVideoList = m_CacheVideos[m_Musician];
                 }
                 else
                 {
                     result = null;
                 }
             }
-
-            return result;
         }
-
-
-        public async void activeSearch()
-        {
-            /*
-            Task<string> searchTask = searchYouTube();
-
-            while (searchTask.IsCompleted)
-            {
-                return;
-            }
-            string res = await searchTask;
-            //await searchYouTube();
-        */
-             }
 
 
 
@@ -90,48 +77,13 @@ namespace FacebookApplication
                 Console.WriteLine("Finished Search");
 
             }
-            catch (AggregateException errors)
+            catch (Exception error)
             {
-                foreach (Exception error in errors.InnerExceptions)
-                {
-
-                }
+                Console.Error.Write(error);
             }
 
         }
         
-        /*
-        private async Task<string> searchYouTube()
-        {
-            // initate the youtube object
-            if (m_YouTubeSearchObject == null)
-            {
-                m_YouTubeSearchObject = new YouTubeSearch.YouTubeClass();
-            }
-            else
-            {
-                m_YouTubeSearchObject.getMusicianVideos.Clear();
-            }
-
-            try
-            {
-                //await m_YouTubeSearchObject.YouTubeSearch(m_Musician);
-
-                Console.WriteLine("Finished Search");
-
-            }
-            catch (AggregateException errors)
-            {
-                foreach (Exception error in errors.InnerExceptions)
-                {
-
-                }
-            }
-
-            return "Done";
-        }
-         */ 
-
         private void updateCached()
         {
             
@@ -144,6 +96,9 @@ namespace FacebookApplication
                     YouTubeVideo videoToAdd = new YouTubeVideo();
                     videoToAdd.VideoKey = v.Item2;
                     videoToAdd.VideoName = v.Item1;
+                    videoToAdd.VideoUrl = r_youTubeVideoLink + v.Item2;
+                    videoToAdd.VideoLinkForPlayer = r_youTubeVideoLinkForPlayer + v.Item2;
+                    videoToAdd.YouTubeChannelUrl = r_youTubeChannelLink + m_YouTubeSearchObject.getMusicianChannelID;
 
                     videoList.Add(videoToAdd);
                 }
