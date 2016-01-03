@@ -85,13 +85,12 @@ namespace FacebookApplication
             }
             else
             {
-                // Clear the Items in Music Box
-                //ListBoxMusicans.Items.Clear();
 
                 if (m_LoggedUser.LikedPages.Count == 0)
                 {
                     MessageBox.Show("No liked pages to retrieve :( ");
                 }
+
 
                 // collect 
                 m_FacebookMusicPages.fetch();
@@ -122,70 +121,33 @@ namespace FacebookApplication
         /// <param name="e"></param>
         private void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            Page selected = pageBindingSource.Current as Page;
-            m_CurrentPage = selected;    
-            m_PageUrl = m_CurrentPage.URL;
-
-            m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
-            youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-            
-
-            //m_Thread = new Thread(() => searchYouTube());
-            //m_Thread.IsBackground = true;
-            //m_Thread.Start();
+            if (v_FormOpen)
+            {
+                Page selected = pageBindingSource.Current as Page;
+                m_CurrentPage = selected;
 
 
-            //combine the other tread to the ui
-            //Invoke(new Action(() => fetchMusicianVideos()));
+                m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
+                youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
+                YouTubeVideo video = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
+                m_CurrentVideo = video;
+
+            }
         }
 
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
         {
-            /*
-            if (m_YouTubeSearchObject == null)
+
+            if (m_CurrentVideo == null)
             {
                 MessageBox.Show("Please Choose a Musician Page First");
             }
             else
             {
-                Process.Start(string.Format("{0}{1}", r_youTubeChannelLink, m_YouTubeSearchObject.getMusicianChannelID));
-            }
-             */
-        }
-
-
-
-        /// <summary>
-        /// get the top videos of the musician from youtube and reflect the resultes to the user
-        /// </summary>
-        private void fetchMusicianVideos()
-        {
-            if (v_FormOpen)
-            {
-                //Invoke(new Action(() => ListBoxMusicianVideos.Items.Clear()));
-                //ListBoxMusicianVideos.Items.Clear();
-
-
-                // handle if there is no videos
-
-                //    MessageBox.Show("No Videos to retrieve :(");
-
-
-
-
-                //Invoke(new Action(() => ListBoxMusicianVideos.DisplayMember = "tuple.Item1"));
-                //nvoke(new Action(() => ListBoxMusicianVideos.Items.Add(tuple)));
-
-
-
-
-                // if the user selected an artist and the UI need to update with the new selected item
-                return;
+                Process.Start(m_CurrentVideo.YouTubeChannelUrl);
             }
         }
-
 
 
         /// <summary>
@@ -195,51 +157,44 @@ namespace FacebookApplication
         /// <param name="e"></param>
         private void ListBoxMusicianVideos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            YouTubeVideo video = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
-            ShockwaveFlashPlayerBox.Movie = video.VideoLinkForPlayer;
-            /*
-            Tuple<string, string> selectedItem = ListBoxMusicianVideos.SelectedItem as Tuple<string, string>;
-            m_VideoId = selectedItem.Item2;
-            ShockwaveFlashPlayerBox.Movie = string.Format("{0}{1}", r_youTubeVideoLinkForPlayer, m_VideoId);
-             */
+            m_CurrentVideo = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
+
+            if (v_FormOpen)
+            {
+                ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
+            }
         }
 
         private void buttonPlayVideoOnYouTube_Click(object sender, EventArgs e)
         {
-            /*
-            if (m_VideoId == null)
+            if (m_CurrentVideo.VideoUrl == null)
             {
                 MessageBox.Show("Please Choose a Video From the List");
             }
             else
             {
-                Process.Start(string.Format("{0}{1}", r_youTubeVideoLink, m_VideoId));
+                Process.Start(m_CurrentVideo.VideoUrl);
             }
-             */
         }
 
         private void buttonLinkToPage_Click(object sender, EventArgs e)
         {
-
-
-            /*
-            if (m_PageUrl == null)
+            if (m_CurrentPage == null)
             {
                 MessageBox.Show("Please Choose a Music Page From The List");
             }
             else
             {
-                Process.Start(m_PageUrl);
+                Process.Start(m_CurrentPage.URL);
             }
-             */
         }
 
         private void MusicForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             v_FormOpen = false;
-
+            pageBindingSource.Dispose();
+            youTubeProxyVideoListBindingSource.Dispose();
         }
-
     }
 }
 
