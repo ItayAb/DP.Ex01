@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YouTubeSearch;
+using System.Threading;
 
 namespace FacebookApplication
 {
@@ -20,8 +21,6 @@ namespace FacebookApplication
         private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
 
         public List<YouTubeVideo> YouTubeVideoList { get; set; }
-        
-        //public Dictionary<string, List<YouTubeVideo>> CachedVideos { get; }
 
         public void SearchProxy(string i_Musician)
         {
@@ -30,7 +29,7 @@ namespace FacebookApplication
             //check if the Dictionary was initilized
             if (m_CacheVideos == null)
             {
-                m_CacheVideos = new Dictionary<string,List<YouTubeVideo>>();
+                m_CacheVideos = new Dictionary<string, List<YouTubeVideo>>();
             }
 
             if (m_CacheVideos.ContainsKey(m_Musician))
@@ -39,9 +38,6 @@ namespace FacebookApplication
             }
             else
             {
-                 //searchYouTube();
-                //activeSearch();
-
                 searchYouTube();
                 updateCached();
 
@@ -83,10 +79,10 @@ namespace FacebookApplication
             }
 
         }
-        
+
         private void updateCached()
         {
-            
+
             List<YouTubeVideo> videoList = new List<YouTubeVideo>();
 
             if (m_YouTubeSearchObject != null)

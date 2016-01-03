@@ -153,7 +153,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="IFetchMusicData.cs" />
     <Compile Include="LikeAnalyzer.cs" />
     <Compile Include="LikeAnalyzerForm.cs">
       <SubType>Form</SubType>
@@ -161,11 +160,11 @@
     <Compile Include="LikeAnalyzerForm.Designer.cs">
       <DependentUpon>LikeAnalyzerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MusicForm.cs">
+    <Compile Include="FormMusic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MusicForm.Designer.cs">
-      <DependentUpon>MusicForm.cs</DependentUpon>
+    <Compile Include="FormMusic.Designer.cs">
+      <DependentUpon>FormMusic.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,8 +181,8 @@
     <EmbeddedResource Include="LikeAnalyzerForm.resx">
       <DependentUpon>LikeAnalyzerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MusicForm.resx">
-      <DependentUpon>MusicForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormMusic.resx">
+      <DependentUpon>FormMusic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

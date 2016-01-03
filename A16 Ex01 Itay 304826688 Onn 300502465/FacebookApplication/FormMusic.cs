@@ -15,27 +15,21 @@ using System.Threading;
 
 namespace FacebookApplication
 {
-    public partial class MusicForm : Form
+    public partial class FormMusic : Form
     {
         private User m_LoggedUser;
 
-        private List<Page> m_PagesList;
-
-        private string m_PageUrl;
         private bool v_FormOpen;
 
-        // TODO: Facade or Adapter
-        private IFetchMusicData m_FacebookMusicPages;
+        private FacbookMusicPages m_FacebookMusicPages;
 
         private YouTubeProxy m_YouTubeProxy;
 
         private YouTubeVideo m_CurrentVideo;
         private Page m_CurrentPage;
 
-        public List<YouTubeVideo> VideosList { get; set; }
-
         /// <param name="i_LoggedUser"> get user object from the main form</param>
-        public MusicForm(User i_LoggedUser)
+        public FormMusic(User i_LoggedUser)
         {
             InitializeComponent();
 
@@ -44,8 +38,6 @@ namespace FacebookApplication
             if (i_LoggedUser != null)
             {
                 m_LoggedUser = i_LoggedUser;
-                m_PagesList = new List<Page>();
-
                 m_FacebookMusicPages = new FacbookMusicPages(m_LoggedUser);
                 m_YouTubeProxy = new YouTubeProxy();
                 initMusicForm();
@@ -68,12 +60,36 @@ namespace FacebookApplication
         // load the user profile picture and init welcome message
         private void initMusicForm()
         {
+            // collect
+            Thread thread = new Thread(() =>
+                {
+                    m_FacebookMusicPages.fetch();
+                });
+            thread.IsBackground = true;
+            thread.Start();
+
             profileName.Text = string.Format("Hello {0}", m_LoggedUser.Name);
 
             if (!string.IsNullOrEmpty(m_LoggedUser.PictureNormalURL))
             {
                 profileImage.LoadAsync(m_LoggedUser.PictureNormalURL);
             }
+
+
+            thread.Join();
+
+
+            pageBindingSource.DataSource = m_FacebookMusicPages.get();
+            m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
+
+            //Thread threadYouTube = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
+            //threadYouTube.IsBackground = true;
+            //threadYouTube.Start();
+            //threadYouTube.Join();
+
+            youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
+            ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
+
         }
 
 
@@ -91,25 +107,38 @@ namespace FacebookApplication
                     MessageBox.Show("No liked pages to retrieve :( ");
                 }
 
+                /*
+                // collect
+                Thread thread = new Thread(() => m_FacebookMusicPages.fetch());
+                thread.IsBackground = true;
+                thread.Start();
+                */
+                //thread.Join();
 
-                // collect 
-                m_FacebookMusicPages.fetch();
                 pageBindingSource.DataSource = m_FacebookMusicPages.get();
-                Page selected = pageBindingSource.Current as Page;
-                m_CurrentPage = selected;
+                /*
+                this.Invoke(new Action(() =>
+                {
+                    pageBindingSource.DataSource = m_FacebookMusicPages.get();
+                }));
+                 */
 
-                //Thread thread = new Thread(() => fetchPages());
-                //thread.IsBackground = true;
-                //thread.Start();
-                //fetchPages();
+                //m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);             
+                Thread threadYouTube = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
+                threadYouTube.IsBackground = true;
+                threadYouTube.Start();
+                
+                threadYouTube.Join();
 
-                m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
                 youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-
-                YouTubeVideo video = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
-                m_CurrentVideo = video;
-
                 ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
+
+                /*
+                this.Invoke(new Action(() => {
+                    youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
+                    ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
+               }));
+                 */
             }
         }
 
@@ -123,22 +152,27 @@ namespace FacebookApplication
         {
             if (v_FormOpen)
             {
-                Page selected = pageBindingSource.Current as Page;
-                m_CurrentPage = selected;
+                //Page selected = pageBindingSource.Current as Page;
+                //m_CurrentPage = selected;
 
-
-                m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
-                youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-                YouTubeVideo video = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
-                m_CurrentVideo = video;
-
+                Thread thread = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
+                thread.IsBackground = true;
+                thread.Start();
+                
+                //thread.Join();
+                
+                this.Invoke(new Action(() => 
+                {
+                    ListBoxMusicianVideos.Enabled = false;
+                    youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
+                    ListBoxMusicianVideos.Enabled = true;
+                }));
             }
         }
 
 
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
         {
-
             if (m_CurrentVideo == null)
             {
                 MessageBox.Show("Please Choose a Musician Page First");
@@ -157,8 +191,6 @@ namespace FacebookApplication
         /// <param name="e"></param>
         private void ListBoxMusicianVideos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_CurrentVideo = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
-
             if (v_FormOpen)
             {
                 ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
@@ -195,27 +227,15 @@ namespace FacebookApplication
             pageBindingSource.Dispose();
             youTubeProxyVideoListBindingSource.Dispose();
         }
+
+        private void youTubeProxyVideoListBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            m_CurrentVideo = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
+        }
+
+        private void pageBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            m_CurrentPage = pageBindingSource.Current as Page;
+        }
     }
 }
-
-
-
-/*
- // fetches the pages and filtring the pages of Musicians
- private void fetchPages()
- {
-     foreach (Page page in m_LoggedUser.LikedPages)
-     {
-         if (page.Category == "Musician/Band")
-         { 
-             //ListBoxMusicans.Invoke(new Action(() => m_MusicPages.Add(page)));
-             //musicPages.Add(page);
-             m_MusicPages.Add(page);
-         }
-     }
-
-     // using lambda in oreder to return to main thread for the UI
-     ListBoxMusicans.Invoke(new Action(() => pageBindingSource.DataSource = m_MusicPages));
-            
- }
- */

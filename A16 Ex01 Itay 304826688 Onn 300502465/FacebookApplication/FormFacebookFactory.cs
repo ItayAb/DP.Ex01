@@ -17,9 +17,9 @@ namespace FacebookApplication
             {
                 requestedForm = new LikeAnalyzerForm(i_LoggedUser);
             }
-            else if (i_TypeOfForm.Equals(typeof(MusicForm)))
+            else if (i_TypeOfForm.Equals(typeof(FormMusic)))
             {
-                requestedForm = new MusicForm(i_LoggedUser);
+                requestedForm = new FormMusic(i_LoggedUser);
             }
 
             return requestedForm;

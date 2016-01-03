@@ -214,13 +214,13 @@ namespace FacebookApplication
 
         private void buttonMusicView_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<MusicForm>().Count() > 0)
+            if (Application.OpenForms.OfType<FormMusic>().Count() > 0)
             {
                 MessageBox.Show("Music is already open!");
             }
             else
             {
-                FormFacebookFactory.CreateFacebookForm(typeof(MusicForm), m_LoggedInUser).Show();
+                FormFacebookFactory.CreateFacebookForm(typeof(FormMusic), m_LoggedInUser).Show();
             }
         }
 
