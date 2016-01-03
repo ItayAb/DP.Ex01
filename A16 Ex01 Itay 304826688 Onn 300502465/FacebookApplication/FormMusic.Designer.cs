@@ -37,9 +37,7 @@
             this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonYouTubeChannel = new System.Windows.Forms.Button();
             this.profileName = new System.Windows.Forms.Label();
-            this.buttonFetchMusic = new System.Windows.Forms.Button();
             this.ListBoxMusicianVideos = new System.Windows.Forms.ListBox();
-            this.youTubeProxyVideoListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonPlayVideoOnYouTube = new System.Windows.Forms.Button();
             this.buttonLinkToPage = new System.Windows.Forms.Button();
             this.pictureBoxYouTube = new System.Windows.Forms.PictureBox();
@@ -50,16 +48,17 @@
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.likesCountLabel1 = new System.Windows.Forms.Label();
+            this.youTubeProxyVideoListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             likesCountLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShockwaveFlashPlayerBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // likesCountLabel
@@ -94,7 +93,7 @@
             this.ListBoxMusicans.Name = "ListBoxMusicans";
             this.ListBoxMusicans.Size = new System.Drawing.Size(259, 256);
             this.ListBoxMusicans.TabIndex = 2;
-            this.ListBoxMusicans.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicans_SelectedIndexChanged);
+            this.ListBoxMusicans.ValueMember = "FacebookMusicPageList";
             // 
             // pageBindingSource
             // 
@@ -118,25 +117,12 @@
             // 
             this.profileName.AutoSize = true;
             this.profileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileName.Location = new System.Drawing.Point(118, 24);
+            this.profileName.Location = new System.Drawing.Point(107, 56);
             this.profileName.Name = "profileName";
             this.profileName.Padding = new System.Windows.Forms.Padding(2);
             this.profileName.Size = new System.Drawing.Size(160, 20);
             this.profileName.TabIndex = 8;
             this.profileName.Text = "Facebook UserName";
-            // 
-            // buttonFetchMusic
-            // 
-            this.buttonFetchMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(37)))));
-            this.buttonFetchMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFetchMusic.ForeColor = System.Drawing.Color.White;
-            this.buttonFetchMusic.Location = new System.Drawing.Point(118, 58);
-            this.buttonFetchMusic.Name = "buttonFetchMusic";
-            this.buttonFetchMusic.Size = new System.Drawing.Size(153, 54);
-            this.buttonFetchMusic.TabIndex = 9;
-            this.buttonFetchMusic.Text = "Fetch Music";
-            this.buttonFetchMusic.UseVisualStyleBackColor = false;
-            this.buttonFetchMusic.Click += new System.EventHandler(this.buttonFetchMusic_Click);
             // 
             // ListBoxMusicianVideos
             // 
@@ -154,12 +140,6 @@
             this.ListBoxMusicianVideos.Size = new System.Drawing.Size(438, 256);
             this.ListBoxMusicianVideos.TabIndex = 10;
             this.ListBoxMusicianVideos.ValueMember = "VideoKey";
-            this.ListBoxMusicianVideos.SelectedIndexChanged += new System.EventHandler(this.ListBoxMusicianVideos_SelectedIndexChanged);
-            // 
-            // youTubeProxyVideoListBindingSource
-            // 
-            this.youTubeProxyVideoListBindingSource.DataSource = typeof(FacebookApplication.YouTubeVideo);
-            this.youTubeProxyVideoListBindingSource.CurrentChanged += new System.EventHandler(this.youTubeProxyVideoListBindingSource_CurrentChanged);
             // 
             // buttonPlayVideoOnYouTube
             // 
@@ -268,7 +248,12 @@
             this.likesCountLabel1.TabIndex = 3;
             this.likesCountLabel1.Text = "label1";
             // 
-            // MusicForm
+            // youTubeProxyVideoListBindingSource
+            // 
+            this.youTubeProxyVideoListBindingSource.DataSource = typeof(FacebookApplication.YouTubeVideo);
+            this.youTubeProxyVideoListBindingSource.CurrentChanged += new System.EventHandler(this.youTubeProxyVideoListBindingSource_CurrentChanged);
+            // 
+            // FormMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -280,7 +265,6 @@
             this.Controls.Add(this.buttonLinkToPage);
             this.Controls.Add(this.buttonPlayVideoOnYouTube);
             this.Controls.Add(this.ListBoxMusicianVideos);
-            this.Controls.Add(this.buttonFetchMusic);
             this.Controls.Add(this.profileName);
             this.Controls.Add(this.buttonYouTubeChannel);
             this.Controls.Add(this.ListBoxMusicans);
@@ -289,12 +273,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "MusicForm";
+            this.Name = "FormMusic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MusicForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MusicForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYouTube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFacebook)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
@@ -302,6 +285,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.youTubeProxyVideoListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,7 +297,6 @@
         private System.Windows.Forms.ListBox ListBoxMusicans;
         private System.Windows.Forms.Button buttonYouTubeChannel;
         private System.Windows.Forms.Label profileName;
-        private System.Windows.Forms.Button buttonFetchMusic;
         private System.Windows.Forms.ListBox ListBoxMusicianVideos;
         private System.Windows.Forms.Button buttonPlayVideoOnYouTube;
         private System.Windows.Forms.Button buttonLinkToPage;

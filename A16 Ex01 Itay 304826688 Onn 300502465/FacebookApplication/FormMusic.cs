@@ -61,12 +61,7 @@ namespace FacebookApplication
         private void initMusicForm()
         {
             // collect
-            Thread thread = new Thread(() =>
-                {
-                    m_FacebookMusicPages.fetch();
-                });
-            thread.IsBackground = true;
-            thread.Start();
+            m_FacebookMusicPages.fetch();
 
             profileName.Text = string.Format("Hello {0}", m_LoggedUser.Name);
 
@@ -75,102 +70,19 @@ namespace FacebookApplication
                 profileImage.LoadAsync(m_LoggedUser.PictureNormalURL);
             }
 
-
-            thread.Join();
-
-
-            pageBindingSource.DataSource = m_FacebookMusicPages.get();
-            m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);
+            pageBindingSource.DataSource = m_FacebookMusicPages.MusicPagesList;
+            
+            //youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
 
             //Thread threadYouTube = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
             //threadYouTube.IsBackground = true;
             //threadYouTube.Start();
             //threadYouTube.Join();
 
-            youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-            ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
 
+            //this.Invoke(new Action(() => youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList));
         }
-
-
-        private void buttonFetchMusic_Click(object sender, EventArgs e)
-        {
-            if (m_LoggedUser == null)
-            {
-                MessageBox.Show("Please login to Facebook First...");
-            }
-            else
-            {
-
-                if (m_LoggedUser.LikedPages.Count == 0)
-                {
-                    MessageBox.Show("No liked pages to retrieve :( ");
-                }
-
-                /*
-                // collect
-                Thread thread = new Thread(() => m_FacebookMusicPages.fetch());
-                thread.IsBackground = true;
-                thread.Start();
-                */
-                //thread.Join();
-
-                pageBindingSource.DataSource = m_FacebookMusicPages.get();
-                /*
-                this.Invoke(new Action(() =>
-                {
-                    pageBindingSource.DataSource = m_FacebookMusicPages.get();
-                }));
-                 */
-
-                //m_YouTubeProxy.SearchProxy(m_CurrentPage.Name);             
-                Thread threadYouTube = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
-                threadYouTube.IsBackground = true;
-                threadYouTube.Start();
-                
-                threadYouTube.Join();
-
-                youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-                ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
-
-                /*
-                this.Invoke(new Action(() => {
-                    youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-                    ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
-               }));
-                 */
-            }
-        }
-
-
-        /// <summary>
-        /// method that activate the youtube search and all the data necessary for the form buttons
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ListBoxMusicans_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (v_FormOpen)
-            {
-                //Page selected = pageBindingSource.Current as Page;
-                //m_CurrentPage = selected;
-
-                Thread thread = new Thread(() => m_YouTubeProxy.SearchProxy(m_CurrentPage.Name));
-                thread.IsBackground = true;
-                thread.Start();
-                
-                //thread.Join();
-                
-                this.Invoke(new Action(() => 
-                {
-                    ListBoxMusicianVideos.Enabled = false;
-                    youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
-                    ListBoxMusicianVideos.Enabled = true;
-                }));
-            }
-        }
-
-
+            
         private void buttonYouTubeChannel_Click(object sender, EventArgs e)
         {
             if (m_CurrentVideo == null)
@@ -180,20 +92,6 @@ namespace FacebookApplication
             else
             {
                 Process.Start(m_CurrentVideo.YouTubeChannelUrl);
-            }
-        }
-
-
-        /// <summary>
-        /// each time the user select a video the video id changes for the play button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ListBoxMusicianVideos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (v_FormOpen)
-            {
-                ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
             }
         }
 
@@ -230,12 +128,25 @@ namespace FacebookApplication
 
         private void youTubeProxyVideoListBindingSource_CurrentChanged(object sender, EventArgs e)
         {
+            ListBoxMusicans.Enabled = false;
             m_CurrentVideo = youTubeProxyVideoListBindingSource.Current as YouTubeVideo;
+            ShockwaveFlashPlayerBox.Movie = m_CurrentVideo.VideoLinkForPlayer;
+            ListBoxMusicans.Enabled = true;
         }
 
         private void pageBindingSource_CurrentChanged(object sender, EventArgs e)
         {
             m_CurrentPage = pageBindingSource.Current as Page;
+
+            if (v_FormOpen)
+            {
+                ListBoxMusicans.Enabled = false;
+                m_YouTubeProxy.Musician = m_CurrentPage.Name;
+                ListBoxMusicianVideos.Enabled = false;        
+                youTubeProxyVideoListBindingSource.DataSource = m_YouTubeProxy.YouTubeVideoList;
+                ListBoxMusicianVideos.Enabled = true;
+                ListBoxMusicans.Enabled = true;
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using YouTubeSearch;
 using System.Threading;
 
+
+
 namespace FacebookApplication
 {
     class YouTubeProxy
@@ -14,45 +16,61 @@ namespace FacebookApplication
 
         private YouTubeClass m_YouTubeSearchObject;
 
-        private string m_Musician;
+        private List<Tuple<string, string>> m_YouTubeSearchResult;
+        private List<YouTubeVideo> m_YouTubeVideoList;
 
         private readonly string r_youTubeChannelLink = "https://www.youtube.com/channel/";
         private readonly string r_youTubeVideoLink = "https://www.youtube.com/watch?v=";
         private readonly string r_youTubeVideoLinkForPlayer = "https://www.youtube.com/v/";
 
-        public List<YouTubeVideo> YouTubeVideoList { get; set; }
+        public string Musician { get; set; }
 
-        public void SearchProxy(string i_Musician)
+
+        public List<YouTubeVideo> YouTubeVideoList
         {
-            m_Musician = i_Musician;
-            List<YouTubeVideo> result = new List<YouTubeVideo>();
+            get {
+               
+                SearchProxy();
+                
+                return m_YouTubeVideoList;
+            }
+
+            set 
+            {
+               m_YouTubeVideoList = value;   
+            }
+        }
+        
+        public void SearchProxy()
+        {
             //check if the Dictionary was initilized
             if (m_CacheVideos == null)
             {
                 m_CacheVideos = new Dictionary<string, List<YouTubeVideo>>();
             }
 
-            if (m_CacheVideos.ContainsKey(m_Musician))
+            if (m_CacheVideos.ContainsKey(Musician))
             {
-                result = m_CacheVideos[m_Musician];
+                m_YouTubeVideoList = m_CacheVideos[Musician];
             }
             else
             {
+                //Thread searchTread = new Thread(() => searchYouTube());
+                //searchTread.Start();
+                //searchTread.Join();
                 searchYouTube();
+
+                //Thread updateThread = new Thread(() => updateCached());
+                //updateThread.Start();
+                //updateThread.Join();
                 updateCached();
 
-                if (m_CacheVideos.ContainsKey(m_Musician))
+                if (m_CacheVideos.ContainsKey(Musician))
                 {
-                    YouTubeVideoList = m_CacheVideos[m_Musician];
-                }
-                else
-                {
-                    result = null;
-                }
+                    m_YouTubeVideoList = m_CacheVideos[Musician];
+                } 
             }
         }
-
-
 
         private void searchYouTube()
         {
@@ -64,11 +82,18 @@ namespace FacebookApplication
             else
             {
                 m_YouTubeSearchObject.getMusicianVideos.Clear();
+                
+                if (m_YouTubeSearchResult != null)
+	            {
+                    m_YouTubeSearchResult.Clear();
+	            }
             }
 
             try
             {
-                m_YouTubeSearchObject.YouTubeSearch(m_Musician);
+                m_YouTubeSearchObject.YouTubeSearch(Musician);
+                
+                m_YouTubeSearchResult = new List<Tuple<string, string>>(m_YouTubeSearchObject.getMusicianVideos);
 
                 Console.WriteLine("Finished Search");
 
@@ -77,17 +102,15 @@ namespace FacebookApplication
             {
                 Console.Error.Write(error);
             }
-
         }
 
         private void updateCached()
         {
-
             List<YouTubeVideo> videoList = new List<YouTubeVideo>();
 
             if (m_YouTubeSearchObject != null)
             {
-                foreach (Tuple<string, string> v in m_YouTubeSearchObject.getMusicianVideos)
+                foreach (Tuple<string, string> v in m_YouTubeSearchResult)
                 {
                     YouTubeVideo videoToAdd = new YouTubeVideo();
                     videoToAdd.VideoKey = v.Item2;
@@ -100,8 +123,17 @@ namespace FacebookApplication
                 }
             }
 
-            m_CacheVideos.Add(m_Musician, videoList);
+            try
+            {
+                if (videoList.Count > 0)
+                {
+                    m_CacheVideos.Add(Musician, videoList);
+                }
+            }
+            catch (ArgumentException)
+            {
+                Console.Error.WriteLine("Multiply Key Error, Same Video Name");
+            } 
         }
-
     }
 }
